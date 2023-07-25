@@ -5,6 +5,7 @@ import listingStyle from "../../styles/listing.module.css";
 import SuggestionsSection from "./suggestionsSection";
 import RecommendedSection from "./recommendedSection";
 import { baseUrl } from "../../utilities/constants";
+import CustomImage from "../common/customImage";
 
 export default function ArticleSection({ articleType = "", articleData = [], bannerData = [] }) {
 	const showCaseArticle = articleData.length > 0 ? articleData.filter((item) => item.attributes.showcase)[0] : {};
@@ -51,7 +52,10 @@ export default function ArticleSection({ articleType = "", articleData = [], ban
 						}}
 						className={["relative"] + " " + listingStyle["block"]}
 					>
-						<img src={baseUrl + showCaseArticle.attributes?.image?.data?.attributes?.url} />
+						<CustomImage
+							src={showCaseArticle.attributes?.image?.data?.attributes?.url}
+							alt={showCaseArticle?.attributes?.title}
+						/>
 					</Link>
 				</div>
 				<div

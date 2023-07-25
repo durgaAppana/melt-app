@@ -3,10 +3,11 @@ import listingStyle from "../../styles/listing.module.css";
 import Link from "next/link";
 import { baseUrl } from "../../utilities/constants";
 import PromotedSection from "./promotedSection";
+import CustomImage from "../common/customImage";
 
 export default function TopSection({ topSectionData, bannerData = [] }) {
 	const [bannerArray, setBannerArray] = useState([]);
-	
+
 	useEffect(() => {
 		if (bannerData.length > 0) {
 			setBannerArray(bannerData);
@@ -33,11 +34,9 @@ export default function TopSection({ topSectionData, bannerData = [] }) {
 										}}
 										className={["rel"] + " " + listingStyle["block"]}
 									>
-										<img
-											src={
-												baseUrl +
-												topSectionData.topArticle?.attributes?.image?.data?.attributes?.url
-											}
+										<CustomImage
+											src={topSectionData.topArticle?.attributes?.image?.data?.attributes?.url}
+											alt={topSectionData.topArticle?.attributes?.title}
 										/>
 									</Link>
 								</div>
@@ -75,7 +74,10 @@ export default function TopSection({ topSectionData, bannerData = [] }) {
 									target="_blank"
 									href={bannerItem.attributes.link}
 								>
-									<img src={baseUrl + bannerItem.attributes?.image?.data?.attributes?.url} />
+									<CustomImage
+										src={bannerItem.attributes?.image?.data?.attributes?.url}
+										alt={bannerItem.attributes?.image?.data?.attributes?.name}
+									/>
 								</a>
 							</div>
 						))}

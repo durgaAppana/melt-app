@@ -3,12 +3,13 @@ import Document, { Html, Head, Main, NextScript } from "next/document";
 class MyDocument extends Document {
 	render() {
 		return (
-			<Html>
+			<Html lang="en">
 				<Head>
 					<title>Melt - Marketing, media, advertising and technology</title>
 					<meta
 						name="ready-to-melt"
 						content="Melt - Marketing, media, advertising and technology"
+						description="Melt - Marketing, media, advertising and technology"
 					/>
 					<link
 						rel="stylesheet"
@@ -26,6 +27,10 @@ class MyDocument extends Document {
 					></link>
 					<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 					<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+					<script
+						type="text/javascript"
+						src="https://unpkg.com/default-passive-events"
+					></script>
 					<link
 						rel="icon"
 						href="/favicon.ico"

@@ -5,6 +5,7 @@ import CustomCarousel from "../common/customCarousel";
 import listingStyle from "../../styles/listing.module.css";
 import commonStyle from "../../styles/common.module.css";
 import { baseUrl } from "../../utilities/constants";
+import CustomImage from "../common/customImage";
 
 export default function RecommendedSection({ articleType = "", recommendedArticles = [], isLoading, bannerArray }) {
 	return (
@@ -33,10 +34,11 @@ export default function RecommendedSection({ articleType = "", recommendedArticl
 															},
 														}}
 													>
-														<img
+														<CustomImage
 															src={
-																baseUrl + item.attributes?.image?.data?.attributes?.url
+																item.attributes?.image?.data?.attributes?.url
 															}
+															alt={item.attributes?.title}
 														/>
 													</Link>
 													<h2>
@@ -72,7 +74,10 @@ export default function RecommendedSection({ articleType = "", recommendedArticl
 								target="_blank"
 								href={bannerItem.attributes.link}
 							>
-								<img src={baseUrl + bannerItem.attributes?.image?.data?.attributes?.url} />
+								<CustomImage
+									src={ bannerItem.attributes?.image?.data?.attributes?.url}
+									alt={bannerItem.attributes?.image?.data?.attributes?.name}
+								/>
 							</a>
 						</div>
 					))}
