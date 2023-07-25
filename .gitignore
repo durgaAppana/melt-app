@@ -4,6 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
+/backend/stapi_plain/node_modules
 
 # testing
 /coverage
