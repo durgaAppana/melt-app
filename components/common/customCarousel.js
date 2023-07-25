@@ -21,6 +21,7 @@ export default function CustomCarousel({ children, carouselOptions = {}, classNa
 		...carouselOptions,
 	};
 
+	
 	return (
 		<>
 			{carouselOptions === false ? (
