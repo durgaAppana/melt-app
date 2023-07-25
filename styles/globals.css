@@ -1,0 +1,18 @@
+.body {
+	width: auto;
+	margin-top: 7rem !important;
+	position: relative;
+	font-family: Merriweather, serif;
+}
+
+a {
+	text-decoration: none !important;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+.ml-10 {
+	margin-left: 100px !important;
+}

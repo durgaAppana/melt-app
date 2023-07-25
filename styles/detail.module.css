@@ -1,0 +1,142 @@
+.cat-section {
+	border-bottom: solid 10px #979797;
+}
+
+.section-articles {
+	padding-bottom: 20px;
+	margin-bottom: 40px;
+	border-bottom: 1px solid #979797;
+}
+
+.cat {
+	font-size: 16px;
+	font-weight: 700;
+	line-height: 1.5;
+	letter-spacing: 0;
+	text-align: left;
+	color: #5fb969;
+}
+
+.title {
+	font-size: 48px;
+	font-weight: 500;
+	line-height: 1.14;
+	text-align: left;
+	color: #4a4a4a;
+	margin-bottom: 15px;
+}
+
+.author-text {
+	font-size: 18px;
+	font-weight: 300;
+	line-height: 1;
+	text-align: left;
+	color: #5fb969;
+	border-top: solid 1px #979797;
+	padding: 20px 0;
+	margin-top: 20px;
+	border-top: 0;
+}
+
+.date {
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 0.94;
+	text-align: left;
+	color: #4a4a4a;
+	margin-left: 0;
+}
+
+.sub-heading {
+	font-size: 30px;
+	font-weight: 300;
+	line-height: 1.25;
+	letter-spacing: 0;
+	text-align: left;
+	color: #9b9b9b;
+}
+
+.content {
+	font-size: 24px;
+}
+
+.body-text {
+	margin-bottom: 40px;
+	position: relative;
+	font-size: 18px;
+	line-height: 1.4;
+	color: #4a4a4a;
+	font-weight: 300;
+}
+
+.article-tags {
+	font-size: 22px;
+	font-weight: 500;
+	line-height: 0.94;
+	text-align: left;
+	color: #9e9e9e;
+}
+
+.badge {
+	font-size: 24px !important;
+	font-weight: 400;
+	line-height: 1.57;
+	text-align: center;
+	color: #4a4a4a !important;
+	border-radius: 8px;
+	border: solid 1px #979797;
+	background-color: #f7f7f7;
+	padding: 1px 8px;
+	margin: 0 5px;
+	padding-top: 6px !important;
+	margin-bottom: 2px !important;
+}
+
+.text-heading {
+	font-size: 22px;
+	font-weight: 400;
+	line-height: 1.22;
+	text-align: left;
+	color: #5fb969;
+	border-top: 1px solid #9e9e9e;
+	margin: 40px 0;
+	padding-top: 10px;
+}
+
+.small_promoted_article img {
+	max-width: 100%;
+	height: auto;
+}
+
+.small_promoted_article h2,
+.small_promoted_article h2 a {
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 1.22;
+	text-align: left;
+	color: #4a4a4a;
+}
+
+.small_promoted_article h2,
+.small_promoted_article h2 a:hover {
+	color: #5fb969;
+}
+
+.also-text {
+	font-size: 15px;
+	font-weight: 700;
+	text-transform: uppercase;
+	color: rgba(101, 108, 122, 0.65);
+}
+.also-melt h2 a {
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 1.22;
+	text-align: left;
+	color: #4a4a4a;
+	font-family: "Times New Roman", Times, serif, "Trebuchet MS";
+}
+.also-melt h2 a:hover {
+	text-decoration: none;
+	color: #5fb969;
+}
