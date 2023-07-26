@@ -23,7 +23,7 @@ export default function DetailsSection({ categoryType = "", detailsData = {}, ta
 				</span>
 				<span className={detailsStyle["date"]}>June 23, 2023</span>
 			</p>
-			<p className={detailsStyle["sub-heading"]}>"{detailsData.description}"</p>
+			<p className={detailsStyle["sub-heading"]}>{detailsData.description}</p>
 			<div className={detailsStyle["body-text"]}>
 				<p className={detailsStyle["content"]}>{detailsData.content_details}</p>
 				<figure>
