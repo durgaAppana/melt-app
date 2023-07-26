@@ -140,3 +140,67 @@
 	text-decoration: none;
 	color: #5fb969;
 }
+
+.recommend-post-title {
+	position: absolute;
+	color: rgba(255, 255, 255, 0.95);
+	font-size: 18px;
+	font-weight: 700;
+	text-shadow: 0 0.5px 2px rgba(0, 0, 0, 0.35);
+	width: 90%;
+	left: 5%;
+	top: 30%;
+	bottom: 0;
+	white-space: normal;
+	margin: 8px auto;
+	display: block;
+	line-height: 1.25;
+	max-height: calc(2.5em);
+	overflow: hidden;
+	transition: all 150ms ease-in-out, font-size 0s ease-in-out;
+}
+
+.meta {
+	color: #717888;
+	font-size: 12.5px;
+	width: 90%;
+	margin: 8px 5% 0;
+	padding: 0;
+	padding-inline-start: 0;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	transition: all 150ms linear 50ms;
+}
+
+.meta li {
+	display: inline;
+	font-weight: 500;
+	line-height: 1.2;
+}
+
+.recommend-post {
+	position: relative;
+	display: flex;
+	background: #fff;
+	width: 85%;
+	min-height: 270px;
+	border: 1px solid #e7e9ee;
+	border-radius: 6px;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	gap: 1;
+	vertical-align: middle;
+	transform: translate3d(0, 0, 0);
+	transition: all 0.2s ease-in-out;
+	cursor: pointer;
+	transform-style: preserve-3d;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	perspective: 1000;
+}
+
+.recommend-post h2 {
+	margin: 0;
+	padding-left: 10px;
+	padding-right: 10px;
+}

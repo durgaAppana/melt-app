@@ -37,7 +37,7 @@
 	display: flex;
 	background: #fff;
 	width: 90%;
-	min-height: 225px;
+	min-height: 210px;
 	border: 1px solid #e7e9ee;
 	border-radius: 6px;
 	-ms-flex-pack: justify;
@@ -69,8 +69,14 @@
 	border-top-right-radius: 5px;
 	overflow: hidden;
 	transition: all 0.2s ease-in-out;
+	padding: 0px;
 }
 
+.recommend-post h2 {
+	margin-top: 2px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
 .owl-carousel {
 	position: relative;
 }

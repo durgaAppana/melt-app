@@ -6,4 +6,5 @@ export const apiList = {
 	GET_ARTICLE_DATA: baseUrl + "/api/article-contents",
 	GET_BANNERS_DATA: baseUrl + "/api/get-banners?populate=*",
 	GET_tAGS_LIST: baseUrl + "/api/article-contents?filters[tags][tag_name][$contains]=",
+	SUBSCRIBE_USER_MAIL: baseUrl + "/api/subscribe-emails",
 };

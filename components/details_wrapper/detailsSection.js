@@ -1,8 +1,11 @@
 import React from "react";
+import Link from "next/link";
+import moment from "moment";
+
 import detailsStyle from "../../styles/detail.module.css";
 import AlsoMeltSection from "./alsoMeltSection";
-import Link from "next/link";
 import { convertToSlug } from "../../utilities/utils";
+import CustomImage from "../common/customImage";
 
 export default function DetailsSection({ categoryType = "", detailsData = {}, tagsList = [], meltAlso }) {
 	return (
@@ -21,29 +24,38 @@ export default function DetailsSection({ categoryType = "", detailsData = {}, ta
 					</span>
 					,&nbsp;
 				</span>
-				<span className={detailsStyle["date"]}>June 23, 2023</span>
+				<span className={detailsStyle["date"]}>{moment.utc(detailsData.publishedAt).format("LL")}</span>
 			</p>
-			<p className={detailsStyle["sub-heading"]}>{detailsData.description}</p>
+			<p className={detailsStyle["sub-heading"]}>"{detailsData.description}"</p>
 			<div className={detailsStyle["body-text"]}>
 				<p className={detailsStyle["content"]}>{detailsData.content_details}</p>
-				<figure>
-					<div className="wp-block-embed__wrapper">
-						<iframe
-							title={detailsData.title}
-							width="640"
-							height="360"
-							src={detailsData.video_link}
-							frameBorder="0"
-							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-							allowFullScreen=""
-						></iframe>
-					</div>
-				</figure>
+				{typeof detailsData.video_link != "undefined" && detailsData.video_link != null ? (
+					<figure>
+						<div className="wp-block-embed__wrapper">
+							<iframe
+								title={detailsData.title}
+								width="640"
+								height="360"
+								src={detailsData.video_link}
+								frameBorder="0"
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+								allowFullScreen=""
+							></iframe>
+						</div>
+					</figure>
+				) : (
+					<CustomImage
+						height={350}
+						width={700}
+						src={detailsData?.image?.data?.attributes?.url}
+						alt={detailsData.title}
+					/>
+				)}
 			</div>
-			<div className={detailsStyle["article-tags"]}>
-				More about:
-				{tagsList.length > 0 &&
-					tagsList.map((tag, index) => (
+			{tagsList.length > 0 && (
+				<div className={detailsStyle["article-tags"]}>
+					More about:
+					{tagsList.map((tag, index) => (
 						<Link
 							href={"/tag/" + convertToSlug(tag.attributes.tag_name)}
 							className={detailsStyle["badge"]}
@@ -52,7 +64,8 @@ export default function DetailsSection({ categoryType = "", detailsData = {}, ta
 							{tag.attributes.tag_name}
 						</Link>
 					))}
-			</div>
+				</div>
+			)}
 			<AlsoMeltSection meltAlso={meltAlso && meltAlso} />
 		</div>
 	);

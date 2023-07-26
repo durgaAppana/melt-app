@@ -1,9 +1,10 @@
+import moment from "moment";
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
+
 import detailsStyle from "../../styles/detail.module.css";
 import CustomCarousel from "../common/customCarousel";
 import commonStyle from "../../styles/common.module.css";
-import { baseUrl } from "../../utilities/constants";
-import Link from "next/link";
 import CustomImage from "../common/customImage";
 
 export default function AlsoMeltSection({ meltAlso = [] }) {
@@ -26,7 +27,7 @@ export default function AlsoMeltSection({ meltAlso = [] }) {
 						{meltAlso &&
 							meltAlso.map((item, index) => (
 								<div
-									className={commonStyle["recommend-post"]}
+									className={detailsStyle["recommend-post"]}
 									key={index}
 								>
 									<div className={commonStyle["recommend-post-header"]}>
@@ -39,11 +40,22 @@ export default function AlsoMeltSection({ meltAlso = [] }) {
 													},
 												}}
 											>
-												<CustomImage height={100} width={150}
+												<CustomImage
+													height={130}
+													width={150}
 													src={item?.attributes?.image?.data?.attributes.url}
 													alt={item.attributes?.title}
 												/>
 											</Link>
+											<h3 class={detailsStyle["recommend-post-title"]}>
+												<span>{item.attributes?.title}</span>
+											</h3>
+											<ul class={detailsStyle["meta"]}>
+												<li class="time">
+													{moment.utc(item.attributes.publishedAt).fromNow()}
+												</li>
+												<li class="comments">1 comment </li>
+											</ul>
 											<h2>
 												<Link
 													href={{
