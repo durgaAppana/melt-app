@@ -1,22 +1,19 @@
 'use strict';
 
 /**
- * subscribe-email controller
+ * contact controller
  */
 
 const { createCoreController } = require('@strapi/strapi').factories;
 const nodemailer = require("nodemailer");
-// module.exports = createCoreController('api::subscribe-email.subscribe-email')
-module.exports = createCoreController('api::subscribe-email.subscribe-email', ({ strapi }) => ({
+
+module.exports = createCoreController('api::contact.contact', ({ strapi }) => ({
     async create(ctx) {
         // Get the user's email from the request body
-        const data = ctx.request.body;
+        const { data } = ctx.request.body;
         try {
-            await strapi.service("api::subscribe-email.subscribe-email").create({
-                "data": {
-                    "name": data.name,
-                    "email": data.email
-                }
+            await strapi.service("api::contact.contact").create({
+                data
             });
             const transporter = nodemailer.createTransport({
                 service: "gmail", // You can change this to your preferred email provider
@@ -29,7 +26,7 @@ module.exports = createCoreController('api::subscribe-email.subscribe-email', ({
                 from: "vikas.g@fortune4.in", // Replace with your Gmail email address
                 to: data.email, // The user's email address from the request body
                 subject: "Welcome to our strapi!",
-                text: `Thank you ${data.name} for subscribing to our Ready To Melt. We will keep you updated with the latest Articles and Blogs.`,
+                text: `Thank you ${data.name} for connecting us, we will connect you soon`,
             };
 
             transporter.sendMail(mailOptions, (error, info) => {
@@ -45,8 +42,7 @@ module.exports = createCoreController('api::subscribe-email.subscribe-email', ({
             }, 200)
             // Return the subscription object as a response
         } catch (error) {
-            // console.error("000000000000",error);
             ctx.send({ status: false, message: "Email already exist" },500);
         }
     }
-}))
+}));

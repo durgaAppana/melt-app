@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import footerStyle from "./../../styles/footer.module.css";
+import RegisterModal from "../common/registorModal";
 
 export default function Footer() {
+	const [openModal, setOpenModal] = useState(false);
+	const toggle = () => setOpenModal(!openModal)
 	return (
 		<div className={footerStyle["footer"]}>
 			<div className="container">
@@ -32,6 +35,7 @@ export default function Footer() {
 										title="Register"
 										href="#register"
 										className={footerStyle["nav-link"]}
+										onClick={toggle}
 									>
 										Register
 									</a>
@@ -39,7 +43,7 @@ export default function Footer() {
 								<li className={footerStyle["nav-item"]}>
 									<a
 										title="Contact Us"
-										href="https://www.readytomelt.com/contact-us/"
+										href="contact-us"
 										className={footerStyle["nav-link"]}
 									>
 										Contact Us
@@ -70,6 +74,7 @@ export default function Footer() {
 						</div>
 					</div>
 					<div className={"col-md-2 " + footerStyle["copy-right-text"]}> © Melt</div>
+					<RegisterModal openModal={openModal} toggle={toggle} />
 				</div>
 			</div>
 		</div>

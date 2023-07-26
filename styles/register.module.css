@@ -1,0 +1,27 @@
+.main {
+  margin-top: 60px;
+}
+.main .label {
+  width: 100% !important;
+  font-size: 20px;
+}
+.main .button {
+  margin-top: 20px;
+  font-size: 20px;
+}
+.main .button button {
+  background-color: black;
+  color: aliceblue;
+}
+.main input {
+  height: 35px;
+  width: 217px;
+}
+.main h5 {
+  font-size: 25px;
+  color: aliceblue;
+}
+
+.main .danger {
+  color: red;
+}
