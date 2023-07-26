@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import footerStyle from "./../../styles/footer.module.css";
 import RegisterModal from "../common/registorModal";
+import Link from "next/link";
 
 export default function Footer() {
 	const [openModal, setOpenModal] = useState(false);
@@ -41,13 +42,13 @@ export default function Footer() {
 									</a>
 								</li>
 								<li className={footerStyle["nav-item"]}>
-									<a
+									<Link
 										title="Contact Us"
 										href="contact-us"
 										className={footerStyle["nav-link"]}
 									>
 										Contact Us
-									</a>
+									</Link>
 								</li>
 								<li className={footerStyle["nav-item"]}>
 									<a

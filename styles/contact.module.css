@@ -1,0 +1,25 @@
+.main{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.main h1{
+    font-size: 50px !important;
+}
+.main h2{
+    font-size: 30px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.main .mobile{
+    font-size: 20px;
+    width: 184px;
+}
+.main p{
+    width: 241px;
+    font-size: 20px;
+}
+
+.contact{
+    margin-top: 20px;
+}
