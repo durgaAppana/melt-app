@@ -36,7 +36,7 @@ export default function TagList({ tagList, tagName }) {
 											},
 										}}
 									>
-										<CustomImage
+										<CustomImage height={150} width={200}
 											src={tagItem.attributes?.image?.data?.attributes?.url}
 											alt={tagItem.attributes?.title}
 										/>

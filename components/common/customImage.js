@@ -7,11 +7,11 @@ export default function CustomImage(props) {
 			{typeof props.src != "undefined" && typeof props.src != "null" && (
 				<Image
 					src={baseUrl + props.src}
-					height="100"
-					width="100"
+					height={props.height ? props.height : 100}
+					width={props.width ? props.width : 100}
 					priority={false}
 					alt={props.alt}
-					blurDataURL={props.alt}
+					blurDataURL={baseUrl + props.src}
 					placeholder="blur"
 				/>
 			)}

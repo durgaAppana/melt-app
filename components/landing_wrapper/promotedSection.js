@@ -22,7 +22,9 @@ export default function PromotedSection({ articleData = [] }) {
 							}}
 							className={["rel"] + " " + listingStyle["block"]}
 						>
-							<CustomImage
+							<CustomImage height={150} width={200}
+								height={150}
+								width={200}
 								src={item.attributes?.image?.data?.attributes?.url}
 								alt={item.attributes?.title}
 							/>

@@ -52,7 +52,7 @@ export default function ArticleSection({ articleType = "", articleData = [], ban
 						}}
 						className={["relative"] + " " + listingStyle["block"]}
 					>
-						<CustomImage
+						<CustomImage height={400} width={600}
 							src={showCaseArticle.attributes?.image?.data?.attributes?.url}
 							alt={showCaseArticle?.attributes?.title}
 						/>

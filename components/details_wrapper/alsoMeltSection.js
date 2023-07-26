@@ -39,7 +39,7 @@ export default function AlsoMeltSection({ meltAlso = [] }) {
 													},
 												}}
 											>
-												<CustomImage
+												<CustomImage height={100} width={150}
 													src={item?.attributes?.image?.data?.attributes.url}
 													alt={item.attributes?.title}
 												/>

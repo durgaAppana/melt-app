@@ -34,7 +34,7 @@ export default function RecommendedSection({ articleType = "", recommendedArticl
 															},
 														}}
 													>
-														<CustomImage
+														<CustomImage height={100} width={150}
 															src={
 																item.attributes?.image?.data?.attributes?.url
 															}
@@ -74,7 +74,7 @@ export default function RecommendedSection({ articleType = "", recommendedArticl
 								target="_blank"
 								href={bannerItem.attributes.link}
 							>
-								<CustomImage
+								<CustomImage height={150} width={200}
 									src={ bannerItem.attributes?.image?.data?.attributes?.url}
 									alt={bannerItem.attributes?.image?.data?.attributes?.name}
 								/>

@@ -26,7 +26,7 @@ export default function ReadsSection({ article = [], articleType = "" }) {
 										},
 									}}
 								>
-									<CustomImage
+									<CustomImage height={150} width={200}
 										src={v?.attributes?.image?.data?.attributes?.url}
 										alt={v?.attributes?.title}
 									/>
