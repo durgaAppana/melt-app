@@ -65,7 +65,7 @@ export default function AlsoMeltSection({ meltAlso = [] }) {
 														},
 													}}
 												>
-													{item.attributes?.title}
+													{item.attributes?.description.slice(0, 55)}...
 												</Link>
 											</h2>
 										</div>

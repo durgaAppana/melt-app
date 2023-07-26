@@ -62,7 +62,7 @@ export default function SubscribeMail() {
 		if (response.status) {
 			resetFormData();
 		} else {
-			setErrorResponse(response.error.message);
+			setErrorResponse(response.message);
 		}
 	};
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import moment from "moment";
 
@@ -8,6 +8,14 @@ import { convertToSlug } from "../../utilities/utils";
 import CustomImage from "../common/customImage";
 
 export default function DetailsSection({ categoryType = "", detailsData = {}, tagsList = [], meltAlso }) {
+	const [showFullDescription, setFullDescription] = useState(false);
+
+	const description = showFullDescription ? detailsData.content_details : detailsData?.content_details?.slice(0, 400);
+
+	const showFullDescriptionHandler = () => {
+		setFullDescription(!showFullDescription);
+	};
+
 	return (
 		<div className="col-lg-9">
 			<p className={detailsStyle["cat"]}>{categoryType}:</p>
@@ -28,7 +36,17 @@ export default function DetailsSection({ categoryType = "", detailsData = {}, ta
 			</p>
 			<p className={detailsStyle["sub-heading"]}>"{detailsData.description}"</p>
 			<div className={detailsStyle["body-text"]}>
-				<p className={detailsStyle["content"]}>{detailsData.content_details}</p>
+				<p className={detailsStyle["content"]}>
+					{description}
+					{detailsData?.content_details?.length > 400 && (
+						<button
+							class="btn bg-transparent"
+							onClick={showFullDescriptionHandler}
+						>
+							...Read {showFullDescription ? "less" : "more"}
+						</button>
+					)}
+				</p>
 				{typeof detailsData.video_link != "undefined" && detailsData.video_link != null ? (
 					<figure>
 						<div className="wp-block-embed__wrapper">

@@ -36,7 +36,9 @@ export default function TagList({ tagList, tagName }) {
 											},
 										}}
 									>
-										<CustomImage height={150} width={200}
+										<CustomImage
+											height={150}
+											width={200}
 											src={tagItem.attributes?.image?.data?.attributes?.url}
 											alt={tagItem.attributes?.title}
 										/>
@@ -65,7 +67,11 @@ export default function TagList({ tagList, tagName }) {
 											{tagItem.attributes.title}
 										</Link>
 									</h2>
-									<p className={tagStyle["sub-heading"]}>{tagItem.attributes.description}</p>
+									<p className={tagStyle["sub-heading"]}>
+										{tagItem.attributes?.description?.length > 150
+											? tagItem.attributes?.description?.slice(0, 150) + "..."
+											: tagItem.attributes?.description}
+									</p>
 								</div>
 							</div>
 						))}
