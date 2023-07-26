@@ -4,6 +4,7 @@ import headerStyle from "../../styles/header.module.css";
 import Search from "../search/search";
 import { apiList } from "../../utilities/constants";
 import { apiGetCall } from "../../utilities/apiServices";
+import Image from "next/image";
 
 export default function Header() {
 	const [showSearch, setShwSearch] = useState(false);
@@ -30,7 +31,13 @@ export default function Header() {
 			<div className="container">
 				<div className="logo">
 					<Link href="/">
-						<img src="/images/melt_white.png" />
+						<Image
+							src="/images/melt_white.png"
+							alt="logo"
+							height={50}
+							width={80}
+							priority={true}
+						/>
 					</Link>
 				</div>
 				<div className={headerStyle["nav-list"]}>
@@ -51,7 +58,7 @@ export default function Header() {
 								</li>
 							))}
 						<li style={{ marginLeft: "100px" }}>
-							<a
+							<span
 								title="Search"
 								className={"nav-link " + headerStyle["search-icon"]}
 								onClick={toggleShowSearch}
@@ -67,7 +74,7 @@ export default function Header() {
 								>
 									<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
 								</svg>
-							</a>
+							</span>
 						</li>
 						{showSearch && (
 							<div className={headerStyle["search-box"]}>

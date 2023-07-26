@@ -4,6 +4,7 @@ import CustomCarousel from "../common/customCarousel";
 import commonStyle from "../../styles/common.module.css";
 import { baseUrl } from "../../utilities/constants";
 import Link from "next/link";
+import CustomImage from "../common/customImage";
 
 export default function AlsoMeltSection({ meltAlso = [] }) {
 	const [isLoading, setIsLoading] = useState(false);
@@ -13,6 +14,7 @@ export default function AlsoMeltSection({ meltAlso = [] }) {
 			setIsLoading(true);
 		}
 	}, [meltAlso]);
+
 	return (
 		<section>
 			<div className="mt-5 mb-4">
@@ -37,7 +39,10 @@ export default function AlsoMeltSection({ meltAlso = [] }) {
 													},
 												}}
 											>
-												<img src={baseUrl + item?.attributes?.image?.data?.attributes.url} />
+												<CustomImage
+													src={item?.attributes?.image?.data?.attributes.url}
+													alt={item.attributes?.title}
+												/>
 											</Link>
 											<h2>
 												<Link

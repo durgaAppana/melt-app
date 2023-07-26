@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 
 import listingStyle from "../../styles/listing.module.css";
 import { baseUrl } from "../../utilities/constants";
+import CustomImage from "../common/customImage";
 
 export default function SuggestionsSection({ displayArticles }) {
 	return (
@@ -17,7 +18,10 @@ export default function SuggestionsSection({ displayArticles }) {
 					}}
 					className={["rel"] + " " + listingStyle["block"]}
 				>
-					<img src={baseUrl + displayArticles.left_section?.attributes?.image?.data?.attributes?.url} />
+					<CustomImage
+						src={displayArticles.left_section?.attributes?.image?.data?.attributes?.url}
+						alt={displayArticles.left_section?.attributes?.title}
+					/>
 				</Link>
 				<h2>
 					<Link
@@ -49,7 +53,10 @@ export default function SuggestionsSection({ displayArticles }) {
 									}}
 									className={["rel"] + " " + listingStyle["block"]}
 								>
-									<img src={baseUrl + suggestion.attributes?.image?.data?.attributes?.url} />
+									<CustomImage
+										src={suggestion.attributes?.image?.data?.attributes?.url}
+										alt={suggestion.attributes?.title}
+									/>
 								</Link>
 								<h2 className={listingStyle["mar-t-10"]}>
 									<Link

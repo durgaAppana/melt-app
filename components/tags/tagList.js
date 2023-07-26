@@ -2,6 +2,7 @@ import React from "react";
 import tagStyle from "../../styles/tagList.module.css";
 import { baseUrl } from "../../utilities/constants";
 import Link from "next/link";
+import CustomImage from "../common/customImage";
 
 export default function TagList({ tagList, tagName }) {
 	const displayName = tagName.split(" ").map((item) => {
@@ -35,7 +36,10 @@ export default function TagList({ tagList, tagName }) {
 											},
 										}}
 									>
-										<img src={baseUrl + tagItem.attributes?.image?.data?.attributes?.url} />
+										<CustomImage
+											src={tagItem.attributes?.image?.data?.attributes?.url}
+											alt={tagItem.attributes?.title}
+										/>
 									</Link>
 								</div>
 								<div

@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import listingStyle from "../../styles/listing.module.css";
 import { baseUrl } from "../../utilities/constants";
+import CustomImage from "../common/customImage";
 
 export default function PromotedSection({ articleData = [] }) {
 	return (
@@ -21,7 +22,10 @@ export default function PromotedSection({ articleData = [] }) {
 							}}
 							className={["rel"] + " " + listingStyle["block"]}
 						>
-							<img src={baseUrl + item.attributes?.image?.data?.attributes?.url} />
+							<CustomImage
+								src={item.attributes?.image?.data?.attributes?.url}
+								alt={item.attributes?.title}
+							/>
 						</Link>
 						<p
 							className={
@@ -31,46 +35,19 @@ export default function PromotedSection({ articleData = [] }) {
 							{item.attributes?.category?.data?.attributes?.type}
 						</p>
 						<h2>
-							<a href="https://www.readytomelt.com/melt-tv-episode-221-ar-rahman-on-creativity-highlights-from-the-2023-kyoorius-creative-awards/">
+							<Link
+								href={{
+									pathname: "/" + item.attributes?.slug,
+									query: {
+										id: item.id,
+									},
+								}}
+							>
 								{item.attributes?.title}
-							</a>
+							</Link>
 						</h2>
 					</div>
 				))}
-			{/* <div className="col-lg-4">
-				<a
-					href="https://www.readytomelt.com/melt-tv-episode-221-ar-rahman-on-creativity-highlights-from-the-2023-kyoorius-creative-awards/"
-					className={["rel"] + " " + listingStyle["block"]}
-				>
-					<img src="https://www.readytomelt.com/wp-content/uploads/2023/06/MELT-230610-CTRTM.jpg" />
-				</a>
-				<p className={listingStyle["cat"] + " " + listingStyle["mar-t-10"] + " " + listingStyle["mar-b-10"]}>
-					Advertising:
-				</p>
-				<h2>
-					<a href="https://www.readytomelt.com/melt-tv-episode-221-ar-rahman-on-creativity-highlights-from-the-2023-kyoorius-creative-awards/">
-						Melt TV | Episode 221 | AR Rahman on Creativity | Highlights From The 2023 Kyoorius Creative
-						Awards
-					</a>
-				</h2>
-			</div>
-			<div className="col-lg-4">
-				<a
-					href="https://www.readytomelt.com/melt-tv-episode-221-ar-rahman-on-creativity-highlights-from-the-2023-kyoorius-creative-awards/"
-					className={["rel"] + " " + listingStyle["block"]}
-				>
-					<img src="https://www.readytomelt.com/wp-content/uploads/2023/06/MELT-230610-CTRTM.jpg" />
-				</a>
-				<p className={listingStyle["cat"] + " " + listingStyle["mar-t-10"] + " " + listingStyle["mar-b-10"]}>
-					Advertising:
-				</p>
-				<h2>
-					<a href="https://www.readytomelt.com/melt-tv-episode-221-ar-rahman-on-creativity-highlights-from-the-2023-kyoorius-creative-awards/">
-						Melt TV | Episode 221 | AR Rahman on Creativity | Highlights From The 2023 Kyoorius Creative
-						Awards
-					</a>
-				</h2>
-			</div> */}
 		</div>
 	);
 }
