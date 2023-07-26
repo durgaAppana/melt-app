@@ -47,14 +47,14 @@ export default function AlsoMeltSection({ meltAlso = [] }) {
 													alt={item.attributes?.title}
 												/>
 											</Link>
-											<h3 class={detailsStyle["recommend-post-title"]}>
+											<h3 className={detailsStyle["recommend-post-title"]}>
 												<span>{item.attributes?.title}</span>
 											</h3>
-											<ul class={detailsStyle["meta"]}>
-												<li class="time">
+											<ul className={detailsStyle["meta"]}>
+												<li className="time">
 													{moment.utc(item.attributes.publishedAt).fromNow()}
 												</li>
-												<li class="comments">1 comment </li>
+												<li className="comments">1 comment </li>
 											</ul>
 											<h2>
 												<Link

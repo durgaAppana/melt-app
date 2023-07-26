@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { emailValidation } from "../../utilities/utils";
 import { apiPostCall } from "../../utilities/apiServices";
 import { apiList } from "../../utilities/constants";
+import commonStyle from "../../styles/common.module.css";
 
 export default function SubscribeMail() {
 	const defaultFormData = {
@@ -68,36 +69,35 @@ export default function SubscribeMail() {
 
 	return (
 		<>
-			<h3> Subscribe to Melt’s latest stories</h3>
+			<h3 className={commonStyle["sub-title"]}> Subscribe to Melt’s latest stories</h3>
 			<form onSubmit={handleSubmit(handleSubmitFormData)}>
 				<div className="es-field-wrap">
-					<label>
-						Email*
-						<input
-							{...validation.email}
-							className="form-control"
-							type="email"
-							name="email"
-							onChange={(e) => {
-								validation.email.onChange(e);
-								setErrorResponse("");
-								updateFormData("email", e.target.value);
-							}}
-						/>
-					</label>
-					<p className="text-danger">{errors.email && errors.email.message}</p>
+					<label className={commonStyle["sub-text"]}>Email*</label>
+					<input
+						{...validation.email}
+						className="form-control"
+						type="email"
+						name="email"
+						onChange={(e) => {
+							validation.email.onChange(e);
+							setErrorResponse("");
+							updateFormData("email", e.target.value);
+						}}
+					/>
+
+					<p className={"text-danger "+ commonStyle["sub-text"]}>{errors.email && errors.email.message}</p>
 					{typeof errorResponse != "undefined" && errorResponse != "" && (
-						<p className="text-danger">{errorResponse}</p>
+						<p className={"text-danger "+ commonStyle["sub-text"]}>{errorResponse}</p>
 					)}
 				</div>
 				<div className="row">
 					<div className="col-lg-6">
 						<button
 							type="submit"
-							className="form-control"
+							className={"form-control " + commonStyle["sub-text"]}
 							disabled={isLoading}
 						>
-							save
+							Subscribe
 						</button>
 					</div>
 					{isLoading && (
