@@ -18,7 +18,7 @@ export default function DetailsSection({ categoryType = "", detailsData = {}, ta
 
 	return (
 		<div className="col-lg-9">
-			<p className={detailsStyle["cat"]}>{categoryType}:</p>
+			<p className={detailsStyle["cat"]}>{categoryType != "" && categoryType + ":"}</p>
 			<h2 className={detailsStyle["title"]}>{detailsData.title}</h2>
 			<p>
 				<span className={detailsStyle["author-text"]}>
@@ -40,7 +40,7 @@ export default function DetailsSection({ categoryType = "", detailsData = {}, ta
 					{description}
 					{detailsData?.content_details?.length > 400 && (
 						<button
-							class="btn bg-transparent"
+							className="btn bg-transparent"
 							onClick={showFullDescriptionHandler}
 						>
 							...Read {showFullDescription ? "less" : "more"}
@@ -63,8 +63,8 @@ export default function DetailsSection({ categoryType = "", detailsData = {}, ta
 					</figure>
 				) : (
 					<CustomImage
-						height={350}
-						width={700}
+						height={400}
+						width={800}
 						src={detailsData?.image?.data?.attributes?.url}
 						alt={detailsData.title}
 					/>
