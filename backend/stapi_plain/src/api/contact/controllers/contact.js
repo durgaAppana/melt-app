@@ -10,10 +10,16 @@ const nodemailer = require("nodemailer");
 module.exports = createCoreController('api::contact.contact', ({ strapi }) => ({
     async create(ctx) {
         // Get the user's email from the request body
-        const { data } = ctx.request.body;
+        const data = ctx.request.body;
         try {
             await strapi.service("api::contact.contact").create({
-                data
+                "data": {
+                    "name": data.name,
+                    "email": data.email,
+                    "subject": data?.subject ? data.subject : "",
+                    "message": data?.message ? data.message : "",
+                    "location": data?.location ? data?.location : ""
+                }
             });
             const transporter = nodemailer.createTransport({
                 service: "gmail", // You can change this to your preferred email provider
@@ -42,7 +48,7 @@ module.exports = createCoreController('api::contact.contact', ({ strapi }) => ({
             }, 200)
             // Return the subscription object as a response
         } catch (error) {
-            ctx.send({ status: false, message: "Email already exist" },500);
+            ctx.send({ status: false, message: "Email already exist" }, 500);
         }
     }
 }));

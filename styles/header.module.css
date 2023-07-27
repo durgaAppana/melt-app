@@ -1,52 +1,4 @@
-.shrink {
-	max-height: 64px;
-	position: fixed;
-	top: 0;
-	width: 100%;
-	background: #000 !important;
-	z-index: 999;
-	padding: 0 1rem;
-	display: none;
-}
-
-.logo {
-	display: flex;
-}
-.nav-list {
-	border-bottom: 1px solid #979797;
-	align-items: center;
-	justify-content: center;
-	border-bottom: 0;
-}
-
-.nav-item {
-	display: flex;
-	flex-direction: row;
-}
-
-.shrink .nav-list li {
-	border-top: 15px solid #000;
-	margin: 0 20px;
-	float: left;
-	display: inline;
-	width: auto;
-}
-
-.shrink .nav-list a {
-	color: #fff;
-	padding-top: 10px;
-	font-size: 20px;
-	font-weight: 400;
-	line-height: 1.11;
-	font-family: "Times New Roman", Times, serif, "Trebuchet MS";
-}
-
-.shrink .nav-list .search {
-	padding-left: 10rem;
-}
-
 /* Header 2 */
-
 .headerMain {
 	display: flex;
 	justify-content: space-around;
@@ -83,7 +35,6 @@
 	margin-left:auto;
 
 }
-
 .headerMain .menu ul li {
 	margin:0 20px;
 }
@@ -117,65 +68,6 @@
 	color: black;
 	flex:0 0 auto;
 	margin-left:auto;
-}
-
-.search-icon {
-	position: relative;
-}
-
-.search-box {
-	position: absolute;
-	top: 63px;
-	left: 490px;
-	background: #f7f7f7;
-	padding: 20px;
-	border-left: 1px solid #979797;
-	border-right: 1px solid #979797;
-	border-bottom: 1px solid #979797;
-	width: 47%;
-	position: absolute;
-	z-index: 99;
-}
-
-.search-input {
-	width: 100%;
-	height: 30px !important;
-	padding: 0px;
-	border: none;
-	margin: 0px;
-	height: auto;
-	/* background: url(https://www.google.com/cse/static/images/1x/en/branding.png) left center no-repeat
-		rgb(255, 255, 255); */
-	outline: none;
-}
-
-.tags-text {
-	font-size: 14px;
-	font-weight: 700;
-	line-height: 1.25;
-	text-align: left;
-	color: #5fb969;
-	text-transform: uppercase;
-}
-
-.badge {
-	font-size: 15px !important;
-	font-weight: 400;
-	line-height: 1.57;
-	text-align: center;
-	color: #4a4a4a !important;
-	border-radius: 8px;
-	border: solid 1px #979797;
-	background-color: #f7f7f7;
-	padding: 1px 8px;
-	margin: 0 5px;
-	padding-top: 6px !important;
-	margin-bottom: 2px !important;
-}
-
-.tags-text a:hover {
-	background-color: #4a4a4a !important;
-	color: #f7f7f7 !important;
 }
 
 
