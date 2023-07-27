@@ -7,7 +7,7 @@ body {
 	width: auto;
 	/* margin-top: 7rem !important; */
 	position: relative;
-	font-family: "Merriweather", serif;
+	font-family: "Merriweather", serif !important;
 }
 
 a {
