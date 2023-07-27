@@ -6,6 +6,7 @@
 	background: #000 !important;
 	z-index: 999;
 	padding: 0 1rem;
+	display: none;
 }
 
 .logo {
@@ -49,46 +50,73 @@
 .headerMain {
 	display: flex;
 	justify-content: space-around;
-	width: 100%;
-	margin-top: 10px;
+	align-items: flex-start;
+	padding:1rem;
+	transition:all .2s ease-in-out;
 }
+.headerMain .headerCopy{display: flex;align-items:flex-start;width:100%;}
 .headerMain .logo {
 	background-image: url("../public/images/melt_logo.png");
-	width: 50%;
-	height: 135px;
+	width:179px;
+	height:108px;
 	background-repeat: no-repeat;
-	margin-top: 25px;
-	background-size: 200px;
-	margin-left: 85px;
+	background-size: 100%;
+	flex:0 0 auto;
+	margin-right:1rem;
+	background-position:center;
 }
 
 .headerMain .menu {
 	border-bottom: 1px solid #979797;
-	width: 100%;
-	margin-bottom: 100px;
+	flex:1;
+	display: flex;
+	justify-content:center;
+	align-items:center;
 }
 
 .headerMain .menu ul {
-	font-size: 25px;
 	list-style: none;
 	display: flex;
-	justify-content: space-around;
-	margin-left: 120px;
-	margin-right: 240px;
+	justify-content:center;
+	margin:0;
+	padding:0;
+	margin-left:auto;
+
 }
 
 .headerMain .menu ul li {
-	margin-left: 25px;
+	margin:0 20px;
 }
-
+.headerMain .menu ul li a{
+	font-size: 18px;
+	padding:.39em 1em;
+	display: block;
+	color:#4a4a4a;
+	position: relative;
+}
+.headerMain .menu ul li a:before{
+	position: absolute;
+	content:"";
+	left:0;
+	right:0;
+	top:0;
+	height:0;
+	background-color: #5fb969;
+	display: block;
+	transition:all .3s ease-in-out;
+}
+.headerMain .menu ul li a:hover::before{
+	height:4px;
+}
 .headerMain .search {
-	background-image: url("../public/images/search.png");
-	margin-right: 150px;
-	background-size: 25px;
-	width: 6%;
-	height: 60px;
+	background-image:url("data:image/svg+xml,%3Csvg id='Group_29466' data-name='Group 29466' xmlns='http://www.w3.org/2000/svg' width='21.061' height='21.111' viewBox='0 0 21.061 21.111'%3E%3Cg id='Ellipse_31' data-name='Ellipse 31' transform='translate(0 0)' fill='none' stroke='%234c436b' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5'%3E%3Cellipse cx='9.333' cy='9.363' rx='9.333' ry='9.363' stroke='none'/%3E%3Cellipse cx='9.333' cy='9.363' rx='8.583' ry='8.613' fill='none'/%3E%3C/g%3E%3Cpath id='Path_9' data-name='Path 9' d='M26,26l4.267,4.267' transform='translate(-10.267 -10.216)' fill='%234c436b' stroke='%234c436b' stroke-linecap='round' stroke-width='1.5'/%3E%3C/svg%3E%0A");
+	background-size: 100%;
+	width:25px;
+	height:25px;
 	background-repeat: no-repeat;
 	color: black;
+	flex:0 0 auto;
+	margin-left:auto;
 }
 
 .search-icon {
@@ -148,4 +176,16 @@
 .tags-text a:hover {
 	background-color: #4a4a4a !important;
 	color: #f7f7f7 !important;
+}
+
+
+/* Scrolled Header */
+.headerMain.scrolled{position: sticky;top:0;background-color: #000;padding-top:0;padding-bottom:0;z-index:11;}
+.headerMain.scrolled .headerCopy{align-items:center;}
+.headerMain.scrolled .logo{height:64px;background-image:url("../public//images/melt_white.png");width:65px;}
+.headerMain.scrolled .menu{border-bottom:0;}
+.headerMain.scrolled .menu ul li a{color: #FFF;padding-top:0;padding-bottom:0;line-height:64px;}
+.headerMain.scrolled .search{
+	background-image: url("data:image/svg+xml,%3Csvg id='Group_29466' data-name='Group 29466' xmlns='http://www.w3.org/2000/svg' width='21.061' height='21.111' viewBox='0 0 21.061 21.111'%3E%3Cg id='Ellipse_31' data-name='Ellipse 31' transform='translate(0 0)' fill='none' stroke='%23FFF' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5'%3E%3Cellipse cx='9.333' cy='9.363' rx='9.333' ry='9.363' stroke='none'/%3E%3Cellipse cx='9.333' cy='9.363' rx='8.583' ry='8.613' fill='none'/%3E%3C/g%3E%3Cpath id='Path_9' data-name='Path 9' d='M26,26l4.267,4.267' transform='translate(-10.267 -10.216)' fill='%23FFF' stroke='%23FFF' stroke-linecap='round' stroke-width='1.5'/%3E%3C/svg%3E%0A");
+
 }
