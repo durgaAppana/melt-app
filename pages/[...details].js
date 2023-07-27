@@ -2,8 +2,13 @@ import React from "react";
 import DetailsWrapper from "../components/details_wrapper/detailsWrapper";
 import { apiGetCall } from "../utilities/apiServices";
 import { apiList } from "../utilities/constants";
+import PageNotFound from "../components/common/pageNotFound";
 
 export default function Details({ detailsData, allDataDetails }) {
+	if (typeof detailsData == "undefined" || detailsData == null) {
+		return <PageNotFound />;
+	}
+
 	return (
 		<DetailsWrapper
 			detailsData={detailsData?.attributes}

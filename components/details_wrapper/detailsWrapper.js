@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
+
 import detailsStyle from "../../styles/detail.module.css";
 import ReadsSection from "./readsSection";
-import { apiGetCall } from "../../utilities/apiServices";
-import { apiList } from "../../utilities/constants";
 import DetailsSection from "./detailsSection";
+import AddBanners from "./addBanners";
 
 export default function DetailsWrapper({ detailsData = {}, allDataDetails = {} }) {
 	const categoryType = detailsData.category?.data?.attributes?.type;
@@ -45,6 +45,7 @@ export default function DetailsWrapper({ detailsData = {}, allDataDetails = {} }
 					articleType={categoryType}
 				/>
 			</div>
+			<AddBanners />
 		</section>
 	);
 }

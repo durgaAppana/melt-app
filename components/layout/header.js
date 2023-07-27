@@ -34,8 +34,10 @@ export default function Header() {
 
 	return (
 		<div className={!scroll ? styles["headerMain"] : styles.headerMain + " " + styles.scrolled}>
-			<div className={styles.headerCopy + " " + "container"} >
-				<span className={styles.logo} />
+			<div className={styles.headerCopy + " " + "container"}>
+				<Link href="/">
+					<span className={styles.logo} />
+				</Link>
 				<div className={styles.menu}>
 					<ul>
 						{menuList.length > 0 &&
@@ -43,17 +45,17 @@ export default function Header() {
 							menuList.map((menu, index) => (
 								<li key={index}>
 									<Link
-										
 										title={menu.attributes.name}
 										href={"/#" + menu.attributes.name.toLowerCase()}
-									// className="text-dark"
+										// className="text-dark"
 									>
 										{menu.attributes.name}
 									</Link>
 								</li>
 							))}
 					</ul>
-					<span className={styles.search}
+					<span
+						className={styles.search}
 						onClick={toggleShowSearch}
 					></span>
 					{showSearch && (
