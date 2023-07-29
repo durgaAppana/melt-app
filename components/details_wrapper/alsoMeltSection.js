@@ -19,7 +19,7 @@ export default function AlsoMeltSection({ meltAlso = [] }) {
 	return (
 		<section>
 			<div className="mt-5 mb-4">
-				<b className={detailsStyle["also-text"]}>ALSO</b> <b>MELT</b>
+				<b className={detailsStyle["also-text"]}>ALSO</b> <b className={detailsStyle["bold-text"]}>MELT</b>
 			</div>
 			{isLoading && (
 				<div className={detailsStyle["also-melt"]}>
@@ -54,7 +54,7 @@ export default function AlsoMeltSection({ meltAlso = [] }) {
 												<li className="time">
 													{moment.utc(item.attributes.publishedAt).fromNow()}
 												</li>
-												<li className="comments">1 comment </li>
+												<li className="comments">&nbsp;1 comment </li>
 											</ul>
 											<h2>
 												<Link
