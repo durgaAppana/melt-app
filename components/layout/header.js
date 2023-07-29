@@ -8,7 +8,6 @@ import { useRouter } from "next/router";
 
 export default function Header() {
 	const router = useRouter();
-	console.log("router", router);
 	const [showSearch, setShwSearch] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
 	const [menuList, setMenuList] = useState([]);
