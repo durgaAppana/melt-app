@@ -23,12 +23,12 @@ export default function DetailsSection({ categoryType = "", detailsData = {}, ta
 			<p>
 				<span className={detailsStyle["author-text"]}>
 					<span>
-						<a
+						<Link
 							style={{ color: "#9e9e9e" }}
-							href="https://www.readytomelt.com/author/melt/"
+							href={"/author/" + convertToSlug(detailsData.author)}
 						>
 							{detailsData.author}
-						</a>
+						</Link>
 					</span>
 					,&nbsp;
 				</span>

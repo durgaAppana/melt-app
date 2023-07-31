@@ -4,7 +4,7 @@ import { apiGetCall } from "../../utilities/apiServices";
 import { apiList } from "../../utilities/constants";
 import PageNotFound from "../../components/common/pageNotFound";
 
-export default function Author({ tagList, tagName }) {
+export default function Tag({ tagList, tagName }) {
 	if (tagList.length <= 0) {
 		return <PageNotFound />;
 	}
