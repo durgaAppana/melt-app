@@ -23,7 +23,7 @@ export default function Footer() {
 								</li>
 								<li className={footerStyle["nav-item"]}>
 									<Link
-										href="/ad-info"
+										href="/advertiser-info"
 										className={footerStyle["nav-link"]}
 									>
 										Advertising Opportunities
