@@ -18,9 +18,12 @@ export default function SuggestionsSection({ displayArticles }) {
 					}}
 					className={["rel"] + " " + listingStyle["block"]}
 				>
-					<CustomImage height={300} width={500}
+					<CustomImage
+						height={300}
+						width={500}
 						src={displayArticles.left_section?.attributes?.image?.data?.attributes?.url}
 						alt={displayArticles.left_section?.attributes?.title}
+						loading="eager"
 					/>
 				</Link>
 				<h2>
@@ -53,7 +56,9 @@ export default function SuggestionsSection({ displayArticles }) {
 									}}
 									className={["rel"] + " " + listingStyle["block"]}
 								>
-									<CustomImage height={150} width={200}
+									<CustomImage
+										height={150}
+										width={200}
 										src={suggestion.attributes?.image?.data?.attributes?.url}
 										alt={suggestion.attributes?.title}
 									/>

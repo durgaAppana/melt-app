@@ -4,8 +4,13 @@ import TopSection from "./topSection";
 import ArticleSection from "./articleSection";
 import { apiGetCall } from "../../utilities/apiServices";
 import { apiList } from "../../utilities/constants";
+import { useRouter } from "next/router";
+import * as Scroll from "react-scroll";
 
 export default function LandingWrapper() {
+	const { Element: ScrollElement } = Scroll;
+	const router = useRouter();
+
 	const [isLoading, setIsLoading] = useState(false);
 	const [topSectionData, setTopSectionData] = useState({
 		topArticle: {},
@@ -89,40 +94,77 @@ export default function LandingWrapper() {
 		setBannerData(bannerData);
 	};
 
+	// For Scroller
+
+	const section = router.asPath.replace("/#", "");
+
+	useEffect(() => {
+		const activeSection = localStorage.getItem("sectionName");
+		if (section == activeSection) {
+			setTimeout(() => {
+				Scroll.scroller.scrollTo(section, {
+					duration: 100,
+					smooth: true,
+					offset: -120,
+				});
+			}, 100);
+		}
+	}, [section]);
+
 	return (
 		<>
 			<TopSection
 				topSectionData={topSectionData}
 				bannerData={bannerData.top_section}
 			/>
-			{articleList.marketing.length > 0 && (
-				<ArticleSection
-					articleData={articleList.marketing}
-					bannerData={bannerData.marketing}
-					articleType="Marketing"
-				/>
-			)}
-			{articleList.media.length > 0 && (
-				<ArticleSection
-					articleData={articleList.media}
-					bannerData={bannerData.media}
-					articleType="Media"
-				/>
-			)}
-			{articleList.advertising.length > 0 && (
-				<ArticleSection
-					articleData={articleList.advertising}
-					bannerData={bannerData.advertising}
-					articleType="Advertising"
-				/>
-			)}
-			{articleList.research.length > 0 && (
-				<ArticleSection
-					articleData={articleList.research}
-					bannerData={bannerData.research}
-					articleType="Research"
-				/>
-			)}
+			<ScrollElement
+				id="marketing"
+				name="marketing"
+			>
+				{articleList.marketing.length > 0 && (
+					<ArticleSection
+						articleData={articleList.marketing}
+						bannerData={bannerData.marketing}
+						articleType="Marketing"
+					/>
+				)}
+			</ScrollElement>
+			<ScrollElement
+				id="media"
+				name="media"
+			>
+				{articleList.media.length > 0 && (
+					<ArticleSection
+						articleData={articleList.media}
+						bannerData={bannerData.media}
+						articleType="Media"
+					/>
+				)}
+			</ScrollElement>
+			<ScrollElement
+				id="advertising"
+				name="advertising"
+			>
+				{articleList.advertising.length > 0 && (
+					<ArticleSection
+						articleData={articleList.advertising}
+						bannerData={bannerData.advertising}
+						articleType="Advertising"
+					/>
+				)}
+			</ScrollElement>
+			<ScrollElement
+				id="research"
+				name="research"
+			>
+				{articleList.research.length > 0 && (
+					<ArticleSection
+						articleData={articleList.research}
+						bannerData={bannerData.research}
+						articleType="Research"
+					/>
+				)}
+			</ScrollElement>
 		</>
 	);
 }

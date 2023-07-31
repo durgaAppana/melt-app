@@ -4,11 +4,14 @@ import { apiGetCall } from "../../utilities/apiServices";
 import { apiList } from "../../utilities/constants";
 import Link from "next/link";
 import Search from "../search/search";
+import { useRouter } from "next/router";
 
 export default function Header() {
+	const router = useRouter();
 	const [showSearch, setShwSearch] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
 	const [menuList, setMenuList] = useState([]);
+	const [activeSection, setActiveSection] = useState("");
 
 	useEffect(() => {
 		getHeaderMenuList();
@@ -29,6 +32,17 @@ export default function Header() {
 	useEffect(() => {
 		window.addEventListener("scroll", () => {
 			setScroll(window.scrollY > 20);
+			if (router.pathname == "/") {
+				if (window.scrollY > 600 && window.scrollY < 1800) {
+					setActiveSection("marketing");
+				} else if (window.scrollY > 1801 && window.scrollY < 3000) {
+					setActiveSection("media");
+				} else if (window.scrollY > 3001 && window.scrollY < 4200) {
+					setActiveSection("advertising");
+				} else if (window.scrollY > 4201 && window.scrollY < 5500) {
+					setActiveSection("research");
+				}
+			}
 		});
 	}, []);
 
@@ -43,7 +57,13 @@ export default function Header() {
 						{menuList.length > 0 &&
 							menuList.length > 0 &&
 							menuList.map((menu, index) => (
-								<li key={index}>
+								<li
+									key={index}
+									onClick={() => {
+										localStorage.setItem("sectionName", menu.attributes.name.toLowerCase());
+									}}
+									className={activeSection == menu.attributes.name.toLowerCase() ? styles.active : ""}
+								>
 									<Link
 										title={menu.attributes.name}
 										href={"/#" + menu.attributes.name.toLowerCase()}

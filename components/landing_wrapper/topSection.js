@@ -34,11 +34,13 @@ export default function TopSection({ topSectionData, bannerData = [] }) {
 										}}
 										className={["rel"] + " " + listingStyle["block"]}
 									>
-										<CustomImage height={150} width={200}
+										<CustomImage
 											height={300}
 											width={500}
 											src={topSectionData.topArticle?.attributes?.image?.data?.attributes?.url}
 											alt={topSectionData.topArticle?.attributes?.title}
+											loading="eager"
+											layout="responsive"
 										/>
 									</Link>
 								</div>
@@ -56,9 +58,11 @@ export default function TopSection({ topSectionData, bannerData = [] }) {
 											{topSectionData.topArticle?.attributes?.title}
 										</Link>
 									</h2>
-									<p className={listingStyle["short-desc"]}>
-										"{topSectionData.topArticle?.attributes?.description}"
-									</p>
+									{topSectionData.topArticle?.attributes && (
+										<p className={listingStyle["short-desc"]}>
+											"{topSectionData.topArticle?.attributes?.description}"
+										</p>
+									)}
 								</div>
 							</div>
 						</div>
@@ -76,7 +80,7 @@ export default function TopSection({ topSectionData, bannerData = [] }) {
 									target="_blank"
 									href={bannerItem.attributes.link}
 								>
-									<CustomImage height={150} width={200}
+									<CustomImage
 										height={200}
 										width={300}
 										src={bannerItem.attributes?.image?.data?.attributes?.url}
