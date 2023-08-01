@@ -72,22 +72,24 @@ export default function SubscribeMail() {
 			<h3 className={commonStyle["sub-title"]}> Subscribe to Melt’s latest stories</h3>
 			<form onSubmit={handleSubmit(handleSubmitFormData)}>
 				<div className="es-field-wrap">
-					<label className={commonStyle["sub-text"]}>Email*</label>
-					<input
-						{...validation.email}
-						className="form-control"
-						type="email"
-						name="email"
-						onChange={(e) => {
-							validation.email.onChange(e);
-							setErrorResponse("");
-							updateFormData("email", e.target.value);
-						}}
-					/>
+					<label className={commonStyle["sub-text"]}>Email*
+						<input
+							{...validation.email}
+							className="form-control"
+							type="email"
+							name="email"
+							label="email"
+							onChange={(e) => {
+								validation.email.onChange(e);
+								setErrorResponse("");
+								updateFormData("email", e.target.value);
+							}}
+						/>
+					</label>
 
-					<p className={"text-danger "+ commonStyle["sub-text"]}>{errors.email && errors.email.message}</p>
+					<p className={"text-danger " + commonStyle["sub-text"]}>{errors.email && errors.email.message}</p>
 					{typeof errorResponse != "undefined" && errorResponse != "" && (
-						<p className={"text-danger "+ commonStyle["sub-text"]}>{errorResponse}</p>
+						<p className={"text-danger " + commonStyle["sub-text"]}>{errorResponse}</p>
 					)}
 				</div>
 				<div className="row">

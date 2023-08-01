@@ -53,7 +53,7 @@ export default function Header() {
 	return (
 		<div className={!scroll ? styles["headerMain"] : styles.headerMain + " " + styles.scrolled}>
 			<div className={styles.headerCopy + " " + "container"}>
-				<Link href="/">
+				<Link href="/" aria-label="melt">
 					<span className={styles.logo} />
 				</Link>
 				<div className={styles.menu}>
@@ -71,7 +71,7 @@ export default function Header() {
 									<Link
 										title={menu.attributes.name}
 										href={"/#" + menu.attributes.name.toLowerCase()}
-										// className="text-dark"
+										aria-label={menu.attributes.name}
 									>
 										{menu.attributes.name}
 									</Link>

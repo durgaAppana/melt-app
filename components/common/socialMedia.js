@@ -8,6 +8,7 @@ export default function SocialMedia() {
 					<a
 						href="http://www.facebook.com/sharer.php?u=http://test.ready.com/barc-sir-martin-sorrell-stupefied-disappointed/&amp;t=BARC: Sir Martin Sorrell ‘Stupefied &amp; Disappointed’"
 						target="_blank"
+						aria-label="facebook"
 					>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -25,6 +26,7 @@ export default function SocialMedia() {
 					<a
 						href="http://twitter.com/home/?status=Sir+Martin+Sorrell+%28Founder+%26+Executive+Chairman%2C+S4+Capital%29+reacts+to+the+unfolding+%27TRP+scam%27+involving+BARC.+@readytomelt http://test.ready.com/barc-sir-martin-sorrell-stupefied-disappointed/"
 						target="_blank"
+						aria-label="twitter"
 					>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -42,6 +44,7 @@ export default function SocialMedia() {
 					<a
 						href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http://test.ready.com/barc-sir-martin-sorrell-stupefied-disappointed/"
 						target="_blank"
+						aria-label="linkedin"
 					>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -56,7 +59,9 @@ export default function SocialMedia() {
 					</a>
 				</li>
 				<li style={{ borderBottom: "none" }}>
-					<a href="mailto:?&amp;subject=BARC: Sir Martin Sorrell ‘Stupefied &amp; Disappointed’&amp;body=Sir Martin Sorrell (Founder &amp; Executive Chairman, S4 Capital) reacts to the unfolding 'TRP scam' involving BARC.-http://test.ready.com/barc-sir-martin-sorrell-stupefied-disappointed/">
+					<a href="mailto:?&amp;subject=BARC: Sir Martin Sorrell ‘Stupefied &amp; Disappointed’&amp;body=Sir Martin Sorrell (Founder &amp; Executive Chairman, S4 Capital) reacts to the unfolding 'TRP scam' involving BARC.-http://test.ready.com/barc-sir-martin-sorrell-stupefied-disappointed/"
+					aria-label="email"
+					>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							width="50"

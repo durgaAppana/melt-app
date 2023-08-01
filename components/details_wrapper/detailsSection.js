@@ -26,6 +26,7 @@ export default function DetailsSection({ categoryType = "", detailsData = {}, ta
 						<Link
 							style={{ color: "#9e9e9e" }}
 							href={"/author/" + convertToSlug(detailsData.author)}
+							aria-label={detailsData.author}
 						>
 							{detailsData.author}
 						</Link>
@@ -78,6 +79,7 @@ export default function DetailsSection({ categoryType = "", detailsData = {}, ta
 							href={"/tag/" + convertToSlug(tag.attributes.tag_name)}
 							className={detailsStyle["badge"]}
 							key={index}
+							aria-label={tag.attributes.tag_name}
 						>
 							{tag.attributes.tag_name}
 						</Link>

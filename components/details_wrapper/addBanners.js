@@ -4,6 +4,7 @@ import CommentsSection from "./commentsSection";
 import { apiGetCall } from "../../utilities/apiServices";
 import { apiList } from "../../utilities/constants";
 import CustomImage from "../common/customImage";
+import Link from "next/link";
 
 export default function AddBanners() {
 	const [bannersData, setBannersData] = useState([]);
@@ -19,15 +20,16 @@ export default function AddBanners() {
 
 	return (
 		<div className={"row " + detailsStyle["add-banner"]}>
-			<h6 className={detailsStyle["banner-title"]}>Sponsored</h6>
+			<h1 className={detailsStyle["banner-title"]}>Sponsored</h1>
 			<div className="col-lg-9">
 				<div className="row">
 					{bannersData.length > 0 &&
 						bannersData.slice(0, 2).map((item, index) => (
-							<div className={"col-lg-6 " + detailsStyle["banner-card"]}>
-								<a
+							<div key={index} className={"col-lg-6 " + detailsStyle["banner-card"]}>
+								<Link
 									href={item.attributes.link}
 									target="_blank"
+									aria-label={item.attributes.link}
 								>
 									<CustomImage
 										src={item.attributes.image.data.attributes.url}
@@ -44,17 +46,18 @@ export default function AddBanners() {
 											<button className={detailsStyle["banner-button"]}>book now</button>
 										</div>
 									</div>
-								</a>
+								</Link>
 							</div>
 						))}
 				</div>
 				<div className="row">
 					{bannersData.length > 0 &&
 						bannersData.slice(2, 5).map((item, index) => (
-							<div className={"col-lg-4 " + detailsStyle["banner-card"]}>
-								<a
+							<div key={index} className={"col-lg-4 " + detailsStyle["banner-card"]}>
+								<Link
 									href={item.attributes.link}
 									target="_blank"
+									aria-label={item.attributes.link}
 								>
 									<CustomImage
 										src={item.attributes?.image?.data?.attributes.url}
@@ -71,7 +74,7 @@ export default function AddBanners() {
 											<button className={detailsStyle["small-button"]}>book now</button>
 										</div>
 									</div>
-								</a>
+								</Link>
 							</div>
 						))}
 				</div>

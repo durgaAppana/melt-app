@@ -39,6 +39,7 @@ export default function AlsoMeltSection({ meltAlso = [] }) {
 														id: item.id,
 													},
 												}}
+												aria-label={item.attributes.slug}
 											>
 												<CustomImage
 													height={130}
@@ -64,6 +65,7 @@ export default function AlsoMeltSection({ meltAlso = [] }) {
 															id: item.id,
 														},
 													}}
+													aria-label={item.attributes.slug}
 												>
 													{item.attributes?.description.slice(0, 55)}...
 												</Link>
