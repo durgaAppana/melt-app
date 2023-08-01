@@ -33,6 +33,8 @@
 			transition:all .3s ease-in-out;
 			display: none;
 			flex:0 0 auto;
+			margin-top:auto;
+			margin-bottom:auto;
 			.copy {
 				width:55%;
 				padding: 0;
@@ -119,7 +121,12 @@
 				}
 			}
 		}
-		@media (max-width:480px){
+	}
+	@media (max-width:480px){
+		padding-top:10px;
+		padding-bottom:10px;
+		border-bottom: 1px solid #ddd;
+		.headerCopy{
 			align-items:center;
 			.burgerButton{display: flex;}
 			.logo{
@@ -127,12 +134,36 @@
 				width:60px;
 			}
 			.menu{border-bottom:none;
-				ul{display: none;}
+				ul{
+					opacity:0;
+					visibility: hidden;
+					position: fixed;
+					left:0;
+					bottom:0;
+					background-color: #000;
+					width:60%;
+					top:61px;
+					z-index:11;
+					transition:all .6s ease-in-out;
+					transform:translateX(-100%);
+					display: flex;
+					flex-direction: column;
+					li{
+						a{color: #FFF;}
+					}
+				}
 			}
-			
+		}
+		body.activateHeader &{
+			.headerCopy{
+				.menu{
+					ul{opacity:1;visibility: visible;transform:translateX(0);}
+				}
+			}
 		}
 	}
 }
+body.activateHeader{overflow:hidden;}
 .headerMain .menu ul li a:hover::before {
 	height: 4px;
 }

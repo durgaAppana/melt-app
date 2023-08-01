@@ -46,7 +46,7 @@ export default function Header() {
 		});
 	}, []);
 	const handleClick = (e) => {
-		document.querySelector('body').classList.toggle('dark')
+		document.querySelector('body').classList.toggle(stylesHeader["activateHeader"])
 	}
 
 	return (
