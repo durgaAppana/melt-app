@@ -45,11 +45,14 @@ export default function Header() {
 			}
 		});
 	}, []);
+	const handleClick = (e) => {
+		document.querySelector('body').classList.toggle('dark')
+	}
 
 	return (
 		<div className={!scroll ? stylesHeader["headerMain"] : stylesHeader.headerMain + " " + stylesHeader.scrolled}>
 			<div className={stylesHeader.headerCopy + " " + "container"}>
-				<div className={stylesHeader["burgerButton"]}>
+				<div className={stylesHeader["burgerButton"]} onClick={handleClick}>
 					<span className={stylesHeader["copy"]}></span>
 				</div>
 				<Link href="/">
@@ -70,7 +73,7 @@ export default function Header() {
 									<Link
 										title={menu.attributes.name}
 										href={"/#" + menu.attributes.name.toLowerCase()}
-										// className="text-dark"
+									// className="text-dark"
 									>
 										{menu.attributes.name}
 									</Link>
