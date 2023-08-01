@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styles from "../../styles/header.module.css";
+import stylesHeader from "../../styles/header.module.scss"
 import { apiGetCall } from "../../utilities/apiServices";
 import { apiList } from "../../utilities/constants";
 import Link from "next/link";
@@ -33,7 +33,7 @@ export default function Header() {
 		window.addEventListener("scroll", () => {
 			setScroll(window.scrollY > 20);
 			if (router.pathname == "/") {
-				if (window.scrollY >= 600 && window.scrollY < 1800) {
+				if (window.scrollY > 600 && window.scrollY < 1800) {
 					setActiveSection("marketing");
 				} else if (window.scrollY > 1801 && window.scrollY < 3000) {
 					setActiveSection("media");
@@ -41,22 +41,21 @@ export default function Header() {
 					setActiveSection("advertising");
 				} else if (window.scrollY > 4201 && window.scrollY < 5500) {
 					setActiveSection("research");
-				} else {
-					setActiveSection("");
 				}
-			} else {
-				setActiveSection("");
 			}
 		});
 	}, []);
 
 	return (
-		<div className={!scroll ? styles["headerMain"] : styles.headerMain + " " + styles.scrolled}>
-			<div className={styles.headerCopy + " " + "container"}>
-				<Link href="/" aria-label="melt">
-					<span className={styles.logo} />
+		<div className={!scroll ? stylesHeader["headerMain"] : stylesHeader.headerMain + " " + stylesHeader.scrolled}>
+			<div className={stylesHeader.headerCopy + " " + "container"}>
+				<div className={stylesHeader["burgerButton"]}>
+					<span className={stylesHeader["copy"]}></span>
+				</div>
+				<Link href="/">
+					<span className={stylesHeader.logo} />
 				</Link>
-				<div className={styles.menu}>
+				<div className={stylesHeader.menu}>
 					<ul>
 						{menuList.length > 0 &&
 							menuList.length > 0 &&
@@ -66,12 +65,12 @@ export default function Header() {
 									onClick={() => {
 										localStorage.setItem("sectionName", menu.attributes.name.toLowerCase());
 									}}
-									className={activeSection == menu.attributes.name.toLowerCase() ? styles.active : ""}
+									className={activeSection == menu.attributes.name.toLowerCase() ? stylesHeader.active : ""}
 								>
 									<Link
 										title={menu.attributes.name}
 										href={"/#" + menu.attributes.name.toLowerCase()}
-										aria-label={menu.attributes.name}
+										// className="text-dark"
 									>
 										{menu.attributes.name}
 									</Link>
@@ -79,11 +78,11 @@ export default function Header() {
 							))}
 					</ul>
 					<span
-						className={styles.search}
+						className={stylesHeader.search}
 						onClick={toggleShowSearch}
 					></span>
 					{showSearch && (
-						<div className={styles["search-box"]}>
+						<div className={stylesHeader["search-box"]}>
 							<Search />
 						</div>
 					)}
