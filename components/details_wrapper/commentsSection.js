@@ -49,29 +49,43 @@ export default function CommentsSection() {
 			</div>
 			<div className={detailsStyle["social-media"]}>
 				<div className="social-img">
-					<Image
-						src="/images/fb-icon.png"
-						height="40"
-						width="40"
-                        alt="fb"
-					/>
+					<a
+						href="http://www.facebook.com/sharer.php?u=http://test.ready.com/barc-sir-martin-sorrell-stupefied-disappointed/&amp;t=BARC: Sir Martin Sorrell ‘Stupefied &amp; Disappointed’"
+						target="_blank"
+					>
+						<Image
+							src="/images/fb-icon.png"
+							height="40"
+							width="40"
+							alt="fb"
+						/>
+					</a>
 				</div>
 				<div className="social-img">
-					<Image
-						src="/images/twitter.png"
-						height="40"
-						width="40"
-                        alt="twitter"
-					/>
+					<a
+						href="http://twitter.com/home/?status=Sir+Martin+Sorrell+%28Founder+%26+Executive+Chairman%2C+S4+Capital%29+reacts+to+the+unfolding+%27TRP+scam%27+involving+BARC.+@readytomelt http://test.ready.com/barc-sir-martin-sorrell-stupefied-disappointed/"
+						target="_blank"
+					>
+						<Image
+							src="/images/twitter.png"
+							height="40"
+							width="40"
+							alt="twitter"
+						/>
+					</a>
 				</div>
 				<div className="social-img">
-					<Image
-						src="/images/google.png"
-						height="40"
-						width="40"
-                        alt="google"
-
-					/>
+					<a
+						href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http://test.ready.com/barc-sir-martin-sorrell-stupefied-disappointed/"
+						target="_blank"
+					>
+						<Image
+							src="/images/google.png"
+							height="40"
+							width="40"
+							alt="google"
+						/>
+					</a>
 				</div>
 			</div>
 		</form>

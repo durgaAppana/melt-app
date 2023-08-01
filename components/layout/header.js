@@ -33,7 +33,7 @@ export default function Header() {
 		window.addEventListener("scroll", () => {
 			setScroll(window.scrollY > 20);
 			if (router.pathname == "/") {
-				if (window.scrollY > 600 && window.scrollY < 1800) {
+				if (window.scrollY >= 600 && window.scrollY < 1800) {
 					setActiveSection("marketing");
 				} else if (window.scrollY > 1801 && window.scrollY < 3000) {
 					setActiveSection("media");
@@ -41,7 +41,11 @@ export default function Header() {
 					setActiveSection("advertising");
 				} else if (window.scrollY > 4201 && window.scrollY < 5500) {
 					setActiveSection("research");
+				} else {
+					setActiveSection("");
 				}
+			} else {
+				setActiveSection("");
 			}
 		});
 	}, []);

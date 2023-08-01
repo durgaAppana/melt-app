@@ -39,8 +39,6 @@ export default function TopSection({ topSectionData, bannerData = [] }) {
 											width={500}
 											src={topSectionData.topArticle?.attributes?.image?.data?.attributes?.url}
 											alt={topSectionData.topArticle?.attributes?.title}
-											loading="eager"
-											layout="responsive"
 										/>
 									</Link>
 								</div>
