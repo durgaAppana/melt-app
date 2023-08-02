@@ -76,6 +76,7 @@ export default function Header() {
 										title={menu.attributes.name}
 										href={"/#" + menu.attributes.name.toLowerCase()}
 									// className="text-dark"
+										onClick={handleClick}
 									>
 										{menu.attributes.name}
 									</Link>

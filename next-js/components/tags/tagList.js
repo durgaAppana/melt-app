@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import tagStyle from "../../styles/tagList.module.css";
 import { baseUrl } from "../../utilities/constants";
 import Link from "next/link";
@@ -10,6 +10,21 @@ export default function TagList({ tagList, tagName }) {
 		const restOfWord = item.slice(1);
 		return firstWord + restOfWord;
 	});
+	const [itemsPerPage, setItemsPerPage] = useState(5);
+
+	// Function to load more data when the "Load More" button is clicked
+	const handleLoadMore = () => {
+		setItemsPerPage(prevItemsPerPage => prevItemsPerPage + 5);
+	};
+
+	// Function to calculate the last item index of the current page
+	const getLastItemIndex = () => 1 * itemsPerPage;
+
+	// Function to calculate the first item index of the current page
+	const getFirstItemIndex = () => getLastItemIndex() - itemsPerPage;
+
+	// Function to get the current page data
+	const getCurrentPageData = tagList.slice(getFirstItemIndex(), getLastItemIndex());
 
 	return (
 		<div className="col-lg-9">
@@ -17,8 +32,8 @@ export default function TagList({ tagList, tagName }) {
 			<div className={tagStyle["article-list"]}>
 				<p className={tagStyle["author-text"]}>Articles in {displayName.join(" ")}</p>
 				<div id="content">
-					{tagList.length > 0 &&
-						tagList.map((tagItem, index) => (
+					{getCurrentPageData.length > 0 &&
+						getCurrentPageData.map((tagItem, index) => (
 							<div
 								className={"row " + tagStyle["author-article"]}
 								key={index}
@@ -75,6 +90,9 @@ export default function TagList({ tagList, tagName }) {
 								</div>
 							</div>
 						))}
+					{itemsPerPage < tagList.length && (
+						<button onClick={handleLoadMore}>Load More Articles</button>
+					)}
 				</div>
 			</div>
 		</div>
