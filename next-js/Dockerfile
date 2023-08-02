@@ -2,19 +2,19 @@
 FROM node:14-alpine
 
 # Set the working directory inside the container
-WORKDIR /app
+WORKDIR /melt-app
 
 # Copy the package.json and package-lock.json to the working directory
 COPY package*.json ./
 
 # Install dependencies
-RUN npm install
+# RUN npm install
 
 # Copy the entire application to the container
 COPY . .
 
 # Build the Next.js application
-RUN npm run build
+RUN npm run build --f
 
 # Expose the Next.js development server port (if needed, change it to your desired port)
 EXPOSE 3000

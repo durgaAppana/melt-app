@@ -3,13 +3,13 @@ services:
   frontend:
     build:
       context: /next-js
-      dockerfile: ./next-js/Dockerfile
+      dockerfile: Dockerfile
     ports:
       - "3000:3000" # Map container port to host port
 
   backend:
     build:
       context: /backend/stapi_plain
-      dockerfile: ./backend/Dockerfile
+      dockerfile: Dockerfile
     ports:
       - "5000:5000" # Map container port to host port
