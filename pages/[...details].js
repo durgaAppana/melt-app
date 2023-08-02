@@ -29,7 +29,7 @@ export default function Details({ detailsData, allDataDetails, title }) {
 }
 
 export async function getServerSideProps(context) {
-	const { id } = context.query;
+	const id = context.query.details[1];
 	const detailsData = await apiGetCall(apiList.GET_ARTICLE_DATA + "/" + id + "?populate=image,category,tags");
 	const allData = await apiGetCall(apiList.GET_ARTICLES_LIST);
 

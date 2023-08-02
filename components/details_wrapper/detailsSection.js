@@ -35,7 +35,7 @@ export default function DetailsSection({ categoryType = "", detailsData = {}, ta
 				</span>
 				<span className={detailsStyle["date"]}>{moment.utc(detailsData.publishedAt).format("LL")}</span>
 			</p>
-			<p className={detailsStyle["sub-heading"]}>"{detailsData.description}"</p>
+			<p className={detailsStyle["sub-heading"]}>{detailsData.description}</p>
 			<div className={detailsStyle["body-text"]}>
 				<p className={detailsStyle["content"]}>
 					{description}

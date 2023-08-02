@@ -26,30 +26,16 @@ export default function RecommendedSection({ articleType = "", recommendedArticl
 										>
 											<div className={commonStyle["recommend-post-header"]}>
 												<div className={"col-lg-12 " + commonStyle["recommend-image-wrapper"]}>
-													<Link
-														href={{
-															pathname: "/" + item.attributes?.slug,
-															query: {
-																id: item.id,
-															},
-														}}
-													>
-														<CustomImage height={100} width={150}
-															src={
-																item.attributes?.image?.data?.attributes?.url
-															}
+													<Link href={"/" + item.attributes?.slug + "/" + item.id}>
+														<CustomImage
+															height={100}
+															width={150}
+															src={item.attributes?.image?.data?.attributes?.url}
 															alt={item.attributes?.title}
 														/>
 													</Link>
 													<h2>
-														<Link
-															href={{
-																pathname: "/" + item.attributes?.slug,
-																query: {
-																	id: item.id,
-																},
-															}}
-														>
+														<Link href={"/" + item.attributes?.slug + "/" + item.id}>
 															{item.attributes?.title}
 														</Link>
 													</h2>
@@ -74,8 +60,10 @@ export default function RecommendedSection({ articleType = "", recommendedArticl
 								target="_blank"
 								href={bannerItem.attributes.link}
 							>
-								<CustomImage height={150} width={200}
-									src={ bannerItem.attributes?.image?.data?.attributes?.url}
+								<CustomImage
+									height={150}
+									width={200}
+									src={bannerItem.attributes?.image?.data?.attributes?.url}
 									alt={bannerItem.attributes?.image?.data?.attributes?.name}
 								/>
 							</a>

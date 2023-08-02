@@ -11,7 +11,9 @@ class MyDocument extends Document {
 						content="Melt - Marketing, media, advertising and technology"
 						description="Melt - Marketing, media, advertising and technology"
 					/>
-					<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js" async
+					<script
+						src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"
+						async
 						strategy="lazyOnload"
 					></script>
 					<link

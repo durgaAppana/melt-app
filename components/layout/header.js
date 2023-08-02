@@ -55,7 +55,7 @@ export default function Header() {
 				<div className={stylesHeader["burgerButton"]} onClick={handleClick}>
 					<span className={stylesHeader["copy"]}></span>
 				</div>
-				<Link href="/">
+				<Link href="/"  aria-label="logo">
 					<span className={stylesHeader.logo} />
 				</Link>
 				<div className={stylesHeader.menu}>

@@ -10,12 +10,7 @@ export default function SuggestionsSection({ displayArticles }) {
 		<div className="row">
 			<div className={"col-lg-6 " + listingStyle["cat_promoted_article"]}>
 				<Link
-					href={{
-						pathname: "/" + displayArticles.left_section?.attributes?.slug,
-						query: {
-							id: displayArticles.left_section?.id,
-						},
-					}}
+					href={"/" + displayArticles.left_section?.attributes?.slug + "/" + displayArticles.left_section?.id}
 					className={["rel"] + " " + listingStyle["block"]}
 				>
 					<CustomImage
@@ -28,12 +23,12 @@ export default function SuggestionsSection({ displayArticles }) {
 				</Link>
 				<h2>
 					<Link
-						href={{
-							pathname: "/" + displayArticles.left_section?.attributes?.slug,
-							query: {
-								id: displayArticles.left_section?.id,
-							},
-						}}
+						href={
+							"/" +
+							displayArticles.left_section?.attributes?.slug +
+							"/" +
+							displayArticles.left_section?.id
+						}
 					>
 						{displayArticles.left_section?.attributes?.title}
 					</Link>
@@ -48,12 +43,7 @@ export default function SuggestionsSection({ displayArticles }) {
 								key={index}
 							>
 								<Link
-									href={{
-										pathname: "/" + suggestion.attributes?.slug,
-										query: {
-											id: suggestion.id,
-										},
-									}}
+									href={"/" + suggestion.attributes?.slug + "/" + suggestion.id}
 									className={["rel"] + " " + listingStyle["block"]}
 								>
 									<CustomImage
@@ -64,14 +54,7 @@ export default function SuggestionsSection({ displayArticles }) {
 									/>
 								</Link>
 								<h2 className={listingStyle["mar-t-10"]}>
-									<Link
-										href={{
-											pathname: "/" + suggestion.attributes?.slug,
-											query: {
-												id: suggestion.id,
-											},
-										}}
-									>
+									<Link href={"/" + suggestion.attributes?.slug + "/" + suggestion.id}>
 										{suggestion.attributes?.title}
 									</Link>
 								</h2>
