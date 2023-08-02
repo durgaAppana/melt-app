@@ -135,6 +135,11 @@
 							transition: all 0.3s ease-in-out;
 						}
 					}
+					&.active{
+						a{
+							&:before{height:4px;}
+						}
+					}
 				}
 			}
 
@@ -378,7 +383,7 @@ body.activateHeader {
 	border-bottom: 0;
 }
 
-.headerMain.scrolled .menu ul li a {
+.headerMain.scrolled .menu .main li a {
 	color: #fff;
 	padding-top: 0;
 	padding-bottom: 0;
@@ -387,8 +392,4 @@ body.activateHeader {
 
 .headerMain.scrolled .search {
 	background-image: url("data:image/svg+xml,%3Csvg id='Group_29466' data-name='Group 29466' xmlns='http://www.w3.org/2000/svg' width='21.061' height='21.111' viewBox='0 0 21.061 21.111'%3E%3Cg id='Ellipse_31' data-name='Ellipse 31' transform='translate(0 0)' fill='none' stroke='%23FFF' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5'%3E%3Cellipse cx='9.333' cy='9.363' rx='9.333' ry='9.363' stroke='none'/%3E%3Cellipse cx='9.333' cy='9.363' rx='8.583' ry='8.613' fill='none'/%3E%3C/g%3E%3Cpath id='Path_9' data-name='Path 9' d='M26,26l4.267,4.267' transform='translate(-10.267 -10.216)' fill='%23FFF' stroke='%23FFF' stroke-linecap='round' stroke-width='1.5'/%3E%3C/svg%3E%0A");
-}
-
-.active {
-	border-top: 4px solid #5fb969;
 }
