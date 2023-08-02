@@ -26,12 +26,12 @@ export default function TopSection({ topSectionData, bannerData = [] }) {
 							<div className="row">
 								<div className="col-lg-7">
 									<Link
-										href={
-											"/" +
-											topSectionData.topArticle?.attributes?.slug +
-											"/" +
-											topSectionData.topArticle?.id
-										}
+										href={{
+											pathname: "/" + topSectionData.topArticle?.attributes?.slug,
+											query: {
+												id: topSectionData.topArticle?.id,
+											},
+										}}
 										className={["rel"] + " " + listingStyle["block"]}
 									>
 										<CustomImage
@@ -39,7 +39,6 @@ export default function TopSection({ topSectionData, bannerData = [] }) {
 											width={500}
 											src={topSectionData.topArticle?.attributes?.image?.data?.attributes?.url}
 											alt={topSectionData.topArticle?.attributes?.title}
-											priority={true}
 										/>
 									</Link>
 								</div>
@@ -47,19 +46,19 @@ export default function TopSection({ topSectionData, bannerData = [] }) {
 									<p className={listingStyle["cat"]}></p>
 									<h2>
 										<Link
-											href={
-												"/" +
-												topSectionData.topArticle?.attributes?.slug +
-												"/" +
-												topSectionData.topArticle?.id
-											}
+											href={{
+												pathname: "/" + topSectionData.topArticle?.attributes?.slug,
+												query: {
+													id: topSectionData.topArticle?.id,
+												},
+											}}
 										>
 											{topSectionData.topArticle?.attributes?.title}
 										</Link>
 									</h2>
 									{topSectionData.topArticle?.attributes && (
 										<p className={listingStyle["short-desc"]}>
-											{topSectionData.topArticle?.attributes?.description}
+											"{topSectionData.topArticle?.attributes?.description}"
 										</p>
 									)}
 								</div>
@@ -84,7 +83,6 @@ export default function TopSection({ topSectionData, bannerData = [] }) {
 										width={300}
 										src={bannerItem.attributes?.image?.data?.attributes?.url}
 										alt={bannerItem.attributes?.image?.data?.attributes?.name}
-										
 									/>
 								</a>
 							</div>

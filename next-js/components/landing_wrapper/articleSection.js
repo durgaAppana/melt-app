@@ -44,12 +44,15 @@ export default function ArticleSection({ articleType = "", articleData = [], ban
 			<div className={"row " + listingStyle["cat_main_article"]}>
 				<div className={"col-lg-7 " + listingStyle["cat_featured_img"]}>
 					<Link
-						href={"/" + showCaseArticle.attributes?.slug + "/" + showCaseArticle.id}
+						href={{
+							pathname: "/" + showCaseArticle.attributes?.slug,
+							query: {
+								id: showCaseArticle.id,
+							},
+						}}
 						className={["relative"] + " " + listingStyle["block"]}
 					>
-						<CustomImage
-							height={400}
-							width={600}
+						<CustomImage height={400} width={600}
 							src={showCaseArticle.attributes?.image?.data?.attributes?.url}
 							alt={showCaseArticle?.attributes?.title}
 						/>
@@ -66,12 +69,19 @@ export default function ArticleSection({ articleType = "", articleData = [], ban
 					}
 				>
 					<h2>
-						<Link href={"/" + showCaseArticle.attributes?.slug + "/" + showCaseArticle.id}>
+						<Link
+							href={{
+								pathname: "/" + showCaseArticle.attributes?.slug,
+								query: {
+									id: showCaseArticle.id,
+								},
+							}}
+						>
 							{showCaseArticle?.attributes?.title}
 						</Link>
 					</h2>
 					<p className={listingStyle["short-desc"] + " " + listingStyle["hidden-sm-down"]}>
-						{showCaseArticle?.attributes?.description}
+						"{showCaseArticle?.attributes?.description}"
 					</p>
 				</div>
 			</div>

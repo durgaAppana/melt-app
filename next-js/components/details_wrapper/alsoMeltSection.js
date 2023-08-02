@@ -33,7 +33,12 @@ export default function AlsoMeltSection({ meltAlso = [] }) {
 									<div className={commonStyle["recommend-post-header"]}>
 										<div className={"col-lg-12 " + commonStyle["recommend-image-wrapper"]}>
 											<Link
-												href={"/" + item.attributes.slug + "/" + item.id}
+												href={{
+													pathname: "/" + item.attributes.slug,
+													query: {
+														id: item.id,
+													},
+												}}
 												aria-label={item.attributes.slug}
 											>
 												<CustomImage
@@ -54,7 +59,12 @@ export default function AlsoMeltSection({ meltAlso = [] }) {
 											</ul>
 											<h2>
 												<Link
-													href={"/" + item.attributes.slug + "/" + item.id}
+													href={{
+														pathname: "/" + item.attributes.slug,
+														query: {
+															id: item.id,
+														},
+													}}
 													aria-label={item.attributes.slug}
 												>
 													{item.attributes?.description.slice(0, 55)}...

@@ -18,16 +18,30 @@ export default function ReadsSection({ article = [], articleType = "" }) {
 							key={i}
 						>
 							<div className="col-lg-12">
-								<Link href={"/" + v?.attributes.slug + "/" + v.id}>
-									<CustomImage
-										height={150}
-										width={200}
+								<Link
+									href={{
+										pathname: "/" + v?.attributes.slug,
+										query: {
+											id: v.id,
+										},
+									}}
+								>
+									<CustomImage height={150} width={200}
 										src={v?.attributes?.image?.data?.attributes?.url}
 										alt={v?.attributes?.title}
 									/>
 								</Link>
 								<h2 className={detailsStyle["mar-t-10"]}>
-									<Link href={"/" + v?.attributes.slug + "/" + v.id}>{v?.attributes?.title}</Link>
+									<Link
+										href={{
+											pathname: "/" + v?.attributes.slug,
+											query: {
+												id: v.id,
+											},
+										}}
+									>
+										{v?.attributes?.title}
+									</Link>
 								</h2>
 							</div>
 						</div>

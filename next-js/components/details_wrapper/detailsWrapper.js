@@ -6,7 +6,7 @@ import DetailsSection from "./detailsSection";
 import AddBanners from "./addBanners";
 
 export default function DetailsWrapper({ detailsData = {}, allDataDetails = {} }) {
-	const categoryType = detailsData.category ? detailsData.category?.data?.attributes?.type:"";
+	const categoryType = detailsData.category?.data?.attributes?.type;
 
 	const [article, setArticle] = useState([]);
 	const [meltAlso, setMeltAlso] = useState([]);

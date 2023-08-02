@@ -55,7 +55,6 @@ export default function CustomImage(props) {
 	useEffect(() => {
 		setImgOptions(options);
 	}, [props]);
-
 	useEffect(() => {
 		if (imgOptions.src === null) {
 			updateFallbackImage();

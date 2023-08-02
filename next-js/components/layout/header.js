@@ -18,6 +18,7 @@ export default function Header() {
 	}, []);
 
 	const toggleShowSearch = () => {
+		document.querySelector('body').classList.toggle(stylesHeader["activateSearch"])
 		setShwSearch(!showSearch);
 	};
 
@@ -45,8 +46,9 @@ export default function Header() {
 			}
 		});
 	}, []);
-	const handleClick = (e) => {
+	const handleClick = () => {
 		document.querySelector('body').classList.toggle(stylesHeader["activateHeader"])
+		
 	}
 
 	return (
@@ -55,11 +57,11 @@ export default function Header() {
 				<div className={stylesHeader["burgerButton"]} onClick={handleClick}>
 					<span className={stylesHeader["copy"]}></span>
 				</div>
-				<Link href="/"  aria-label="logo">
+				<Link href="/">
 					<span className={stylesHeader.logo} />
 				</Link>
 				<div className={stylesHeader.menu}>
-					<ul>
+					<ul className={stylesHeader.main}>
 						{menuList.length > 0 &&
 							menuList.length > 0 &&
 							menuList.map((menu, index) => (
@@ -84,11 +86,11 @@ export default function Header() {
 						className={stylesHeader.search}
 						onClick={toggleShowSearch}
 					></span>
-					{showSearch && (
+					{/* {showSearch && ( */}
 						<div className={stylesHeader["search-box"]}>
 							<Search />
 						</div>
-					)}
+					{/* )} */}
 				</div>
 			</div>
 		</div>

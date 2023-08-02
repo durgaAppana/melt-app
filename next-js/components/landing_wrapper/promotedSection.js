@@ -14,10 +14,15 @@ export default function PromotedSection({ articleData = [] }) {
 						key={index}
 					>
 						<Link
-							href={"/" + item.attributes?.slug + "/" + item.id}
+							href={{
+								pathname: "/" + item.attributes?.slug,
+								query: {
+									id: item.id,
+								},
+							}}
 							className={["rel"] + " " + listingStyle["block"]}
 						>
-							<CustomImage
+							<CustomImage height={150} width={200}
 								height={150}
 								width={200}
 								src={item.attributes?.image?.data?.attributes?.url}
@@ -32,7 +37,16 @@ export default function PromotedSection({ articleData = [] }) {
 							{item.attributes?.category?.data?.attributes?.type}
 						</p>
 						<h2>
-							<Link href={"/" + item.attributes?.slug + "/" + item.id}>{item.attributes?.title}</Link>
+							<Link
+								href={{
+									pathname: "/" + item.attributes?.slug,
+									query: {
+										id: item.id,
+									},
+								}}
+							>
+								{item.attributes?.title}
+							</Link>
 						</h2>
 					</div>
 				))}
