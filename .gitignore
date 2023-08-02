@@ -1,7 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
+/next-js/node_modules
 /.pnp
 .pnp.js
 /backend/stapi_plain/node_modules
@@ -10,11 +10,11 @@
 /coverage
 
 # next.js
-/.next/
-/out/
+/next-js/.next/
+/next-js/out/
 
 # production
-/build
+/next-js/build
 
 # misc
 .DS_Store
@@ -31,6 +31,11 @@ yarn-error.log*
 .env.development.local
 .env.test.local
 .env.production.local
+
+/next-js/.env.local
+/next-js/.env.development.local
+/next-js/.env.test.local
+/next-js/.env.production.local
 
 # vercel
 .vercel
