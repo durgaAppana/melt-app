@@ -64,7 +64,7 @@ export default function CustomImage(props) {
 	const updateFallbackImage = () => {
 		setImgOptions({
 			...imgOptions,
-			src: defaultPlaceHolder,
+			src: "",
 			style: null,
 		});
 	};

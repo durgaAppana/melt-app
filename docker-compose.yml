@@ -5,11 +5,21 @@ services:
       context: /next-js
       dockerfile: Dockerfile
     ports:
-      - "3000:3000" # Map container port to host port
+      - "3000:3000" 
 
   backend:
     build:
       context: /backend/stapi_plain
       dockerfile: Dockerfile
     ports:
-      - "5000:5000" # Map container port to host port
+      - "1337:1337" 
+
+  mysql:
+    build:
+      context: /backend 
+      dockerfile: Dockerfile
+    environment:
+      MYSQL_ROOT_PASSWORD: "admin1234"
+      MYSQL_DATABASE: "melt_app_datbase"
+      MYSQL_USER: "root1"
+      MYSQL_PASSWORD: "admin1234" 

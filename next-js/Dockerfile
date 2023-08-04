@@ -1,5 +1,5 @@
 # Use the official Node.js image as the base image
-FROM node:14-alpine
+FROM node:18-alpine
 
 # Set the working directory inside the container
 WORKDIR /melt-app
@@ -14,10 +14,10 @@ COPY package*.json ./
 COPY . .
 
 # Build the Next.js application
-RUN npm run build --f
+RUN npm run build
 
 # Expose the Next.js development server port (if needed, change it to your desired port)
 EXPOSE 3000
 
 # Start the Next.js development server
-CMD ["npm", "start"]
+CMD [ "sh", "-c", "npm install && npm run start" ]

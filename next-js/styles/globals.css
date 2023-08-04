@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap");
-img{width:100%;}
+img {
+	width: 100%;
+}
 html,
 body {
 	scroll-behavior: smooth;
@@ -8,12 +10,8 @@ body {
 	width: auto;
 	/* margin-top: 7rem !important; */
 	position: relative;
-	font-size:14px !important;
+	font-size: 14px !important;
 	font-family: "Merriweather", serif !important;
-}
-
-.main-body{
-	/* width: 270% !important; */
 }
 
 a {
@@ -70,11 +68,16 @@ a {
 }
 
 .page-not-found {
-    width: 80vw;
+	width: 80vw;
 	min-height: 300px;
-    margin: 40px auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+	margin: 40px auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.owl-carousel .owl-item img {
+	width: 100% !important;
+	height: 100% !important;
+}

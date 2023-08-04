@@ -39,6 +39,7 @@ export default function TopSection({ topSectionData, bannerData = [] }) {
 											width={500}
 											src={topSectionData.topArticle?.attributes?.image?.data?.attributes?.url}
 											alt={topSectionData.topArticle?.attributes?.title}
+											priority={true}
 										/>
 									</Link>
 								</div>
@@ -83,6 +84,7 @@ export default function TopSection({ topSectionData, bannerData = [] }) {
 										width={300}
 										src={bannerItem.attributes?.image?.data?.attributes?.url}
 										alt={bannerItem.attributes?.image?.data?.attributes?.name}
+										priority={true}
 									/>
 								</a>
 							</div>

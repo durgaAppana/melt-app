@@ -7,7 +7,7 @@ export default function Search() {
 			<form>
 				<div className={stylesHeader["searchBox"]}>
 					<input
-						autocomplete="off"
+						autoComplete="off"
 						type="search"
 						placeholder="Search here..."
 						size="10"

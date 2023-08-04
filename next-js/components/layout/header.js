@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import stylesHeader from "../../styles/header.module.scss"
+import stylesHeader from "../../styles/header.module.scss";
 import { apiGetCall } from "../../utilities/apiServices";
 import { apiList } from "../../utilities/constants";
 import Link from "next/link";
@@ -18,7 +18,7 @@ export default function Header() {
 	}, []);
 
 	const toggleShowSearch = () => {
-		document.querySelector('body').classList.toggle(stylesHeader["activateSearch"])
+		document.querySelector("body").classList.toggle(stylesHeader["activateSearch"]);
 		setShwSearch(!showSearch);
 	};
 
@@ -47,17 +47,22 @@ export default function Header() {
 		});
 	}, []);
 	const handleClick = () => {
-		document.querySelector('body').classList.toggle(stylesHeader["activateHeader"])
-		
-	}
+		document.querySelector("body").classList.toggle(stylesHeader["activateHeader"]);
+	};
 
 	return (
 		<div className={!scroll ? stylesHeader["headerMain"] : stylesHeader.headerMain + " " + stylesHeader.scrolled}>
 			<div className={stylesHeader.headerCopy + " " + "container"}>
-				<div className={stylesHeader["burgerButton"]} onClick={handleClick}>
+				<div
+					className={stylesHeader["burgerButton"]}
+					onClick={handleClick}
+				>
 					<span className={stylesHeader["copy"]}></span>
 				</div>
-				<Link href="/">
+				<Link
+					href="/"
+					aria-label="logo"
+				>
 					<span className={stylesHeader.logo} />
 				</Link>
 				<div className={stylesHeader.menu}>
@@ -70,12 +75,14 @@ export default function Header() {
 									onClick={() => {
 										localStorage.setItem("sectionName", menu.attributes.name.toLowerCase());
 									}}
-									className={activeSection == menu.attributes.name.toLowerCase() ? stylesHeader.active : ""}
+									className={
+										activeSection == menu.attributes.name.toLowerCase() ? stylesHeader.active : ""
+									}
 								>
 									<Link
 										title={menu.attributes.name}
 										href={"/#" + menu.attributes.name.toLowerCase()}
-									// className="text-dark"
+										// className="text-dark"
 										onClick={handleClick}
 									>
 										{menu.attributes.name}
@@ -88,9 +95,9 @@ export default function Header() {
 						onClick={toggleShowSearch}
 					></span>
 					{/* {showSearch && ( */}
-						<div className={stylesHeader["search-box"]}>
-							<Search />
-						</div>
+					<div className={stylesHeader["search-box"]}>
+						<Search />
+					</div>
 					{/* )} */}
 				</div>
 			</div>

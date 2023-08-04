@@ -16,6 +16,12 @@ class MyDocument extends Document {
 						async
 						strategy="lazyOnload"
 					></script>
+					<script
+						type="text/javascript"
+						src="https://unpkg.com/default-passive-events"
+						async
+						strategy="lazyOnload"
+					></script>
 					<link
 						rel="preload"
 						href="/favicon.ico"

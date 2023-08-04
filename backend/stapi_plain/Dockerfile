@@ -1,5 +1,5 @@
 # Use the official Node.js image as the base image
-FROM node:14-alpine
+FROM node:18-alpine
 
 # Set the working directory inside the container
 WORKDIR /melt-app
@@ -8,13 +8,13 @@ WORKDIR /melt-app
 COPY package*.json ./
 
 # Install dependencies
-# RUN npm install
+RUN npm install
 
 # Copy the entire backend application to the container
 COPY . .
 
 # Expose the backend server port (if needed, change it to your desired port)
-EXPOSE 5000
+# EXPOSE 1337
 
 # Start the backend server
 CMD ["npm", "start"]
