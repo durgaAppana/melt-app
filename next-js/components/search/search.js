@@ -1,7 +1,17 @@
 import React, { useEffect, useState } from "react";
 import stylesHeader from "../../styles/header.module.scss";
+import { apiGetCall } from "../../utilities/apiServices";
+import { apiList } from "../../utilities/constants";
 
 export default function Search() {
+	const [tag,setTag] = useState()
+	useEffect(()=>{
+		tagName()
+	},[])
+	const tagName = async()=>{
+		let response = await apiGetCall(apiList.GET_TAG_LIST)
+		setTag(response)
+	}
 	return (
 		<div className={stylesHeader["search-copy"]}>
 			<form>

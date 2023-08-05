@@ -67,9 +67,9 @@ export default function Header() {
 				</Link>
 				<div className={stylesHeader.menu}>
 					<ul className={stylesHeader.main}>
-						{menuList.length > 0 &&
-							menuList.length > 0 &&
-							menuList.map((menu, index) => (
+						{menuList?.length > 0 &&
+							menuList?.length > 0 &&
+							menuList?.map((menu, index) => (
 								<li
 									key={index}
 									onClick={() => {

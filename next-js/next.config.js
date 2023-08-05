@@ -5,6 +5,7 @@ const nextConfig = {
 		domains: ["192.168.10.147"],
 		minimumCacheTTL: 31536000,
 	},
+	productionBrowserSourceMaps: true,
 };
 
 module.exports = nextConfig;

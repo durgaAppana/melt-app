@@ -54,8 +54,8 @@ export default function LandingWrapper() {
 		const response = await apiGetCall(apiList.GET_ARTICLES_LIST);
 		setIsLoading(false);
 
-		if (response.data.length > 0) {
-			response.data.map((article) => {
+		if (response?.data.length > 0) {
+			response?.data.map((article) => {
 				const articleType = article?.attributes?.category?.data?.attributes?.type.toLowerCase();
 				if (Object.keys(articleObj).map((item) => item.toLowerCase() == articleType)) {
 					articleObj[articleType]?.push(article);
@@ -121,7 +121,7 @@ export default function LandingWrapper() {
 				id="marketing"
 				name="marketing"
 			>
-				{articleList.marketing.length > 0 && (
+				{articleList?.marketing.length > 0 && (
 					<ArticleSection
 						articleData={articleList.marketing}
 						bannerData={bannerData.marketing}
@@ -133,7 +133,7 @@ export default function LandingWrapper() {
 				id="media"
 				name="media"
 			>
-				{articleList.media.length > 0 && (
+				{articleList?.media.length > 0 && (
 					<ArticleSection
 						articleData={articleList.media}
 						bannerData={bannerData.media}
@@ -145,7 +145,7 @@ export default function LandingWrapper() {
 				id="advertising"
 				name="advertising"
 			>
-				{articleList.advertising.length > 0 && (
+				{articleList?.advertising.length > 0 && (
 					<ArticleSection
 						articleData={articleList.advertising}
 						bannerData={bannerData.advertising}

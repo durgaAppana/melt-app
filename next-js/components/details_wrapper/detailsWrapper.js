@@ -4,8 +4,10 @@ import detailsStyle from "../../styles/detail.module.css";
 import ReadsSection from "./readsSection";
 import DetailsSection from "./detailsSection";
 import AddBanners from "./addBanners";
+import { apiGetCall } from "../../utilities/apiServices";
+import { apiList } from "../../utilities/constants";
 
-export default function DetailsWrapper({ detailsData = {}, allDataDetails = {} }) {
+export default function DetailsWrapper({ detailsData = {} }) {
 	const categoryType = detailsData.category?.data?.attributes?.type;
 
 	const [article, setArticle] = useState([]);
@@ -18,17 +20,20 @@ export default function DetailsWrapper({ detailsData = {}, allDataDetails = {} }
 	const detailArticleData = async () => {
 		let arr = [];
 		let tempArr = [];
-		allDataDetails.map((element) => {
-			const articleType = element?.attributes?.category?.data?.attributes?.type.toLowerCase();
-			if (categoryType?.toLowerCase() === articleType) {
-				arr.push(element);
-			}
-			if (element.attributes?.also_melt) {
-				tempArr.push(element);
-			}
-		});
-		setArticle(arr);
-		setMeltAlso(tempArr);
+		const allData = await apiGetCall(apiList.GET_ARTICLES_LIST);
+		if (allData) {
+			allData.data.map((element) => {
+				const articleType = element?.attributes?.category?.data?.attributes?.type.toLowerCase();
+				if (categoryType?.toLowerCase() === articleType) {
+					arr.push(element);
+				}
+				if (element.attributes?.also_melt) {
+					tempArr.push(element);
+				}
+			});
+			setArticle(arr);
+			setMeltAlso(tempArr);
+		}
 	};
 
 	return (

@@ -5,7 +5,7 @@ class MyDocument extends Document {
 		return (
 			<Html lang="en">
 				<Head>
-					<title>Melt - Marketing, media, advertising and technology</title>
+					{/* <title>Melt - Marketing, media, advertising and technology</title> */}
 					<meta
 						name="ready-to-melt"
 						content="Melt - Marketing, media, advertising and technology"
