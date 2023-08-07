@@ -21,6 +21,10 @@
       "relation": "manyToMany",
       "target": "api::article-content.article-content",
       "inversedBy": "tags"
+    },
+    "trending": {
+      "type": "boolean",
+      "default": false
     }
   }
 }
