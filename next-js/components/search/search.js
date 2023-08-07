@@ -27,7 +27,12 @@ export default function Search() {
 	const searchResult = async () => {
 		if (searchData !== "") {
 			router.push(`/search/?q=${searchData.toLowerCase()}`)
+			document.querySelector("body").classList = [];
 		}
+	}
+
+	const removeClass = () => {
+		document.querySelector("body").classList = []
 	}
 
 	return (
@@ -60,6 +65,7 @@ export default function Search() {
 							<Link
 								className={stylesHeader["badge"]}
 								href={"/tag/" + v.attributes.tag_name.toLowerCase()}
+								onClick={removeClass}
 							>
 								{v.attributes.tag_name}
 
