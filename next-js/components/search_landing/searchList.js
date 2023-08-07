@@ -4,7 +4,7 @@ import CustomImage from "../common/customImage";
 import moment from "moment";
 import Link from "next/link";
 
-export default function SearchList({ searchList }) {
+export default function SearchList({ searchList, searchData, arrRange, totalPages }) {
 	const filters = [
 		{
 			value: "relevance",
@@ -40,7 +40,7 @@ export default function SearchList({ searchList }) {
 
 			<div className={searchStyle["body-text"]}>
 				<div className={searchStyle["filters-dropdown"]}>
-					<div className={searchStyle["gsc-result-info"]}>{`About ${searchList.length} results`}</div>
+					<div className={searchStyle["gsc-result-info"]}>{`About ${totalPages.total} results`}</div>
 					<div>
 						<select
 							class="form-select form-select-sm"
@@ -73,9 +73,8 @@ export default function SearchList({ searchList }) {
 											},
 										}}
 									>
-										{item.attributes.author.toUpperCase()} - <b>Update</b>{" "}
-										{item.attributes.title.length > 50
-											? `${item.attributes.title.slice(0, 50)}...`
+										{item.attributes.title.length > 50 ?
+											`${item.attributes.title.slice(0, 50)}...`
 											: item.attributes.title}
 									</Link>
 								</div>
@@ -123,6 +122,7 @@ export default function SearchList({ searchList }) {
 								</div>
 							</div>
 						))}
+						{totalPages.total > 10 ? arrRange?.map((v, i) => (<span key={i} onClick={() => searchData(v)}>{v}</span>)) : null}
 					</>
 				) : (
 					<h5 className={searchStyle["no-results"]}>No data found</h5>
