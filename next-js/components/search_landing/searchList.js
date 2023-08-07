@@ -4,7 +4,7 @@ import CustomImage from "../common/customImage";
 import moment from "moment";
 import Link from "next/link";
 
-export default function SearchList({ searchList, searchData, arrRange, totalPages }) {
+export default function SearchList({ searchList, searchData, arrRange, totalPages, active }) {
 	const filters = [
 		{
 			value: "relevance",
@@ -122,7 +122,9 @@ export default function SearchList({ searchList, searchData, arrRange, totalPage
 								</div>
 							</div>
 						))}
-						{totalPages.total > 10 ? arrRange?.map((v, i) => (<span key={i} onClick={() => searchData(v)}>{v}</span>)) : null}
+						<ul className="pagination justify-content-center">
+							{totalPages.total > 10 ? arrRange?.map((v, i) => (<li className={active == v ? 'page-item active' : 'page-item'}><span className="page-link" key={i} onClick={() => searchData(v)}>{v}</span></li>)) : null}
+						</ul>
 					</>
 				) : (
 					<h5 className={searchStyle["no-results"]}>No data found</h5>
