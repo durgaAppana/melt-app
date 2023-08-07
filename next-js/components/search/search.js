@@ -2,16 +2,34 @@ import React, { useEffect, useState } from "react";
 import stylesHeader from "../../styles/header.module.scss";
 import { apiGetCall } from "../../utilities/apiServices";
 import { apiList } from "../../utilities/constants";
+import Link from "next/link";
+import { useRouter } from 'next/router'
 
 export default function Search() {
-	const [tag,setTag] = useState()
-	useEffect(()=>{
+	const [tag, setTag] = useState([])
+	const [searchData, setSearchData] = useState("")
+	const router = useRouter()
+	useEffect(() => {
 		tagName()
-	},[])
-	const tagName = async()=>{
+	}, [])
+	const tagName = async () => {
+		let arr = [];
 		let response = await apiGetCall(apiList.GET_TAG_LIST)
-		setTag(response)
+		response.data.map((ele) => {
+			const trending = ele.attributes.is_trending
+			if (trending) {
+				arr.push(ele)
+			}
+		})
+		setTag(arr)
 	}
+
+	const searchResult = async () => {
+		if (searchData !== "") {
+			router.push(`/search/?q=${searchData.toLowerCase()}`)
+		}
+	}
+
 	return (
 		<div className={stylesHeader["search-copy"]}>
 			<form>
@@ -24,24 +42,9 @@ export default function Search() {
 						className={stylesHeader["search-input"]}
 						name="search"
 						title="search"
+						onChange={(e) => setSearchData(e.target.value)}
 					/>
-					<span className={stylesHeader.button}>Search</span>
-					{/* <div className="gsst_b" id="gs_st50" dir="ltr">
-						<a
-							className="gsst_a"
-							href="javascript:void(0)"
-							title="Clear search box"
-							role="button"
-						>
-							<span
-								className="gscb_a"
-								id="gs_cb50"
-								aria-hidden="true"
-							>
-								×
-							</span>
-						</a>
-					</div> */}
+					<span className={stylesHeader.button} onClick={searchResult}>Search</span>
 				</div>
 			</form>
 
@@ -52,70 +55,17 @@ export default function Search() {
 			<div className={stylesHeader["tagsWrapper"]}>
 				<span className={stylesHeader["tagTitle"]}>Trending</span>
 				<ul>
-					<li>
-						<a
-							href="https://www.readytomelt.com/tag/melt/"
-							className={stylesHeader["badge"]}
-						>
-							MELT
-						</a>
-					</li>
-					<li>
-						<a
-							href="https://www.readytomelt.com/tag/creative-picks/"
-							className={stylesHeader["badge"]}
-						>
-							Creative Picks
-						</a>
-					</li>
-					<li>
-						<a
-							href="https://www.readytomelt.com/tag/melt-in-a-minute/"
-							className={stylesHeader["badge"]}
-						>
-							Melt in a Minute
-						</a>
-					</li>
-					<li>
-						<a
-							href="https://www.readytomelt.com/tag/ad-review/"
-							className={stylesHeader["badge"]}
-						>
-							Ad Review
-						</a>
-					</li>
-					<li>
-						<a
-							href="https://www.readytomelt.com/tag/anant-rangaswami/"
-							className={stylesHeader["badge"]}
-						>
-							Anant Rangaswami
-						</a>
-					</li>
-					<li>
-						<a
-							href="https://www.readytomelt.com/tag/advertising/"
-							className={stylesHeader["badge"]}
-						>
-							Advertising
-						</a>
-					</li>
-					<li>
-						<a
-							href="https://www.readytomelt.com/tag/facebook/"
-							className={stylesHeader["badge"]}
-						>
-							Facebook
-						</a>
-					</li>
-					<li>
-						<a
-							href="https://www.readytomelt.com/tag/marketing/"
-							className={stylesHeader["badge"]}
-						>
-							Marketing
-						</a>
-					</li>
+					{tag && tag.map((v, i) => (
+						<li>
+							<Link
+								className={stylesHeader["badge"]}
+								href={"/tag/" + v.attributes.tag_name.toLowerCase()}
+							>
+								{v.attributes.tag_name}
+
+							</Link>
+						</li>
+					))}
 				</ul>
 			</div>
 		</div>

@@ -11,4 +11,5 @@ export const apiList = {
 	CONTACT_FORM: baseUrl + "/api/contacts",
 	GET_ADVERTISEMENT_BANNERS: baseUrl + "/api/get-advertisements?populate=*",
 	GET_TAG_LIST: baseUrl + "/api/tags?populate=*",
+	GET_SEARCH_LIST: baseUrl + "/api/article-contents?filters[title][$contains]=",
 };
