@@ -31,11 +31,16 @@
 	font-weight: 300;
 }
 
+.filters-dropdown {
+	display: flex;
+	justify-content: space-between;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #777;
+}
+
 .gsc-result-info {
 	font-size: 16px;
 	padding-top: 10px;
-	padding-bottom: 10px;
-	border-bottom: 1px solid #777;
 }
 
 .gsc-webResult.gsc-result {
@@ -45,7 +50,20 @@
 }
 
 .gs-title a {
-	color: #333;
+	color: #000;
+	font-size: 16px;
+}
+
+.tag-text {
+	color: #000;
+	font-size: 14px;
+	font-weight: 500;
+}
+
+.dec-text {
+	color: #000;
+	font-size: 12px;
+	font-weight: 500;
 }
 
 .gsc-webResult .gsc-url-top {
@@ -60,11 +78,23 @@
 	padding-right: 0px !important;
 }
 
+.dec-sec {
+	padding-left: 0px !important;
+}
 .gsc-table-result img {
-	width: 100%;
+	width: 90%;
 	height: 80%;
 }
 
 .article-content {
-	font-size: 14px;
+	color: #000;
+	font-size: 12px;
+	font-weight: 500;
+}
+
+.no-results {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 200px;
 }

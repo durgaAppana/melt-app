@@ -91,7 +91,7 @@ export default function AddBanners() {
 						<div className={detailsStyle["comments-count"]}>Comments</div>
 						<div className={detailsStyle["comments-count"]}>Login</div>
 					</div>
-					<CommentsSection />
+					{/* <CommentsSection /> */}
 				</div>
 			</div>
 		</div>
