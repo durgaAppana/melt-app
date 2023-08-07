@@ -54,8 +54,8 @@ export default function LandingWrapper() {
 		const response = await apiGetCall(apiList.GET_ARTICLES_LIST);
 		setIsLoading(false);
 
-		if (response?.data.length > 0) {
-			response?.data.map((article) => {
+		if (response?.data?.length > 0) {
+			response?.data?.map((article) => {
 				const articleType = article?.attributes?.category?.data?.attributes?.type.toLowerCase();
 				if (Object.keys(articleObj).map((item) => item.toLowerCase() == articleType)) {
 					articleObj[articleType]?.push(article);
@@ -82,7 +82,7 @@ export default function LandingWrapper() {
 		const response = await apiGetCall(apiList.GET_BANNERS_DATA);
 		setIsLoading(false);
 
-		if (response.data.length > 0) {
+		if (response?.data?.length > 0) {
 			response.data.map((banner) => {
 				banner?.attributes?.categories?.data.map((item) => {
 					if (Object.keys(bannerData).map((obj) => obj == item.attributes.type.toLowerCase())) {

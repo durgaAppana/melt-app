@@ -22,9 +22,10 @@
       "target": "api::article-content.article-content",
       "inversedBy": "tags"
     },
-    "trending": {
+    "is_trending": {
       "type": "boolean",
-      "default": false
+      "default": false,
+      "required": true
     }
   }
 }

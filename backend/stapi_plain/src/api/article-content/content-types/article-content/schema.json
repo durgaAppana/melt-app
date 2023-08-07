@@ -10,9 +10,7 @@
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {
-    
-  },
+  "pluginOptions": {},
   "attributes": {
     "title": {
       "type": "string"

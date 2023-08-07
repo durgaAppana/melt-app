@@ -25,6 +25,7 @@ export default function CommentsSection() {
 							contentEditable="PLAINTEXT-ONLY"
 							data-role="editable"
 							aria-label="Start the discussion…"
+							suppressContentEditableWarning={true}
 						>
 							<p></p>
 						</div>

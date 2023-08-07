@@ -1,4 +1,4 @@
-export const baseUrl = "http://192.168.10.147:1337";
+export const baseUrl = "http://192.168.10.121:1337";
 
 export const apiList = {
 	GET_HEADER_MENU_LIST: baseUrl + "/api/get-header-menus",
@@ -10,5 +10,5 @@ export const apiList = {
 	SUBSCRIBE_USER_MAIL: baseUrl + "/api/subscribe-emails",
 	CONTACT_FORM: baseUrl + "/api/contacts",
 	GET_ADVERTISEMENT_BANNERS: baseUrl + "/api/get-advertisements?populate=*",
-	GET_TAG_LIST: baseUrl + "/api/tags?populate=*"
+	GET_TAG_LIST: baseUrl + "/api/tags?populate=*",
 };

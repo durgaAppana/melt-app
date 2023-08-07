@@ -14,7 +14,6 @@ export default function AddBanners() {
 
 	const getBanners = async () => {
 		const response = await apiGetCall(apiList.GET_ADVERTISEMENT_BANNERS);
-		console.log("response", response);
 		setBannersData(response.data);
 	};
 
@@ -25,7 +24,10 @@ export default function AddBanners() {
 				<div className="row">
 					{bannersData.length > 0 &&
 						bannersData.slice(0, 2).map((item, index) => (
-							<div key={index} className={"col-lg-6 " + detailsStyle["banner-card"]}>
+							<div
+								key={index}
+								className={"col-lg-6 " + detailsStyle["banner-card"]}
+							>
 								<Link
 									href={item.attributes.link}
 									target="_blank"
@@ -36,6 +38,7 @@ export default function AddBanners() {
 										alt={item.attributes.title}
 										height={200}
 										width={150}
+										priority={true}
 									/>
 									<p className={detailsStyle["master-text"]}>{item.attributes.title}</p>
 									<div className="row">
@@ -53,7 +56,10 @@ export default function AddBanners() {
 				<div className="row">
 					{bannersData.length > 0 &&
 						bannersData.slice(2, 5).map((item, index) => (
-							<div key={index} className={"col-lg-4 " + detailsStyle["banner-card"]}>
+							<div
+								key={index}
+								className={"col-lg-4 " + detailsStyle["banner-card"]}
+							>
 								<Link
 									href={item.attributes.link}
 									target="_blank"
@@ -64,6 +70,8 @@ export default function AddBanners() {
 										alt={item.attributes.title}
 										height={200}
 										width={150}
+										priority={true}
+
 									/>
 									<p className={detailsStyle["master-text"]}>{item.attributes.title}</p>
 									<div className="row">
@@ -78,13 +86,13 @@ export default function AddBanners() {
 							</div>
 						))}
 				</div>
-				{/* <div className={"row mt-5"}>
+				<div className={"row mt-5"}>
 					<div className={detailsStyle["comments-section"]}>
 						<div className={detailsStyle["comments-count"]}>Comments</div>
 						<div className={detailsStyle["comments-count"]}>Login</div>
 					</div>
 					<CommentsSection />
-				</div> */}
+				</div>
 			</div>
 		</div>
 	);
