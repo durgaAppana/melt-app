@@ -11,12 +11,11 @@ export default function SearchWrapper({ title }) {
 	const [totalPages, setTotalPages] = useState(1);
 
 	const arrRange = [];
-	for (let i = 1 - 1; i <= 3 + 1; i++) {
+	for (let i = 1 - 1; i <= totalPages.pageCount + 1; i++) {
 		if (i < 1) continue;
 		if (i > totalPages.pageCount) break;
 		arrRange.push(i)
 	}
-
 	useEffect(() => {
 		searchdata()
 	}, [title])
