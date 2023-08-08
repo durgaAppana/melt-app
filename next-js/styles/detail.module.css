@@ -261,16 +261,20 @@
 	transform: none;
 }
 
+.banner-div {
+	min-height: 20px;
+}
+
 .master-text {
 	color: #999;
-	font-size: 18px;
+	font-size: 16px;
 	font-weight: 700;
 }
 
 .small-button {
 	color: #999;
 	margin: 0;
-	height: 25px;
+	height: 30px;
 	width: auto !important;
 	font-size: 10px;
 	font-weight: 700;
@@ -309,14 +313,14 @@
 }
 
 .avatar {
-	margin-right: auto;
+	/* margin-right: auto; */
 	transition: left 0.2s linear;
 }
 
 .user {
 	display: block;
 	position: relative;
-	z-index: 100;
+	z-index: 10;
 	background: #dbdfe4;
 	border-radius: 3px;
 	padding: 0;
@@ -441,4 +445,27 @@
 	font-size: 15px;
 	color: #687a86;
 	text-transform: uppercase;
+}
+
+.comments-list {
+	padding: 20px;
+}
+
+.comments-sec {
+	padding-top: 0px !important;
+	padding: 8px;
+}
+
+.comments-sec h4 {
+	color: rgb(95, 185, 105) !important;
+	font-weight: 700;
+	font-size: 18px;
+	margin: 0;
+}
+.comments-sec span {
+	font-size: 12px;
+}
+
+.comments-sec p {
+	font-size: 14px;
 }

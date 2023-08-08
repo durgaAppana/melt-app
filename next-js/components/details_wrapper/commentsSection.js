@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { signIn, signOut } from "next-auth/react";
+import moment from "moment";
 
 import detailsStyle from "../../styles/detail.module.css";
 import { apiList, baseUrl } from "../../utilities/constants";
@@ -13,40 +14,38 @@ export default function CommentsSection({ detailsData }) {
 	const [isLoading, setIsLoading] = useState(false);
 	const [commentText, setCommentText] = useState("");
 	const [commentsList, setCommentsList] = useState([]);
-	const [openModal, setOpenModal] = useState(false)
+	const [openModal, setOpenModal] = useState(false);
 
 	useEffect(() => {
 		getArticleComments();
 	}, []);
 
 	useEffect(() => {
-		userDataAuth()
-	}, [status])
+		userDataAuth();
+	}, [status]);
 
 	const userDataAuth = async () => {
 		if (status == "authenticated") {
-			console.log("dsfdgfg546567");
 			const payload = {
-				"username": session?.user.name,
-				"email": session?.user.email,
-				"password": session?.user.email,
-				"provider": "local",
-				"confirmed": true,
-				"blocked": false
-			}
-			let response = await apiGetCall(apiList.GET_ALL_USER + session?.user.email)
-			console.log("wewerdwe", response);
+				username: session?.user.name,
+				email: session?.user.email,
+				password: session?.user.email,
+				provider: "local",
+				confirmed: true,
+				blocked: false,
+			};
+			let response = await apiGetCall(apiList.GET_ALL_USER + session?.user.email);
 			if (response.length == 0) {
-				let response1 = await apiPostCall(apiList.GET_USER_LOGIN, {}, payload)
+				let response1 = await apiPostCall(apiList.GET_USER_LOGIN, {}, payload);
 				if (response1.jwt) {
-					localStorage.setItem("userData", JSON.stringify(response1.user))
+					localStorage.setItem("userData", JSON.stringify(response1.user));
 				}
 			} else {
-				localStorage.setItem("userData", JSON.stringify(response[0]))
+				localStorage.setItem("userData", JSON.stringify(response[0]));
 			}
 		}
-	}
-	const toggle = () => setOpenModal(!openModal)
+	};
+	const toggle = () => setOpenModal(!openModal);
 
 	const loginUser = async () => {
 		signIn("google", {
@@ -55,19 +54,21 @@ export default function CommentsSection({ detailsData }) {
 	};
 
 	const logout = () => {
-		localStorage.clear()
-		signOut()
-	}
+		localStorage.clear();
+		signOut();
+	};
 
 	const userComments = async (e) => {
-		if (commentText == "") return false;
+		const userData = JSON.parse(localStorage.getItem("userData"));
+		if (commentText == "" || userData == "null") return false;
+		console.log("userData", commentText, userData, typeof userData);
 
 		const payload = {
 			data: {
 				comments: commentText,
 				article_id: detailsData.id,
-				user_id: "3",
-				user_name: session?.user?.name,
+				user_id: userData?.id,
+				user_name: userData?.username,
 			},
 		};
 
@@ -176,20 +177,33 @@ export default function CommentsSection({ detailsData }) {
 					</a>
 				</div>
 			</div>
-			<div>
+			<div className={detailsStyle["comments-list"]}>
 				{commentsList &&
 					commentsList.length > 0 &&
 					commentsList.map((list, index) => (
-						<div>
-							<p>{list.attributes.user_name}</p>
-							<p>{list.attributes.comments}</p>
-							<p>{list.attributes.publishedAt}</p>
+						<div
+							className="d-flex"
+							key={index}
+						>
+							<div className={detailsStyle["avatar"]}>
+								<span className={detailsStyle["user"] + " " + detailsStyle["user-refresh"]}>
+									<div>{list?.attributes?.user_name[0]}</div>
+								</span>
+							</div>
+							<div className={detailsStyle["comments-sec"]}>
+								<h4>{list.attributes.user_name}</h4>
+								<span>{moment.utc(list.attributes.publishedAt).fromNow()}</span>
+								<p>{list.attributes.comments}</p>
+							</div>
 						</div>
 					))}
 			</div>
 			<button onClick={toggle}>login</button>
 			<button onClick={logout}>logout</button>
-			<LoginModal toggle={toggle} openModal={openModal} />
+			<LoginModal
+				toggle={toggle}
+				openModal={openModal}
+			/>
 		</>
 	);
 }
