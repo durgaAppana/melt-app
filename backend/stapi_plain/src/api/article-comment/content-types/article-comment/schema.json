@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "article_comments",
+  "info": {
+    "singularName": "article-comment",
+    "pluralName": "article-comments",
+    "displayName": "article-comments",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "comments": {
+      "type": "text"
+    },
+    "article_id": {
+      "type": "integer"
+    },
+    "user_id": {
+      "type": "integer"
+    },
+    "user_name": {
+      "type": "string"
+    },
+    "article_content": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::article-content.article-content"
+    }
+  }
+}

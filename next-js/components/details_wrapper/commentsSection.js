@@ -1,17 +1,66 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { signIn } from "next-auth/react"
+import { useSession } from "next-auth/react";
+import { signIn } from "next-auth/react";
+
 import detailsStyle from "../../styles/detail.module.css";
-import { baseUrl } from "../../utilities/constants";
+import { apiList, baseUrl } from "../../utilities/constants";
+import { apiGetCall, apiPostCall } from "../../utilities/apiServices";
 
 export default function CommentsSection({ detailsData }) {
+	const { data: session, status } = useSession();
+
+	const [isLoading, setIsLoading] = useState(false);
+	const [commentText, setCommentText] = useState("");
+	const [commentsList, setCommentsList] = useState([]);
+
+	useEffect(() => {
+		getArticleComments();
+	}, []);
 
 	const loginUser = () => {
-		signIn('google', { callbackUrl: "http://localhost:3000" + "/" + detailsData.attributes.slug + `?id=${detailsData.id}` });
-	}
+		signIn("google", {
+			callbackUrl: "http://localhost:3000" + "/" + detailsData.attributes.slug + `?id=${detailsData.id}`,
+		});
+	};
+
+	const userComments = async (e) => {
+		if (commentText == "") return false;
+
+		const payload = {
+			data: {
+				comments: commentText,
+				article_id: detailsData.id,
+				user_id: "3",
+				user_name: session?.user?.name,
+			},
+		};
+
+		setIsLoading(true);
+		const response = await apiPostCall(apiList.USER_COMMENTS, {}, payload);
+		setIsLoading(false);
+
+		if (response.status) {
+			getArticleComments();
+		}
+	};
+
+	const getArticleComments = async () => {
+		const response = await apiGetCall(apiList.GET_ARTICLE_COMMENTS + detailsData.id);
+
+		if (response?.data?.length > 0) {
+			setCommentsList(response.data);
+		}
+	};
 
 	return (
-		<form>
+		<>
+			<div className={detailsStyle["comments-section"]}>
+				<div className={detailsStyle["comments-count"]}>
+					{commentsList.length > 0 && commentsList.length + " "}Comments
+				</div>
+				<div className={detailsStyle["comments-count"]}>{session?.user?.name ?? "Login"}</div>
+			</div>
 			<div className={detailsStyle["compose-wrapper"]}>
 				<div className={detailsStyle["avatar"]}>
 					<span className={detailsStyle["user"] + " " + detailsStyle["user-refresh"]}>
@@ -24,24 +73,21 @@ export default function CommentsSection({ detailsData }) {
 						data-role="textarea"
 						dir="auto"
 					>
-						<div
-							className={detailsStyle["textarea"]}
-							role="textbox"
-							aria-multiline="true"
-							contentEditable="PLAINTEXT-ONLY"
-							data-role="editable"
-							aria-label="Start the discussion…"
-							suppressContentEditableWarning={true}
-						>
-							<p></p>
-						</div>
-
+						<textarea
+							className="form-control"
+							name="comments"
+							type="text"
+							onChange={(e) => {
+								setCommentText(e.target.value);
+							}}
+						/>
 						<div className="text-editor-container">
 							<div className={detailsStyle["post-actions"]}>
 								<div className={detailsStyle["temp-post"]}>
 									<button
-										type="submit"
 										className={detailsStyle["comment-btn"]}
+										onClick={(e) => userComments(e)}
+										disabled={isLoading}
 									>
 										Comment
 									</button>
@@ -95,6 +141,17 @@ export default function CommentsSection({ detailsData }) {
 					</a>
 				</div>
 			</div>
-		</form>
+			<div>
+				{commentsList &&
+					commentsList.length > 0 &&
+					commentsList.map((list, index) => (
+						<div>
+							<p>{list.attributes.user_name}</p>
+							<p>{list.attributes.comments}</p>
+							<p>{list.attributes.publishedAt}</p>
+						</div>
+					))}
+			</div>
+		</>
 	);
 }

@@ -1,14 +1,13 @@
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import CustomImage from "../common/customImage";
+
 import detailsStyle from "../../styles/detail.module.css";
 import CommentsSection from "./commentsSection";
 import { apiGetCall } from "../../utilities/apiServices";
 import { apiList } from "../../utilities/constants";
-import CustomImage from "../common/customImage";
-import Link from "next/link";
-import { useSession } from "next-auth/react";
 
 export default function AddBanners({ detailsData }) {
-	const { data: session, status } = useSession();
 	const [bannersData, setBannersData] = useState([]);
 	useEffect(() => {
 		getBanners();
@@ -73,7 +72,6 @@ export default function AddBanners({ detailsData }) {
 										height={200}
 										width={150}
 										priority={true}
-
 									/>
 									<p className={detailsStyle["master-text"]}>{item.attributes.title}</p>
 									<div className="row">
@@ -89,10 +87,6 @@ export default function AddBanners({ detailsData }) {
 						))}
 				</div>
 				<div className={"row mt-5"}>
-					<div className={detailsStyle["comments-section"]}>
-						<div className={detailsStyle["comments-count"]}>Comments</div>
-						<div className={detailsStyle["comments-count"]}>{session?.user?.name ?? "Login"}</div>
-					</div>
 					<CommentsSection detailsData={detailsData} />
 				</div>
 			</div>

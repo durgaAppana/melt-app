@@ -1,39 +1,40 @@
+import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
+
 import stylesHeader from "../../styles/header.module.scss";
 import { apiGetCall } from "../../utilities/apiServices";
 import { apiList } from "../../utilities/constants";
-import Link from "next/link";
-import { useRouter } from 'next/router'
 
 export default function Search() {
-	const [tag, setTag] = useState([])
-	const [searchData, setSearchData] = useState("")
-	const router = useRouter()
+	const [tag, setTag] = useState([]);
+	const [searchData, setSearchData] = useState("");
+	const router = useRouter();
 	useEffect(() => {
-		tagName()
-	}, [])
+		tagName();
+	}, []);
 	const tagName = async () => {
 		let arr = [];
-		let response = await apiGetCall(apiList.GET_TAG_LIST)
+		let response = await apiGetCall(apiList.GET_TAG_LIST);
 		response.data.map((ele) => {
-			const trending = ele.attributes.is_trending
+			const trending = ele.attributes.is_trending;
 			if (trending) {
-				arr.push(ele)
+				arr.push(ele);
 			}
-		})
-		setTag(arr)
-	}
+		});
+		setTag(arr);
+	};
 
 	const searchResult = async () => {
 		if (searchData !== "") {
-			router.push(`/search/?q=${searchData.toLowerCase()}`)
+			router.push(`/search/?q=${searchData.toLowerCase()}`);
 			document.querySelector("body").classList = [];
 		}
-	}
+	};
 
 	const removeClass = () => {
-		document.querySelector("body").classList = []
-	}
+		document.querySelector("body").classList = [];
+	};
 
 	return (
 		<div className={stylesHeader["search-copy"]}>
@@ -49,7 +50,12 @@ export default function Search() {
 						title="search"
 						onChange={(e) => setSearchData(e.target.value)}
 					/>
-					<span className={stylesHeader.button} onClick={searchResult}>Search</span>
+					<span
+						className={stylesHeader.button}
+						onClick={searchResult}
+					>
+						Search
+					</span>
 				</div>
 			</form>
 
@@ -60,18 +66,18 @@ export default function Search() {
 			<div className={stylesHeader["tagsWrapper"]}>
 				<span className={stylesHeader["tagTitle"]}>Trending</span>
 				<ul>
-					{tag && tag.map((v, i) => (
-						<li>
-							<Link
-								className={stylesHeader["badge"]}
-								href={"/tag/" + v.attributes.tag_name.toLowerCase()}
-								onClick={removeClass}
-							>
-								{v.attributes.tag_name}
-
-							</Link>
-						</li>
-					))}
+					{tag &&
+						tag.map((v, i) => (
+							<li key={i}>
+								<Link
+									className={stylesHeader["badge"]}
+									href={"/tag/" + v.attributes.tag_name.toLowerCase()}
+									onClick={removeClass}
+								>
+									{v.attributes.tag_name}
+								</Link>
+							</li>
+						))}
 				</ul>
 			</div>
 		</div>
