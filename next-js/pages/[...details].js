@@ -7,7 +7,7 @@ import { NextSeo } from "next-seo";
 import dynamic from "next/dynamic";
 
 const DetailsWrapper = dynamic(() => import("../components/details_wrapper/detailsWrapper"), { ssr: true })
-export default function Details({ detailsData, allDataDetails, title }) {
+export default function Details({ detailsData, title }) {
 
 	if (typeof detailsData == "undefined" || detailsData == null) {
 		return <PageNotFound />;
@@ -21,7 +21,7 @@ export default function Details({ detailsData, allDataDetails, title }) {
 		<>
 			<NextSeo {...seoOption} />
 			<DetailsWrapper
-				detailsData={detailsData?.attributes}
+				detailsData={detailsData}
 			/>
 		</>
 	);
@@ -30,7 +30,6 @@ export default function Details({ detailsData, allDataDetails, title }) {
 export async function getServerSideProps(context) {
 	const {id} = context.query
 	const detailsData = await apiGetCall(apiList.GET_ARTICLE_DATA + "/" + id + "?populate=image,category,tags");
-
 	return {
 		props: {
 			detailsData: detailsData.data,
