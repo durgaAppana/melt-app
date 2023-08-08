@@ -1,28 +1,63 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
-import { signIn } from "next-auth/react";
+import { signIn, signOut } from "next-auth/react";
 
 import detailsStyle from "../../styles/detail.module.css";
 import { apiList, baseUrl } from "../../utilities/constants";
 import { apiGetCall, apiPostCall } from "../../utilities/apiServices";
+import LoginModal from "../common/loginModal";
 
 export default function CommentsSection({ detailsData }) {
 	const { data: session, status } = useSession();
-
 	const [isLoading, setIsLoading] = useState(false);
 	const [commentText, setCommentText] = useState("");
 	const [commentsList, setCommentsList] = useState([]);
+	const [openModal, setOpenModal] = useState(false)
 
 	useEffect(() => {
 		getArticleComments();
 	}, []);
 
-	const loginUser = () => {
+	useEffect(() => {
+		userDataAuth()
+	}, [status])
+
+	const userDataAuth = async () => {
+		if (status == "authenticated") {
+			console.log("dsfdgfg546567");
+			const payload = {
+				"username": session?.user.name,
+				"email": session?.user.email,
+				"password": session?.user.email,
+				"provider": "local",
+				"confirmed": true,
+				"blocked": false
+			}
+			let response = await apiGetCall(apiList.GET_ALL_USER + session?.user.email)
+			console.log("wewerdwe", response);
+			if (response.length == 0) {
+				let response1 = await apiPostCall(apiList.GET_USER_LOGIN, {}, payload)
+				if (response1.jwt) {
+					localStorage.setItem("userData", JSON.stringify(response1.user))
+				}
+			} else {
+				localStorage.setItem("userData", JSON.stringify(response[0]))
+			}
+		}
+	}
+	const toggle = () => setOpenModal(!openModal)
+
+	const loginUser = async () => {
 		signIn("google", {
 			callbackUrl: "http://localhost:3000" + "/" + detailsData.attributes.slug + `?id=${detailsData.id}`,
 		});
 	};
+
+	const logout = () => {
+		localStorage.clear()
+		signOut()
+	}
 
 	const userComments = async (e) => {
 		if (commentText == "") return false;
@@ -152,6 +187,9 @@ export default function CommentsSection({ detailsData }) {
 						</div>
 					))}
 			</div>
+			<button onClick={toggle}>login</button>
+			<button onClick={logout}>logout</button>
+			<LoginModal toggle={toggle} openModal={openModal} />
 		</>
 	);
 }

@@ -25,3 +25,17 @@
 .main .danger {
   color: red;
 }
+.modal {
+	padding-top: 60px;
+	display: block !important;
+	opacity: inherit !important;
+}
+.modal-content {
+	background-color: #5fb969;
+	border-color: #5fb969;
+	height: 300px;
+	padding-left: 10px;
+}
+.modal-header button {
+	border: solid 3px black;
+}

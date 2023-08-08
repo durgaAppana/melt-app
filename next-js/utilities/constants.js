@@ -14,4 +14,6 @@ export const apiList = {
 	GET_SEARCH_LIST: baseUrl + "/api/article-contents?filters[title][$contains]=",
 	USER_COMMENTS: baseUrl + "/api/article-comments",
 	GET_ARTICLE_COMMENTS: baseUrl + "/api/article-comments?filters[article_id]=",
+	GET_USER_LOGIN: baseUrl + "/api/auth/local/register",
+	GET_ALL_USER:baseUrl + "/api/users?filters[email][$contains]="
 };
