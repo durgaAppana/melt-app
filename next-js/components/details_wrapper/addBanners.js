@@ -5,8 +5,10 @@ import { apiGetCall } from "../../utilities/apiServices";
 import { apiList } from "../../utilities/constants";
 import CustomImage from "../common/customImage";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 
-export default function AddBanners() {
+export default function AddBanners({ detailsData }) {
+	const { data: session, status } = useSession();
 	const [bannersData, setBannersData] = useState([]);
 	useEffect(() => {
 		getBanners();
@@ -89,9 +91,9 @@ export default function AddBanners() {
 				<div className={"row mt-5"}>
 					<div className={detailsStyle["comments-section"]}>
 						<div className={detailsStyle["comments-count"]}>Comments</div>
-						<div className={detailsStyle["comments-count"]}>Login</div>
+						<div className={detailsStyle["comments-count"]}>{session?.user?.name ?? "Login"}</div>
 					</div>
-					{/* <CommentsSection /> */}
+					<CommentsSection detailsData={detailsData} />
 				</div>
 			</div>
 		</div>

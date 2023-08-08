@@ -1,9 +1,15 @@
 import React from "react";
 import Image from "next/image";
-
+import { signIn } from "next-auth/react"
 import detailsStyle from "../../styles/detail.module.css";
+import { baseUrl } from "../../utilities/constants";
 
-export default function CommentsSection() {
+export default function CommentsSection({ detailsData }) {
+
+	const loginUser = () => {
+		signIn('google', { callbackUrl: "http://localhost:3000" + "/" + detailsData.attributes.slug + `?id=${detailsData.id}` });
+	}
+
 	return (
 		<form>
 			<div className={detailsStyle["compose-wrapper"]}>
@@ -77,7 +83,7 @@ export default function CommentsSection() {
 				</div>
 				<div className="social-img">
 					<a
-						href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http://test.ready.com/barc-sir-martin-sorrell-stupefied-disappointed/"
+						onClick={() => loginUser()}
 						target="_blank"
 					>
 						<Image

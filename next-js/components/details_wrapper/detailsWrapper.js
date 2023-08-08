@@ -8,7 +8,7 @@ import { apiGetCall } from "../../utilities/apiServices";
 import { apiList } from "../../utilities/constants";
 
 export default function DetailsWrapper({ detailsData = {} }) {
-	const categoryType = detailsData.category?.data?.attributes?.type;
+	const categoryType = detailsData.attributes.category?.data?.attributes?.type;
 
 	const [article, setArticle] = useState([]);
 	const [meltAlso, setMeltAlso] = useState([]);
@@ -41,8 +41,8 @@ export default function DetailsWrapper({ detailsData = {} }) {
 			<div className="row">
 				<DetailsSection
 					categoryType={categoryType}
-					detailsData={detailsData}
-					tagsList={detailsData?.tags?.data}
+					detailsData={detailsData.attributes}
+					tagsList={detailsData?.attributes?.tags?.data}
 					meltAlso={meltAlso}
 				/>
 				<ReadsSection
@@ -50,7 +50,7 @@ export default function DetailsWrapper({ detailsData = {} }) {
 					articleType={categoryType}
 				/>
 			</div>
-			<AddBanners />
+			<AddBanners detailsData={detailsData} />
 		</section>
 	);
 }

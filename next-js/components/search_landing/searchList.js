@@ -40,7 +40,7 @@ export default function SearchList({ searchList, searchData, arrRange, totalPage
 
 			<div className={searchStyle["body-text"]}>
 				<div className={searchStyle["filters-dropdown"]}>
-					<div className={searchStyle["gsc-result-info"]}>{`About ${totalPages.total} results`}</div>
+					<div className={searchStyle["gsc-result-info"]}>About {totalPages.total ? totalPages.total : 0} results</div>
 					<div>
 						<select
 							class="form-select form-select-sm"
@@ -115,7 +115,7 @@ export default function SearchList({ searchList, searchData, arrRange, totalPage
 												{item.attributes.description.length > 150
 													? `${item.attributes.description.slice(0, 150)} ...`
 													: item.attributes.description}
-												&nbsp;{moment.utc(item.attributes.publishedAt).format("LL")}
+												{/* &nbsp;{moment.utc(item.attributes.publishedAt).format("LL")} */}
 											</div>
 										</div>
 									</div>
