@@ -2,7 +2,7 @@
 const nextConfig = {
 	reactStrictMode: false,
 	images: {
-		domains: ["192.168.10.121"],
+		domains: ["192.168.10.115"],
 		minimumCacheTTL: 31536000,
 	},
 	productionBrowserSourceMaps: true,

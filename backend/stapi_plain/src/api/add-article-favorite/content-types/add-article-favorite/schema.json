@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "add_article_favorites",
+  "info": {
+    "singularName": "add-article-favorite",
+    "pluralName": "add-article-favorites",
+    "displayName": "add-article-favorite",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "article_id": {
+      "type": "integer"
+    },
+    "user_id": {
+      "type": "integer"
+    },
+    "is_liked": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+}
