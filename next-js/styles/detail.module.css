@@ -473,3 +473,12 @@
 .social-media button{
 	border-radius: 10px;
 }
+
+.button{
+	border-radius: 10px;
+	margin-left: 10px;
+}
+
+.comment{
+	display: flex;
+}

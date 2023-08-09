@@ -16,6 +16,8 @@ export default function CommentsSection({ detailsData }) {
 	const [commentsList, setCommentsList] = useState([]);
 	const [openModal, setOpenModal] = useState(false);
 	const [userName, setUserName] = useState()
+	const [active, setActive] = useState(false);
+
 	useEffect(() => {
 		getArticleComments();
 		setUserName(JSON.parse(localStorage.getItem("userData")))
@@ -40,9 +42,11 @@ export default function CommentsSection({ detailsData }) {
 				let response1 = await apiPostCall(apiList.GET_USER_LOGIN, {}, payload);
 				if (response1.jwt) {
 					localStorage.setItem("userData", JSON.stringify(response1.user));
+					setUserName(JSON.parse(localStorage.getItem("userData")))
 				}
 			} else {
 				localStorage.setItem("userData", JSON.stringify(response[0]));
+				setUserName(JSON.parse(localStorage.getItem("userData")))
 			}
 		}
 	};
@@ -61,8 +65,7 @@ export default function CommentsSection({ detailsData }) {
 
 	const userComments = async (e) => {
 		const userData = JSON.parse(localStorage.getItem("userData"));
-		if (commentText == "" || userData == "null") return false;
-		console.log("userData", commentText, userData, typeof userData);
+		if (commentText == "" || userData == null) return toggle();
 
 		const payload = {
 			data: {
@@ -91,6 +94,14 @@ export default function CommentsSection({ detailsData }) {
 		}
 	};
 
+	const textareaComm = () => {
+		if (active) {
+			setActive(active)
+		} else {
+			setActive(!active)
+		}
+	}
+
 	return (
 		<>
 			<div className={detailsStyle["comments-section"]}>
@@ -112,77 +123,86 @@ export default function CommentsSection({ detailsData }) {
 						dir="auto"
 					>
 						<textarea
+							onClick={textareaComm}
 							className="form-control"
 							name="comments"
-							type="text"
+							rows={active ? 6 : 2}
 							value={commentText}
 							onChange={(e) => {
 								setCommentText(e.target.value);
 							}}
 						/>
-						<div className="text-editor-container">
-							<div className={detailsStyle["post-actions"]}>
-								<div className={detailsStyle["temp-post"]}>
-									<button
-										className={detailsStyle["comment-btn"]}
-										onClick={(e) => userComments(e)}
-										disabled={isLoading}
-									>
-										Comment
-									</button>
+						{active &&
+							<div className="text-editor-container">
+								<div className={detailsStyle["post-actions"]}>
+									<div className={detailsStyle["temp-post"]}>
+										<button
+											className={detailsStyle["comment-btn"]}
+											onClick={(e) => userComments(e)}
+											disabled={isLoading}
+										>
+											Comment
+										</button>
+									</div>
 								</div>
 							</div>
-						</div>
+						}
 					</div>
 				</div>
 			</div>
-			<div className={detailsStyle["login-text"]}>
-				<p>log in with</p>
-			</div>
-			<div className={detailsStyle["social-media"]}>
-				<div className="social-img">
-					<a
-						href="http://www.facebook.com/sharer.php?u=http://test.ready.com/barc-sir-martin-sorrell-stupefied-disappointed/&amp;t=BARC: Sir Martin Sorrell ‘Stupefied &amp; Disappointed’"
-						target="_blank"
-					>
-						<Image
-							src="/images/fb-icon.png"
-							height="40"
-							width="40"
-							alt="fb"
-						/>
-					</a>
-				</div>
-				<div className="social-img">
-					<a
-						href="http://twitter.com/home/?status=Sir+Martin+Sorrell+%28Founder+%26+Executive+Chairman%2C+S4+Capital%29+reacts+to+the+unfolding+%27TRP+scam%27+involving+BARC.+@readytomelt http://test.ready.com/barc-sir-martin-sorrell-stupefied-disappointed/"
-						target="_blank"
-					>
-						<Image
-							src="/images/twitter.png"
-							height="40"
-							width="40"
-							alt="twitter"
-						/>
-					</a>
-				</div>
-				<div className="social-img">
-					<a
-						onClick={() => loginUser()}
-						target="_blank"
-					>
-						<Image
-							src="/images/google.png"
-							height="40"
-							width="40"
-							alt="google"
-						/>
-					</a>
-				</div>
+			<div className={detailsStyle["comment"]}>
 				{userName ?
-					<button onClick={logout}>logout</button>
+					<p>Sign Out user
+						<button className={detailsStyle["button"]} onClick={logout}>logout</button>
+					</p>
 					:
-					<button onClick={toggle}>login</button>
+					<>
+						<div className={detailsStyle["login-text"]}>
+							<p>log in with</p>
+						</div>
+						<div className={detailsStyle["social-media"]}>
+							<div className="social-img">
+								<a
+									href="http://www.facebook.com/sharer.php?u=http://test.ready.com/barc-sir-martin-sorrell-stupefied-disappointed/&amp;t=BARC: Sir Martin Sorrell ‘Stupefied &amp; Disappointed’"
+									target="_blank"
+								>
+									<Image
+										src="/images/fb-icon.png"
+										height="40"
+										width="40"
+										alt="fb"
+									/>
+								</a>
+							</div>
+							<div className="social-img">
+								<a
+									href="http://twitter.com/home/?status=Sir+Martin+Sorrell+%28Founder+%26+Executive+Chairman%2C+S4+Capital%29+reacts+to+the+unfolding+%27TRP+scam%27+involving+BARC.+@readytomelt http://test.ready.com/barc-sir-martin-sorrell-stupefied-disappointed/"
+									target="_blank"
+								>
+									<Image
+										src="/images/twitter.png"
+										height="40"
+										width="40"
+										alt="twitter"
+									/>
+								</a>
+							</div>
+							<div className="social-img">
+								<a
+									onClick={() => loginUser()}
+									target="_blank"
+								>
+									<Image
+										src="/images/google.png"
+										height="40"
+										width="40"
+										alt="google"
+									/>
+								</a>
+							</div>
+							<button onClick={toggle}>login</button>
+						</div>
+					</>
 				}
 			</div>
 			<div className={detailsStyle["comments-list"]}>
@@ -207,6 +227,7 @@ export default function CommentsSection({ detailsData }) {
 					))}
 			</div>
 			<LoginModal
+				setUserName={setUserName}
 				toggle={toggle}
 				openModal={openModal}
 			/>

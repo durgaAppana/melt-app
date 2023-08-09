@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { apiGetCall, apiPostCall } from '../../utilities/apiServices';
 import { apiList } from '../../utilities/constants';
 
-export default function LoginModal({ openModal, toggle }) {
+export default function LoginModal({ openModal, toggle, setUserName }) {
     const { register, reset, handleSubmit } = useForm();
 
     const handleLogin = async (data) => {
@@ -24,11 +24,14 @@ export default function LoginModal({ openModal, toggle }) {
                 reset()
                 toggle(false)
                 localStorage.setItem("userData", JSON.stringify(response.user))
+                setUserName(JSON.parse(localStorage.getItem("userData")))
+
             }
         } else {
             reset()
             toggle(false)
             localStorage.setItem("userData", JSON.stringify(response1[0]))
+            setUserName(JSON.parse(localStorage.getItem("userData")))
         }
     }
 
