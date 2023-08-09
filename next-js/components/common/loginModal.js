@@ -18,7 +18,6 @@ export default function LoginModal({ openModal, toggle }) {
             "blocked": false
         }
         let response1 = await apiGetCall(apiList.GET_ALL_USER + data.email + "&populate=*")
-        console.log("objectfgdhhgfghf",response1[0]);
         if (response1.length == 0) {
             let response = await apiPostCall(apiList.GET_USER_LOGIN, {}, payload)
             if (response.jwt) {

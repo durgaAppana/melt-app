@@ -469,3 +469,7 @@
 .comments-sec p {
 	font-size: 14px;
 }
+
+.social-media button{
+	border-radius: 10px;
+}

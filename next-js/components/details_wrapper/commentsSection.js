@@ -15,9 +15,10 @@ export default function CommentsSection({ detailsData }) {
 	const [commentText, setCommentText] = useState("");
 	const [commentsList, setCommentsList] = useState([]);
 	const [openModal, setOpenModal] = useState(false);
-
+	const [userName, setUserName] = useState()
 	useEffect(() => {
 		getArticleComments();
+		setUserName(JSON.parse(localStorage.getItem("userData")))
 	}, []);
 
 	useEffect(() => {
@@ -78,6 +79,7 @@ export default function CommentsSection({ detailsData }) {
 
 		if (response.status) {
 			getArticleComments();
+			setCommentText("")
 		}
 	};
 
@@ -95,12 +97,12 @@ export default function CommentsSection({ detailsData }) {
 				<div className={detailsStyle["comments-count"]}>
 					{commentsList.length > 0 && commentsList.length + " "}Comments
 				</div>
-				<div className={detailsStyle["comments-count"]}>{session?.user?.name ?? "Login"}</div>
+				<div className={detailsStyle["comments-count"]}>{userName?.username ?? "Login"}</div>
 			</div>
 			<div className={detailsStyle["compose-wrapper"]}>
 				<div className={detailsStyle["avatar"]}>
 					<span className={detailsStyle["user"] + " " + detailsStyle["user-refresh"]}>
-						<div>G</div>
+						<div>{userName?.username[0] ?? "G"}</div>
 					</span>
 				</div>
 				<div className={detailsStyle["textarea-outer-wrapper"]}>
@@ -113,6 +115,7 @@ export default function CommentsSection({ detailsData }) {
 							className="form-control"
 							name="comments"
 							type="text"
+							value={commentText}
 							onChange={(e) => {
 								setCommentText(e.target.value);
 							}}
@@ -176,6 +179,11 @@ export default function CommentsSection({ detailsData }) {
 						/>
 					</a>
 				</div>
+				{userName ?
+					<button onClick={logout}>logout</button>
+					:
+					<button onClick={toggle}>login</button>
+				}
 			</div>
 			<div className={detailsStyle["comments-list"]}>
 				{commentsList &&
@@ -198,8 +206,6 @@ export default function CommentsSection({ detailsData }) {
 						</div>
 					))}
 			</div>
-			<button onClick={toggle}>login</button>
-			<button onClick={logout}>logout</button>
 			<LoginModal
 				toggle={toggle}
 				openModal={openModal}
