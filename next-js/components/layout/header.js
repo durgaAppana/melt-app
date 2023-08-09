@@ -42,7 +42,11 @@ export default function Header() {
 					setActiveSection("advertising");
 				} else if (window.scrollY > 4201 && window.scrollY < 5500) {
 					setActiveSection("research");
+				} else {
+					setActiveSection("");
 				}
+			} else {
+				setActiveSection("");
 			}
 		});
 	}, []);

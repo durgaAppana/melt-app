@@ -16,4 +16,6 @@ export const apiList = {
 	GET_ARTICLE_COMMENTS: baseUrl + "/api/article-comments?filters[article_id]=",
 	GET_USER_LOGIN: baseUrl + "/api/auth/local/register",
 	GET_ALL_USER: baseUrl + "/api/users?filters[email][$contains]=",
+	ADD_USER_FAVORITE: baseUrl + "/api/add-article-favorites",
+	ADD_ARTICLES_FAVORITES_COUNT: baseUrl + "/api/add-article-favorites?filters[article_id][$contains]=",
 };
