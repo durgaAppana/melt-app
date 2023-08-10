@@ -10,8 +10,16 @@ import CustomImage from "../common/customImage";
 export default function RecommendedSection({ articleType = "", recommendedArticles = [], isLoading, bannerArray }) {
 	return (
 		<div className="row">
-			<div className={"col-lg-9 " + listingStyle["recommended_articles"]}>
-				<span className={listingStyle["cat"] + " " + listingStyle["reco_text"]}>
+			<div className={"col-lg-9 " + listingStyle["recommended-resp"]}>
+				<span
+					className={
+						listingStyle["cat"] +
+						" " +
+						listingStyle["reco_text"] +
+						" " +
+						listingStyle["recommended-resp-text"]
+					}
+				>
 					Recommended Reads in {articleType}
 				</span>
 				<div className={listingStyle["recommended_slider"]}>
@@ -34,10 +42,10 @@ export default function RecommendedSection({ articleType = "", recommendedArticl
 															},
 														}}
 													>
-														<CustomImage height={100} width={150}
-															src={
-																item.attributes?.image?.data?.attributes?.url
-															}
+														<CustomImage
+															height={100}
+															width={150}
+															src={item.attributes?.image?.data?.attributes?.url}
 															alt={item.attributes?.title}
 														/>
 													</Link>
@@ -74,8 +82,10 @@ export default function RecommendedSection({ articleType = "", recommendedArticl
 								target="_blank"
 								href={bannerItem.attributes.link}
 							>
-								<CustomImage height={150} width={200}
-									src={ bannerItem.attributes?.image?.data?.attributes?.url}
+								<CustomImage
+									height={150}
+									width={200}
+									src={bannerItem.attributes?.image?.data?.attributes?.url}
 									alt={bannerItem.attributes?.image?.data?.attributes?.name}
 								/>
 							</a>

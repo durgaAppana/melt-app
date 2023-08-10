@@ -72,7 +72,9 @@ export default function TopSection({ topSectionData, bannerData = [] }) {
 					{bannerArray?.length > 0 &&
 						bannerArray.map((bannerItem, index) => (
 							<div
-								className={listingStyle["side-banner"] + (index != 0 ? " mt-4" : " ")}
+								className={
+									listingStyle["side-banner"] + (index != 0 ? " " + listingStyle["banner-top"] : " ")
+								}
 								key={index}
 							>
 								<a

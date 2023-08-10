@@ -31,7 +31,7 @@
 			}
 		}
 	}
-	@media (max-width: 480px) {
+	@media (max-width: 768px) {
 		font-size: 12px;
 		> div {
 			justify-content: center;
@@ -44,6 +44,13 @@
 				&:last-child {
 					margin-bottom: 0;
 				}
+				border-right: none !important;
+				margin: 0;
+				display: block;
+				justify-content: center;
+				align-items: center;
+				height: 15px;
+				padding: 7px;
 			}
 		}
 	}

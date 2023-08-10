@@ -14,6 +14,10 @@ body {
 	font-family: "Merriweather", serif !important;
 }
 
+.main-body {
+	padding: 20px;
+}
+
 a {
 	text-decoration: none !important;
 }
@@ -65,4 +69,26 @@ a {
 .owl-carousel .owl-item img {
 	width: 100% !important;
 	height: 100% !important;
+}
+
+@media (max-width: 768px) {
+	.social-sharing {
+		background-color: #fff;
+		position: fixed;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+	}
+
+	.social-sharing ul {
+		display: flex;
+		align-items: center;
+		justify-content: space-evenly;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	.social-sharing ul li {
+		border-bottom: none;
+	}
 }

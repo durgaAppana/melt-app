@@ -34,7 +34,7 @@ export default function PromotedSection({ articleData = [] }) {
 								listingStyle["cat"] + " " + listingStyle["mar-t-10"] + " " + listingStyle["mar-b-10"]
 							}
 						>
-							{item.attributes?.category?.data?.attributes?.type}
+							{item.attributes?.category?.data?.attributes?.type} :
 						</p>
 						<h2>
 							<Link
