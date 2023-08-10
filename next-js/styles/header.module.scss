@@ -264,8 +264,14 @@
 
 			.menu {
 				border-bottom: none;
-
-				ul {
+				.search-box{position: fixed;
+					.tagsWrapper{
+						ul{overflow: auto;flex-wrap: nowrap !important;margin:0 -10px !important;padding-left:10px !important;
+							li{flex:0 0 auto;width:auto;}
+						}
+					}
+				}
+				.main{
 					opacity: 0;
 					visibility: hidden;
 					position: fixed;
@@ -279,10 +285,10 @@
 					transform: translateX(-100%);
 					display: flex;
 					flex-direction: column;
-					justify-content: flex-start;
+					justify-content: flex-start !important;
 
 					li {
-						margin: 0;
+						margin: 0 !important;
 
 						a {
 							color: #FFF;
