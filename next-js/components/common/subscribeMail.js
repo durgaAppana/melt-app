@@ -16,6 +16,7 @@ export default function SubscribeMail() {
 	const [validation, setValidation] = useState({});
 	const [isLoading, setIsLoading] = useState(false);
 	const [errorResponse, setErrorResponse] = useState("");
+	const [isMailSend, setIsMailSend] = useState(false);
 
 	const formDataValidation = {
 		email: {
@@ -62,6 +63,7 @@ export default function SubscribeMail() {
 
 		if (response.status) {
 			resetFormData();
+			setIsMailSend(true)
 		} else {
 			setErrorResponse(response.message);
 		}
@@ -70,55 +72,63 @@ export default function SubscribeMail() {
 	return (
 		<>
 			<h3 className={commonStyle["sub-title"]}> Subscribe to Melt’s latest stories</h3>
-			<form onSubmit={handleSubmit(handleSubmitFormData)}>
-				<div className="es-field-wrap">
-					<label className={commonStyle["sub-text"]}>Email*
-						<input
-							{...validation.email}
-							className="form-control"
-							type="email"
-							name="email"
-							label="email"
-							onChange={(e) => {
-								validation.email.onChange(e);
-								setErrorResponse("");
-								updateFormData("email", e.target.value);
-							}}
-						/>
-					</label>
+			{isMailSend ?
+				<div className={commonStyle["message"]}>Your subscription was successful! Kindly
+					check your mailbox and confirm your subscription.
+					If you don't see the email within a few minutes,
+					check the spam/junk folder.</div>
+				:
+				<form onSubmit={handleSubmit(handleSubmitFormData)}>
+					<div className="es-field-wrap">
+						<label className={commonStyle["sub-text"]}>Email*
+							<input
+								{...validation.email}
+								className="form-control"
+								type="email"
+								name="email"
+								label="email"
+								onChange={(e) => {
+									validation.email.onChange(e);
+									setErrorResponse("");
+									updateFormData("email", e.target.value);
+								}}
+							/>
+						</label>
 
-					<p className={"text-danger " + commonStyle["sub-text"]}>{errors.email && errors.email.message}</p>
-					{typeof errorResponse != "undefined" && errorResponse != "" && (
-						<p className={"text-danger " + commonStyle["sub-text"]}>{errorResponse}</p>
-					)}
-				</div>
-				<div className="row">
-					<div className="col-lg-6">
-						<button
-							type="submit"
-							className={"form-control " + commonStyle["sub-text"]}
-							disabled={isLoading}
-						>
-							Subscribe
-						</button>
+						<p className={"text-danger " + commonStyle["sub-text"]}>{errors.email && errors.email.message}</p>
+						{typeof errorResponse != "undefined" && errorResponse != "" && (
+							<p className={"text-danger " + commonStyle["sub-text"]}>{errorResponse}</p>
+						)}
 					</div>
-					{isLoading && (
-						<div className="col-lg-6">
-							<span
-								className="es_spinner_image"
-								id="spinner-image"
+					<div className="row">
+						<div className="col-5">
+							<button
+								type="submit"
+								className={"form-control " + commonStyle["sub-text"]}
+								disabled={isLoading}
 							>
-								<Image
-									src="/images/spinner.gif"
-									alt="Loading"
-									height={20}
-									width={20}
-								/>
-							</span>
+								Subscribe
+							</button>
 						</div>
-					)}
-				</div>
-			</form>
+						<div className="col-5"></div>
+						{isLoading && (
+							<div className="col-lg-6">
+								<span
+									className="es_spinner_image"
+									id="spinner-image"
+								>
+									<Image
+										src="/images/spinner.gif"
+										alt="Loading"
+										height={20}
+										width={20}
+									/>
+								</span>
+							</div>
+						)}
+					</div>
+				</form>
+			}
 		</>
 	);
 }

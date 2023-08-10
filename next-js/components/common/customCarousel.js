@@ -19,6 +19,17 @@ export default function CustomCarousel({ children, carouselOptions = {}, classNa
 		mouseDrag: true,
 		smartSpeed: 1000,
 		...carouselOptions,
+		responsive: {
+			0: {
+				items: 1
+			},
+			400: {
+				items: 1.5
+			},
+			769: {
+				items: 3
+			}
+		}
 	};
 
 	return (

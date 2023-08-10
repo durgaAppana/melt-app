@@ -27,11 +27,11 @@ export default function AdvertisementBanners({ bannersData }) {
 							/>
 							<p className={detailsStyle["master-text"]}>{item.attributes.title}</p>
 							<div className={"row " + detailsStyle["banner-div"]}>
-								<div className="col-lg-6">
+								<div className="col-6">
 									<p className={detailsStyle["banner-title"]}>{item.attributes.brand}</p>
 								</div>
 								{item.attributes.button != null && (
-									<div className="col-lg-6  d-flex justify-content-end">
+									<div className="col-6  d-flex justify-content-end">
 										<button className={detailsStyle["small-button"]}>
 											{item.attributes.button}
 										</button>

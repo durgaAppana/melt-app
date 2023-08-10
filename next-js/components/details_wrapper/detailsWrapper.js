@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import detailsStyle from "../../styles/detail.module.css";
 import ReadsSection from "./readsSection";
 import DetailsSection from "./detailsSection";
-import AddBanners from "./addBanners";
+
 import { apiGetCall } from "../../utilities/apiServices";
 import { apiList } from "../../utilities/constants";
 
@@ -41,7 +41,7 @@ export default function DetailsWrapper({ detailsData = {} }) {
 			<div className="row">
 				<DetailsSection
 					categoryType={categoryType}
-					detailsData={detailsData.attributes}
+					detailsData={detailsData}
 					tagsList={detailsData?.attributes?.tags?.data}
 					meltAlso={meltAlso}
 				/>
@@ -50,7 +50,6 @@ export default function DetailsWrapper({ detailsData = {} }) {
 					articleType={categoryType}
 				/>
 			</div>
-			<AddBanners detailsData={detailsData} />
 		</section>
 	);
 }

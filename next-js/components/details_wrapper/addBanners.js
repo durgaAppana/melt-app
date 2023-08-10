@@ -23,7 +23,7 @@ export default function AddBanners({ detailsData }) {
 	return (
 		<div className={"row " + detailsStyle["add-banner"]}>
 			<h1 className={detailsStyle["banner-title"]}>Sponsored</h1>
-			<div className="col-lg-9">
+			<div className="col-lg-12">
 				<div className="row">
 					{bannersData.length > 0 &&
 						bannersData.slice(0, 2).map((item, index) => (
@@ -45,11 +45,11 @@ export default function AddBanners({ detailsData }) {
 									/>
 									<p className={detailsStyle["master-text"]}>{item.attributes.title}</p>
 									<div className="row">
-										<div className="col-lg-6">
+										<div className="col-6">
 											<p className={detailsStyle["banner-title"]}>{item.attributes.brand}</p>
 										</div>
 										{item.attributes.button != null && (
-											<div className="col-lg-6  d-flex justify-content-end">
+											<div className="col-6  d-flex justify-content-end">
 												<button className={detailsStyle["banner-button"]}>
 													{item.attributes.button}
 												</button>
