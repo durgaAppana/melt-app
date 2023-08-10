@@ -15,12 +15,15 @@ export default function CommentsSection({ detailsData }) {
 	const [commentText, setCommentText] = useState("");
 	const [commentsList, setCommentsList] = useState([]);
 	const [openModal, setOpenModal] = useState(false);
-	const [userName, setUserName] = useState()
+	const [userName, setUserName] = useState();
 	const [active, setActive] = useState(false);
+	const [isUserFavorite, setIsUserFavorite] = useState(false);
+	const [articleFavoriteCount, setArticleFavoriteCount] = useState("");
 
 	useEffect(() => {
 		getArticleComments();
-		setUserName(JSON.parse(localStorage.getItem("userData")))
+		setUserName(JSON.parse(localStorage.getItem("userData")));
+		getArticleFavoritesCount();
 	}, []);
 
 	useEffect(() => {
@@ -42,11 +45,11 @@ export default function CommentsSection({ detailsData }) {
 				let response1 = await apiPostCall(apiList.GET_USER_LOGIN, {}, payload);
 				if (response1.jwt) {
 					localStorage.setItem("userData", JSON.stringify(response1.user));
-					setUserName(JSON.parse(localStorage.getItem("userData")))
+					setUserName(JSON.parse(localStorage.getItem("userData")));
 				}
 			} else {
 				localStorage.setItem("userData", JSON.stringify(response[0]));
-				setUserName(JSON.parse(localStorage.getItem("userData")))
+				setUserName(JSON.parse(localStorage.getItem("userData")));
 			}
 		}
 	};
@@ -82,7 +85,7 @@ export default function CommentsSection({ detailsData }) {
 
 		if (response.status) {
 			getArticleComments();
-			setCommentText("")
+			setCommentText("");
 		}
 	};
 
@@ -96,11 +99,44 @@ export default function CommentsSection({ detailsData }) {
 
 	const textareaComm = () => {
 		if (active) {
-			setActive(active)
+			setActive(active);
 		} else {
-			setActive(!active)
+			setActive(!active);
 		}
-	}
+	};
+
+	const getArticleFavoritesCount = async () => {
+		const userData = JSON.parse(localStorage.getItem("userData"));
+
+		const response = await apiGetCall(apiList.ADD_ARTICLES_FAVORITES_COUNT + detailsData.id);
+		setArticleFavoriteCount(response.data.length);
+
+		if (response?.data?.length > 0 && userData != null) {
+			const isUserLiked = response.data.filter((item) => item.attributes.user_id == userData?.id)[0];
+			setIsUserFavorite(isUserLiked?.attributes?.is_liked);
+		}
+	};
+
+	const userAddFavorite = async () => {
+		const userData = JSON.parse(localStorage.getItem("userData"));
+		if (userData == null) return toggle();
+
+		const payload = {
+			data: {
+				article_id: detailsData.id,
+				user_id: userData?.id,
+			},
+		};
+
+		setIsLoading(true);
+		const response = await apiPostCall(apiList.ADD_USER_FAVORITE, {}, payload);
+		setIsLoading(false);
+
+		if (response.status) {
+			setIsUserFavorite(response.is_liked);
+			getArticleFavoritesCount();
+		}
+	};
 
 	return (
 		<>
@@ -132,7 +168,7 @@ export default function CommentsSection({ detailsData }) {
 								setCommentText(e.target.value);
 							}}
 						/>
-						{active &&
+						{active && (
 							<div className="text-editor-container">
 								<div className={detailsStyle["post-actions"]}>
 									<div className={detailsStyle["temp-post"]}>
@@ -146,16 +182,57 @@ export default function CommentsSection({ detailsData }) {
 									</div>
 								</div>
 							</div>
-						}
+						)}
 					</div>
 				</div>
 			</div>
+			<div className="row">
+				<div className="p-4">
+					{isUserFavorite ? (
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="16"
+							height="16"
+							fill="#b3a479"
+							class="bi bi-heart-fill"
+							viewBox="0 0 16 16"
+							onClick={userAddFavorite}
+							disabled={isLoading}
+						>
+							<path
+								fill-rule="evenodd"
+								d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
+							/>
+						</svg>
+					) : (
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="16"
+							height="16"
+							fill="currentColor"
+							class="bi bi-heart"
+							viewBox="0 0 16 16"
+							onClick={userAddFavorite}
+							disabled={isLoading}
+						>
+							<path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+						</svg>
+					)}
+					&nbsp;&nbsp;<span className={detailsStyle["likes-count"]}>{articleFavoriteCount}</span>
+				</div>
+			</div>
 			<div className={detailsStyle["comment"]}>
-				{userName ?
-					<p>Sign Out user
-						<button className={detailsStyle["button"]} onClick={logout}>logout</button>
+				{userName ? (
+					<p>
+						Sign Out user
+						<button
+							className={detailsStyle["button"]}
+							onClick={logout}
+						>
+							logout
+						</button>
 					</p>
-					:
+				) : (
 					<>
 						<div className={detailsStyle["login-text"]}>
 							<p>log in with</p>
@@ -203,7 +280,7 @@ export default function CommentsSection({ detailsData }) {
 							<button onClick={toggle}>login</button>
 						</div>
 					</>
-				}
+				)}
 			</div>
 			<div className={detailsStyle["comments-list"]}>
 				{commentsList &&

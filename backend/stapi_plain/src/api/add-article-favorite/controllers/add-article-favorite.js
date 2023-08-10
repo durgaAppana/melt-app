@@ -29,6 +29,7 @@ module.exports = createCoreController(
         return ctx.send(
           {
             status: true,
+            is_liked: true,
             message: "article added successfully.",
           },
           200
@@ -45,6 +46,7 @@ module.exports = createCoreController(
         return ctx.send(
           {
             status: true,
+            is_liked: true,
             message: "article added successfully.",
           },
           200
@@ -56,6 +58,7 @@ module.exports = createCoreController(
         return ctx.send(
           {
             status: true,
+            is_liked: false,
             message: "article removed successfully.",
           },
           200

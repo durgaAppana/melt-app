@@ -470,15 +470,21 @@
 	font-size: 14px;
 }
 
-.social-media button{
+.social-media button {
 	border-radius: 10px;
 }
 
-.button{
+.button {
 	border-radius: 10px;
 	margin-left: 10px;
 }
 
-.comment{
+.comment {
 	display: flex;
+}
+
+.likes-count {
+	color: #b3a479;
+	font-size: 16px;
+	font-weight: 700;
 }
