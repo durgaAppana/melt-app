@@ -109,7 +109,7 @@ export default function CommentsSection({ detailsData }) {
 		const userData = JSON.parse(localStorage.getItem("userData"));
 
 		const response = await apiGetCall(apiList.ADD_ARTICLES_FAVORITES_COUNT + detailsData.id);
-		setArticleFavoriteCount(response.data.length);
+		setArticleFavoriteCount(response?.data?.length);
 
 		if (response?.data?.length > 0 && userData != null) {
 			const isUserLiked = response.data.filter((item) => item.attributes.user_id == userData?.id)[0];
@@ -194,7 +194,7 @@ export default function CommentsSection({ detailsData }) {
 							width="16"
 							height="16"
 							fill="#b3a479"
-							class="bi bi-heart-fill"
+							className="bi bi-heart-fill"
 							viewBox="0 0 16 16"
 							onClick={userAddFavorite}
 							disabled={isLoading}
@@ -210,7 +210,7 @@ export default function CommentsSection({ detailsData }) {
 							width="16"
 							height="16"
 							fill="currentColor"
-							class="bi bi-heart"
+							className="bi bi-heart"
 							viewBox="0 0 16 16"
 							onClick={userAddFavorite}
 							disabled={isLoading}

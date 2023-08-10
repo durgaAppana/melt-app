@@ -5,7 +5,7 @@
 /.pnp
 .pnp.js
 /backend/stapi_plain/node_modules
-/backend/stapi_plain/.strapi-updater.json
+/backend/stapi_plain/.strapi-updater.json/
 
 # testing
 /coverage
