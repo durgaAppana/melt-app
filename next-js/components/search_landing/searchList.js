@@ -44,7 +44,7 @@ export default function SearchList({ searchList, searchData, arrRange, totalPage
 					<div className={searchStyle['sort']}>
 						<h6>Sort By:</h6>
 						<select
-							class="form-select form-select-sm"
+							className="form-select form-select-sm"
 							onChange={(e) => {
 								filterData(e.target.value);
 							}}
@@ -63,7 +63,7 @@ export default function SearchList({ searchList, searchData, arrRange, totalPage
 				{searchList.length > 0 ? (
 					<>
 						{filterList.map((item, i) => (
-							<div className={searchStyle["gsc-webResult"] + " " + searchStyle["gsc-result"]}>
+							<div key={i} className={searchStyle["gsc-webResult"] + " " + searchStyle["gsc-result"]}>
 								<div className={searchStyle["gs-title"]}>
 									<Link
 										className={searchStyle["gs-title"]}
@@ -124,7 +124,7 @@ export default function SearchList({ searchList, searchData, arrRange, totalPage
 							</div>
 						))}
 						<ul className="pagination justify-content-center">
-							{totalPages.total > 10 ? arrRange?.map((v, i) => (<li className={active == v ? 'page-item active' : 'page-item'}><span className="page-link" key={i} onClick={() => searchData(v)}>{v}</span></li>)) : null}
+							{totalPages.total > 10 ? arrRange?.map((v, i) => (<li key={i} className={active == v ? 'page-item active' : 'page-item'}><span className="page-link" onClick={() => searchData(v)}>{v}</span></li>)) : null}
 						</ul>
 					</>
 				) : (

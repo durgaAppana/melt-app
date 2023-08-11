@@ -29,6 +29,13 @@ export default function Search() {
 		if (searchData !== "") {
 			router.push(`/search/?q=${searchData.toLowerCase()}`);
 			document.querySelector("body").classList = [];
+			setSearchData("")
+		}
+	};
+	const handleKeyPress = (event) => {
+		if (event.key === "Enter") {
+			event.preventDefault();
+			searchResult();
 		}
 	};
 
@@ -48,7 +55,9 @@ export default function Search() {
 						className={stylesHeader["search-input"]}
 						name="search"
 						title="search"
+						value={searchData}
 						onChange={(e) => setSearchData(e.target.value)}
+						onKeyPress={handleKeyPress}
 					/>
 					<span
 						className={stylesHeader.button}
