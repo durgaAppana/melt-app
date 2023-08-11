@@ -516,6 +516,7 @@
   .title {
     font-size: 20px;
   }
+
   .sub-heading {
     font-size: 18px;
   }
@@ -526,12 +527,21 @@
   .also-melt .owl-carousel .owl-stage-outer .owl-stage .owl-item {
     width: 0px !important;
   }
-  .also-melt .recommend-post{
-	min-height: 200px !important;
-	width: 220px !important;
-	margin-bottom: 40px;
+  .also-melt .recommend-post {
+    min-height: 200px !important;
+    width: 220px !important;
+    margin-bottom: 40px;
   }
-  .also-melt img{
-	min-height: 200px !important;
+  .also-melt img {
+    min-height: 200px !important;
+  }
+  .also-melt .recommend-post h2 {
+    display: none !important;
+  }
+  .also-melt .recommend-post .owl-prev {
+    margin-top: -25px !important;
+  }
+  .also-melt .recommend-post .owl-next {
+    margin-top: -25px !important;
   }
 }

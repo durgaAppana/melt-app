@@ -36,11 +36,7 @@
 	justify-content: space-between;
 	padding-bottom: 10px;
 	border-bottom: 1px solid #777;
-}
-
-.gsc-result-info {
-	font-size: 16px;
-	padding-top: 10px;
+	align-items:center;
 }
 
 .gsc-webResult.gsc-result {
@@ -97,4 +93,23 @@
 	justify-content: center;
 	align-items: center;
 	min-height: 200px;
+}
+.sort{
+	display: flex;
+	justify-content: space-between;
+	flex:0 0 auto;
+	align-items: center;
+}
+.sort h6{flex:0 0 auto;margin-bottom:0;margin-right:10px;}
+@media (max-width: 480px){
+	.title{
+		font-size: 28px;
+	}
+	.image-sec{
+		width: 30% !important;
+		height: 25% !important;
+	}
+	.dec-sec{
+		width: 70% !important;
+	}
 }

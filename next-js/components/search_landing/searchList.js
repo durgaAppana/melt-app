@@ -41,7 +41,8 @@ export default function SearchList({ searchList, searchData, arrRange, totalPage
 			<div className={searchStyle["body-text"]}>
 				<div className={searchStyle["filters-dropdown"]}>
 					<div className={searchStyle["gsc-result-info"]}>About {totalPages.total ? totalPages.total : 0} results</div>
-					<div>
+					<div className={searchStyle['sort']}>
+						<h6>Sort By:</h6>
 						<select
 							class="form-select form-select-sm"
 							onChange={(e) => {
@@ -90,7 +91,7 @@ export default function SearchList({ searchList, searchData, arrRange, totalPage
 								</div>
 								<div className={searchStyle["gsc-table-result"]}>
 									<div className="row">
-										<div className={"col-lg-2 " + searchStyle["image-sec"]}>
+										<div className={"col-2 " + searchStyle["image-sec"]}>
 											<Link
 												className="gs-image"
 												href={{
@@ -109,7 +110,7 @@ export default function SearchList({ searchList, searchData, arrRange, totalPage
 												/>
 											</Link>
 										</div>
-										<div className={"col-lg-10 " + searchStyle["dec-sec"]}>
+										<div className={"col-10 " + searchStyle["dec-sec"]}>
 											<div className={searchStyle["article-content"]}>
 												{moment.utc(item.attributes.publishedAt).format("LL")}...{" "}
 												{item.attributes.description.length > 150
