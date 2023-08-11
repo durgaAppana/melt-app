@@ -509,6 +509,10 @@
   margin-bottom: 4px;
 }
 
+.recommend-post h2 {
+  font-size: 15px !important;
+}
+
 @media (max-width: 480px) {
   .body-text iframe {
     width: 100% !important;
