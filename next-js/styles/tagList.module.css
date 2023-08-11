@@ -100,3 +100,29 @@
 	text-align: left;
 	color: #9b9b9b;
 }
+
+.tag-load-btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 15px;
+}
+/* responsive */
+
+@media (max-width: 768px) {
+	.hidden-sm-down {
+		display: none;
+	}
+
+	.flex-last {
+		order: -1;
+	}
+
+	.article-list h2 {
+		font-size: 15px !important;
+	}
+
+	.article-list h2 a {
+		font-size: 15px !important;
+	}
+}

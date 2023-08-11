@@ -13,7 +13,7 @@ export default function SocialMedia() {
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							width="50"
-							height="45"
+							height="30"
 							fill="black"
 							className="bi bi-facebook"
 							viewBox="0 0 16 16"
@@ -31,7 +31,7 @@ export default function SocialMedia() {
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							width="50"
-							height="45"
+							height="30"
 							fill="black"
 							className="bi bi-twitter"
 							viewBox="0 0 16 16"
@@ -49,7 +49,7 @@ export default function SocialMedia() {
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							width="50"
-							height="45"
+							height="30"
 							fill="black"
 							className="bi bi-linkedin"
 							viewBox="0 0 16 16"
@@ -65,7 +65,7 @@ export default function SocialMedia() {
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							width="50"
-							height="45"
+							height="30"
 							fill="balck"
 							className="bi bi-envelope-fill"
 							viewBox="0 0 16 16"

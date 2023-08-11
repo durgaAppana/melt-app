@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import tagStyle from "../../styles/tagList.module.css";
+import commonStyle from "../../styles/common.module.css";
 import { baseUrl } from "../../utilities/constants";
 import Link from "next/link";
 import CustomImage from "../common/customImage";
-
+commonStyle;
 export default function TagList({ tagList, tagName }) {
 	const displayName = tagName.split(" ").map((item) => {
 		const firstWord = item.charAt(0).toUpperCase();
@@ -14,7 +15,7 @@ export default function TagList({ tagList, tagName }) {
 
 	// Function to load more data when the "Load More" button is clicked
 	const handleLoadMore = () => {
-		setItemsPerPage(prevItemsPerPage => prevItemsPerPage + 5);
+		setItemsPerPage((prevItemsPerPage) => prevItemsPerPage + 5);
 	};
 
 	// Function to calculate the last item index of the current page
@@ -61,12 +62,27 @@ export default function TagList({ tagList, tagName }) {
 								</div>
 								<div
 									className={
-										"col-md-1 " + tagStyle["author-article-date"] + " " + tagStyle["flex-start"]
+										"col-md-1 " +
+										tagStyle["author-article-date"] +
+										" " +
+										tagStyle["flex-start"] +
+										" " +
+										tagStyle["hidden-sm-down"]
 									}
 								>
 									March 16, 2020
 								</div>
 								<div className={"col-lg-7 col-7 " + tagStyle["flex-start"]}>
+								<div
+									className={
+										"col-md-1 " +
+										tagStyle["author-article-date"] +
+										" " +
+										tagStyle["flex-start"]
+									}
+								>
+									March 16, 2020
+								</div>
 									<p className={tagStyle["cat"]}>
 										{tagItem.attributes.category?.data?.attributes?.type}
 									</p>
@@ -82,7 +98,7 @@ export default function TagList({ tagList, tagName }) {
 											{tagItem.attributes.title}
 										</Link>
 									</h2>
-									<p className={tagStyle["sub-heading"]}>
+									<p className={tagStyle["sub-heading"] + " " + tagStyle["hidden-sm-down"]}>
 										{tagItem.attributes?.description?.length > 150
 											? tagItem.attributes?.description?.slice(0, 150) + "..."
 											: tagItem.attributes?.description}
@@ -91,7 +107,14 @@ export default function TagList({ tagList, tagName }) {
 							</div>
 						))}
 					{itemsPerPage < tagList.length && (
-						<button onClick={handleLoadMore}>Load More Articles</button>
+						<div className={tagStyle["tag-load-btn"]}>
+							<button
+								className={commonStyle["load-more"]}
+								onClick={handleLoadMore}
+							>
+								Load More Articles
+							</button>
+						</div>
 					)}
 				</div>
 			</div>
