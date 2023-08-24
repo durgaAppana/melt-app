@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import listingStyle from "../../styles/listing.module.css";
 import Link from "next/link";
-import { baseUrl } from "../../utilities/constants";
 import PromotedSection from "./promotedSection";
 import CustomImage from "../common/customImage";
 

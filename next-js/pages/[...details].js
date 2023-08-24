@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
-// import DetailsWrapper from "../components/details_wrapper/detailsWrapper";
 import { apiGetCall } from "../utilities/apiServices";
 import { apiList } from "../utilities/constants";
 import PageNotFound from "../components/common/pageNotFound";
 import { NextSeo } from "next-seo";
 import dynamic from "next/dynamic";
+import CommonLoadJquery from "../components/common/commonLoadJquery";
 
 const DetailsWrapper = dynamic(() => import("../components/details_wrapper/detailsWrapper"), { ssr: true })
 export default function Details({ detailsData, title }) {
@@ -23,12 +23,13 @@ export default function Details({ detailsData, title }) {
 			<DetailsWrapper
 				detailsData={detailsData}
 			/>
+			<CommonLoadJquery />
 		</>
 	);
 }
 
 export async function getServerSideProps(context) {
-	const {id} = context.query
+	const { id } = context.query
 	const detailsData = await apiGetCall(apiList.GET_ARTICLE_DATA + "/" + id + "?populate=image,category,tags");
 	return {
 		props: {

@@ -84,7 +84,7 @@
 .owl-prev {
 	background-image: url("../public/images/left_arrow.png");
 	position: absolute;
-	top: 50%;
+	top: 40%;
 	height: 25px;
 	width: 25px;
 	border: none;
@@ -96,7 +96,7 @@
 .owl-next {
 	background-image: url("../public/images/right_arrow.png");
 	position: absolute;
-	top: 50%;
+	top: 40%;
 	right: 21px;
 	height: 25px;
 	width: 25px;

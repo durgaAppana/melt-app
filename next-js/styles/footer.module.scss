@@ -2,7 +2,7 @@
 	background: #f7f7f7;
 	padding: 25px 0;
 	width: 100%;
-	color: #9e9e9e;
+	color:#514949;;
 
 	> div {
 		display: flex;
@@ -27,7 +27,7 @@
 		}
 		li {
 			a {
-				color: inherit;
+				color: #656060;;
 			}
 		}
 	}
@@ -41,7 +41,7 @@
 			margin-bottom: 15px;
 			li {
 				width: 100%;
-				margin-bottom: 4px;
+				margin-bottom: 4px !important;
 				&:last-child {
 					margin-bottom: 0;
 				}

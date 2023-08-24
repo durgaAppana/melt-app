@@ -12,6 +12,8 @@ body {
 	position: relative;
 	font-size: 14px !important;
 	font-family: "Merriweather", serif !important;
+	line-height:1.6 !important;
+	letter-spacing:.6px !important;
 }
 
 .main-body {

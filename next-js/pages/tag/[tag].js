@@ -1,9 +1,10 @@
 import React from "react";
-import TagWrapper from "../../components/tags/tagWrapper";
 import { apiGetCall } from "../../utilities/apiServices";
 import { apiList } from "../../utilities/constants";
-import PageNotFound from "../../components/common/pageNotFound";
 import { NextSeo } from "next-seo";
+import dynamic from "next/dynamic";
+const PageNotFound = dynamic(()=>import("../../components/common/pageNotFound"))
+const TagWrapper = dynamic(() => import("../../components/tags/tagWrapper"))
 
 export default function Tag({ tagList, tagName, title }) {
 	const seoOption = {

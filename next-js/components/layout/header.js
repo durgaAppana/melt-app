@@ -49,7 +49,7 @@ export default function Header() {
 				setActiveSection("");
 			}
 		});
-	}, []);
+	}, [router.pathname]);
 	const handleClick = () => {
 		document.querySelector("body").classList.toggle(stylesHeader["activateHeader"]);
 	};
@@ -88,6 +88,7 @@ export default function Header() {
 										href={"/#" + menu.attributes.name.toLowerCase()}
 										// className="text-dark"
 										onClick={handleClick}
+										tabIndex="0"
 									>
 										{menu.attributes.name}
 									</Link>

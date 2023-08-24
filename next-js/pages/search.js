@@ -1,8 +1,6 @@
 import React from 'react'
-import SearchWrapper from '../components/search_landing/searchWrapper'
-import { apiGetCall } from '../utilities/apiServices'
-import { apiList } from '../utilities/constants'
-
+import dynamic from 'next/dynamic'
+const SearchWrapper = dynamic(() => import('../components/search_landing/searchWrapper'))
 export default function Search({ title }) {
     return (
         <>

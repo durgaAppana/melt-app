@@ -47,18 +47,21 @@ export default function Search() {
 		<div className={stylesHeader["search-copy"]}>
 			<form>
 				<div className={stylesHeader["searchBox"]}>
-					<input
-						autoComplete="off"
-						type="search"
-						placeholder="Search here..."
-						size="10"
-						className={stylesHeader["search-input"]}
-						name="search"
-						title="search"
-						value={searchData}
-						onChange={(e) => setSearchData(e.target.value)}
-						onKeyPress={handleKeyPress}
-					/>
+					<label htmlFor="search">
+						<input
+							autoComplete="off"
+							type="text"
+							placeholder="Search here..."
+							size="10"
+							className={stylesHeader["search-input"]}
+							name="search"
+							id="search"
+							title="search"
+							value={searchData}
+							onChange={(e) => setSearchData(e.target.value)}
+							onKeyPress={handleKeyPress}
+						/>
+					</label>
 					<span
 						className={stylesHeader.button}
 						onClick={searchResult}

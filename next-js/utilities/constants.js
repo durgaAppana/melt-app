@@ -1,4 +1,4 @@
-export const baseUrl = "http://192.168.10.115:1337";
+export const baseUrl = "http://localhost:1337";
 
 export const apiList = {
 	GET_HEADER_MENU_LIST: baseUrl + "/api/get-header-menus",

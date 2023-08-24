@@ -1,7 +1,6 @@
 import Link from "next/link";
 
 import listingStyle from "../../styles/listing.module.css";
-import { baseUrl } from "../../utilities/constants";
 import CustomImage from "../common/customImage";
 
 export default function PromotedSection({ articleData = [] }) {

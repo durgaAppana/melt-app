@@ -1,5 +1,5 @@
+import React from "react";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
 import CustomImage from "../common/customImage";
 
 import detailsStyle from "../../styles/detail.module.css";

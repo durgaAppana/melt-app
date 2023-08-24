@@ -5,7 +5,7 @@ import { signIn, signOut } from "next-auth/react";
 import moment from "moment";
 
 import detailsStyle from "../../styles/detail.module.css";
-import { apiList, baseUrl } from "../../utilities/constants";
+import { apiList } from "../../utilities/constants";
 import { apiGetCall, apiPostCall } from "../../utilities/apiServices";
 import LoginModal from "../common/loginModal";
 
@@ -153,37 +153,39 @@ export default function CommentsSection({ detailsData }) {
 					</span>
 				</div>
 				<div className={detailsStyle["textarea-outer-wrapper"]}>
-					<div
-						className={detailsStyle["textarea-wrapper"]}
-						data-role="textarea"
-						dir="auto"
-					>
-						<textarea
-							onClick={textareaComm}
-							className="form-control"
-							name="comments"
-							rows={active ? 6 : 2}
-							value={commentText}
-							onChange={(e) => {
-								setCommentText(e.target.value);
-							}}
-						/>
-						{active && (
-							<div className="text-editor-container">
-								<div className={detailsStyle["post-actions"]}>
-									<div className={detailsStyle["temp-post"]}>
-										<button
-											className={detailsStyle["comment-btn"]}
-											onClick={(e) => userComments(e)}
-											disabled={isLoading}
-										>
-											Comment
-										</button>
+					<label htmlFor="textarea">
+						<div
+							className={detailsStyle["textarea-wrapper"]}
+							data-role="textarea"
+							dir="auto"
+						>
+							<textarea
+								onClick={textareaComm}
+								className="form-control"
+								name="comments"
+								rows={active ? 6 : 2}
+								value={commentText}
+								onChange={(e) => {
+									setCommentText(e.target.value);
+								}}
+							/>
+							{active && (
+								<div className="text-editor-container">
+									<div className={detailsStyle["post-actions"]}>
+										<div className={detailsStyle["temp-post"]}>
+											<button
+												className={detailsStyle["comment-btn"]}
+												onClick={(e) => userComments(e)}
+												disabled={isLoading}
+											>
+												Comment
+											</button>
+										</div>
 									</div>
 								</div>
-							</div>
-						)}
-					</div>
+							)}
+						</div>
+					</label>
 				</div>
 			</div>
 			<div className="row">
@@ -200,7 +202,7 @@ export default function CommentsSection({ detailsData }) {
 							disabled={isLoading}
 						>
 							<path
-								fill-rule="evenodd"
+								fillRule="evenodd"
 								d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
 							/>
 						</svg>

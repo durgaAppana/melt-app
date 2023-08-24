@@ -37,7 +37,6 @@
 	padding-top: 10px;
 	font-size: 20px;
 	font-weight: 400;
-	line-height: 1.11;
 	font-family: "Times New Roman", Times, serif, "Trebuchet MS";
 }
 
@@ -155,7 +154,6 @@
 .tags-text {
 	font-size: 14px;
 	font-weight: 700;
-	line-height: 1.25;
 	text-align: left;
 	color: #5fb969;
 	text-transform: uppercase;
@@ -164,7 +162,6 @@
 .badge {
 	font-size: 15px !important;
 	font-weight: 400;
-	line-height: 1.57;
 	text-align: center;
 	color: #4a4a4a !important;
 	border-radius: 8px;
@@ -205,7 +202,6 @@
 	color: #fff;
 	padding-top: 0;
 	padding-bottom: 0;
-	line-height: 64px;
 }
 .headerMain.scrolled .search {
 	background-image: url("data:image/svg+xml,%3Csvg id='Group_29466' data-name='Group 29466' xmlns='http://www.w3.org/2000/svg' width='21.061' height='21.111' viewBox='0 0 21.061 21.111'%3E%3Cg id='Ellipse_31' data-name='Ellipse 31' transform='translate(0 0)' fill='none' stroke='%23FFF' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5'%3E%3Cellipse cx='9.333' cy='9.363' rx='9.333' ry='9.363' stroke='none'/%3E%3Cellipse cx='9.333' cy='9.363' rx='8.583' ry='8.613' fill='none'/%3E%3C/g%3E%3Cpath id='Path_9' data-name='Path 9' d='M26,26l4.267,4.267' transform='translate(-10.267 -10.216)' fill='%23FFF' stroke='%23FFF' stroke-linecap='round' stroke-width='1.5'/%3E%3C/svg%3E%0A");

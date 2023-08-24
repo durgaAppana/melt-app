@@ -6,6 +6,7 @@ import { apiGetCall } from "../../utilities/apiServices";
 import { apiList } from "../../utilities/constants";
 import { useRouter } from "next/router";
 import * as Scroll from "react-scroll";
+import DefaultLanding from "../default/defaultLanding";
 
 export default function LandingWrapper() {
 	const { Element: ScrollElement } = Scroll;
@@ -52,9 +53,9 @@ export default function LandingWrapper() {
 
 		setIsLoading(true);
 		const response = await apiGetCall(apiList.GET_ARTICLES_LIST);
-		setIsLoading(false);
-
+		
 		if (response?.data?.length > 0) {
+		setIsLoading(false);
 			response?.data?.map((article) => {
 				const articleType = article?.attributes?.category?.data?.attributes?.type.toLowerCase();
 				if (Object.keys(articleObj).map((item) => item.toLowerCase() == articleType)) {
@@ -80,9 +81,9 @@ export default function LandingWrapper() {
 
 		setIsLoading(true);
 		const response = await apiGetCall(apiList.GET_BANNERS_DATA);
-		setIsLoading(false);
-
+		
 		if (response?.data?.length > 0) {
+			setIsLoading(false);
 			response.data.map((banner) => {
 				banner?.attributes?.categories?.data.map((item) => {
 					if (Object.keys(bannerData).map((obj) => obj == item.attributes.type.toLowerCase())) {
@@ -112,59 +113,63 @@ export default function LandingWrapper() {
 	}, [section]);
 
 	return (
-		<>
-			<TopSection
-				topSectionData={topSectionData}
-				bannerData={bannerData.top_section}
-			/>
-			<ScrollElement
-				id="marketing"
-				name="marketing"
-			>
-				{articleList?.marketing.length > 0 && (
-					<ArticleSection
-						articleData={articleList.marketing}
-						bannerData={bannerData.marketing}
-						articleType="Marketing"
-					/>
-				)}
-			</ScrollElement>
-			<ScrollElement
-				id="media"
-				name="media"
-			>
-				{articleList?.media.length > 0 && (
-					<ArticleSection
-						articleData={articleList.media}
-						bannerData={bannerData.media}
-						articleType="Media"
-					/>
-				)}
-			</ScrollElement>
-			<ScrollElement
-				id="advertising"
-				name="advertising"
-			>
-				{articleList?.advertising.length > 0 && (
-					<ArticleSection
-						articleData={articleList.advertising}
-						bannerData={bannerData.advertising}
-						articleType="Advertising"
-					/>
-				)}
-			</ScrollElement>
-			<ScrollElement
-				id="research"
-				name="research"
-			>
-				{articleList.research.length > 0 && (
-					<ArticleSection
-						articleData={articleList.research}
-						bannerData={bannerData.research}
-						articleType="Research"
-					/>
-				)}
-			</ScrollElement>
+		<>{isLoading ?
+			<DefaultLanding /> :
+			<>
+				<TopSection
+					topSectionData={topSectionData}
+					bannerData={bannerData.top_section}
+				/>
+				<ScrollElement
+					id="marketing"
+					name="marketing"
+				>
+					{articleList?.marketing.length > 0 && (
+						<ArticleSection
+							articleData={articleList.marketing}
+							bannerData={bannerData.marketing}
+							articleType="Marketing"
+						/>
+					)}
+				</ScrollElement>
+				<ScrollElement
+					id="media"
+					name="media"
+				>
+					{articleList?.media.length > 0 && (
+						<ArticleSection
+							articleData={articleList.media}
+							bannerData={bannerData.media}
+							articleType="Media"
+						/>
+					)}
+				</ScrollElement>
+				<ScrollElement
+					id="advertising"
+					name="advertising"
+				>
+					{articleList?.advertising.length > 0 && (
+						<ArticleSection
+							articleData={articleList.advertising}
+							bannerData={bannerData.advertising}
+							articleType="Advertising"
+						/>
+					)}
+				</ScrollElement>
+				<ScrollElement
+					id="research"
+					name="research"
+				>
+					{articleList.research.length > 0 && (
+						<ArticleSection
+							articleData={articleList.research}
+							bannerData={bannerData.research}
+							articleType="Research"
+						/>
+					)}
+				</ScrollElement>
+			</>
+		}
 		</>
 	);
 }

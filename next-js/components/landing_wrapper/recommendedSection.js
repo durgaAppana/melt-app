@@ -1,10 +1,9 @@
+import React from "react";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
 
 import CustomCarousel from "../common/customCarousel";
 import listingStyle from "../../styles/listing.module.css";
 import commonStyle from "../../styles/common.module.css";
-import { baseUrl } from "../../utilities/constants";
 import CustomImage from "../common/customImage";
 
 export default function RecommendedSection({ articleType = "", recommendedArticles = [], isLoading, bannerArray }) {

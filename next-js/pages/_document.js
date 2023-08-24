@@ -12,11 +12,6 @@ class MyDocument extends Document {
 						description="Melt - Marketing, media, advertising and technology"
 					/>
 					<script
-						src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"
-						async
-						strategy="lazyOnload"
-					></script>
-					<script
 						type="text/javascript"
 						src="https://unpkg.com/default-passive-events"
 						async
@@ -25,7 +20,8 @@ class MyDocument extends Document {
 					<link
 						rel="preload"
 						href="/favicon.ico"
-						as="style"
+						as="image"
+						type="image/x-icon"
 					/>
 				</Head>
 				<body>

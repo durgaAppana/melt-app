@@ -2,10 +2,10 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
-import { emailValidation } from "../../utilities/utils";
 import { apiPostCall } from "../../utilities/apiServices";
 import { apiList } from "../../utilities/constants";
 import commonStyle from "../../styles/common.module.css";
+import { formValidationField } from "../../utilities/formValidation";
 
 export default function SubscribeMail() {
 	const defaultFormData = {
@@ -18,16 +18,6 @@ export default function SubscribeMail() {
 	const [errorResponse, setErrorResponse] = useState("");
 	const [isMailSend, setIsMailSend] = useState(false);
 
-	const formDataValidation = {
-		email: {
-			required: "Please enter email",
-			pattern: {
-				value: emailValidation(),
-				message: "Please enter valid email",
-			},
-		},
-	};
-
 	const {
 		handleSubmit,
 		register,
@@ -37,9 +27,10 @@ export default function SubscribeMail() {
 
 	useEffect(() => {
 		const temp = {
-			email: register("email", formDataValidation.email),
+			email: register("email", formValidationField.email),
 		};
 		setValidation(temp);
+		setFormData(defaultFormData)
 	}, []);
 
 	const updateFormData = (type, value) => {
@@ -80,7 +71,7 @@ export default function SubscribeMail() {
 				:
 				<form onSubmit={handleSubmit(handleSubmitFormData)}>
 					<div className="es-field-wrap">
-						<label className={commonStyle["sub-text"]}>Email*
+						<label htmlFor="email" className={commonStyle["sub-text"]}>Email*
 							<input
 								{...validation.email}
 								className="form-control"

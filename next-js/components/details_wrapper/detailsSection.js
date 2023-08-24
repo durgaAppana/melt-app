@@ -25,7 +25,6 @@ export default function DetailsSection({ categoryType = "", detailsData = {}, ta
 				<span className={detailsStyle["author-text"]}>
 					<span>
 						<Link
-							style={{ color: "#9e9e9e" }}
 							href={"/author/" + convertToSlug(detailsData.attributes.author)}
 							aria-label={detailsData.attributes.author}
 						>

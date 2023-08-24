@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import listingStyle from "../../styles/listing.module.css";
 import SuggestionsSection from "./suggestionsSection";
 import RecommendedSection from "./recommendedSection";
-import { baseUrl } from "../../utilities/constants";
 import CustomImage from "../common/customImage";
 
 export default function ArticleSection({ articleType = "", articleData = [], bannerData = [] }) {

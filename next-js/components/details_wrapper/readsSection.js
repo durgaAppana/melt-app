@@ -1,6 +1,5 @@
 import React from "react";
 import detailsStyle from "../../styles/detail.module.css";
-import { baseUrl } from "../../utilities/constants";
 import Link from "next/link";
 import SubscribeMail from "../common/subscribeMail";
 import CustomImage from "../common/customImage";

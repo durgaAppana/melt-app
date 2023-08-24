@@ -4,6 +4,7 @@ import commonStyle from "../../styles/common.module.css";
 import { baseUrl } from "../../utilities/constants";
 import Link from "next/link";
 import CustomImage from "../common/customImage";
+import moment from "moment";
 commonStyle;
 export default function TagList({ tagList, tagName }) {
 	const displayName = tagName.split(" ").map((item) => {
@@ -70,7 +71,7 @@ export default function TagList({ tagList, tagName }) {
 										tagStyle["hidden-sm-down"]
 									}
 								>
-									March 16, 2020
+									{moment.utc(tagItem.attributes.publishedAt).format("LL")}
 								</div>
 								<div className={"col-lg-7 col-7 " + tagStyle["flex-start"]}>
 								<div
@@ -81,7 +82,6 @@ export default function TagList({ tagList, tagName }) {
 										tagStyle["flex-start"]
 									}
 								>
-									March 16, 2020
 								</div>
 									<p className={tagStyle["cat"]}>
 										{tagItem.attributes.category?.data?.attributes?.type}

@@ -1,10 +1,8 @@
+import React from "react";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
 
 import listingStyle from "../../styles/listing.module.css";
-import { baseUrl } from "../../utilities/constants";
 import CustomImage from "../common/customImage";
-
 export default function SuggestionsSection({ displayArticles }) {
 	return (
 		<div className="row">

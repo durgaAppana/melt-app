@@ -25,7 +25,7 @@ module.exports = createCoreController('api::contact.contact', ({ strapi }) => ({
                 service: "gmail", // You can change this to your preferred email provider
                 auth: {
                     user: "vikas.g@fortune4.in", // Replace with your Gmail email address
-                    pass: "dwbqjxaewfobqfuu", // Replace with your Gmail password
+                    pass: "urozjoexcvcgkxpv", // Replace with your Gmail password
                 },
             });
             const mailOptions = {

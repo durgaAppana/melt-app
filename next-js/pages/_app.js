@@ -14,7 +14,7 @@ function MyApp({ Component, pageProps }) {
 			<div className="container main-body">
 				{router.pathname !== "/" && <SocialMedia />}
 				<SessionProvider session={pageProps.session}>
-				<Component {...pageProps} />
+					<Component {...pageProps} />
 				</SessionProvider>
 			</div>
 			<Footer />
