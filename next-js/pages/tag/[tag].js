@@ -3,6 +3,7 @@ import { apiGetCall } from "../../utilities/apiServices";
 import { apiList } from "../../utilities/constants";
 import { NextSeo } from "next-seo";
 import dynamic from "next/dynamic";
+// import TagWrapper from "../../components/tags/tagWrapper"
 const PageNotFound = dynamic(()=>import("../../components/common/pageNotFound"))
 const TagWrapper = dynamic(() => import("../../components/tags/tagWrapper"))
 

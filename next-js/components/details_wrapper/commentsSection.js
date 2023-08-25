@@ -298,7 +298,7 @@ export default function CommentsSection({ detailsData }) {
 								</span>
 							</div>
 							<div className={detailsStyle["comments-sec"]}>
-								<h4>{list.attributes.user_name}</h4>
+								<h1>{list.attributes.user_name}</h1>
 								<span>{moment.utc(list.attributes.publishedAt).fromNow()}</span>
 								<p>{list.attributes.comments}</p>
 							</div>

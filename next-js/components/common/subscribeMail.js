@@ -62,7 +62,7 @@ export default function SubscribeMail() {
 
 	return (
 		<>
-			<h3 className={commonStyle["sub-title"]}> Subscribe to Melt’s latest stories</h3>
+			<h1 className={commonStyle["sub-title"]}> Subscribe to Melt’s latest stories</h1>
 			{isMailSend ?
 				<div className={commonStyle["message"]}>Your subscription was successful! Kindly
 					check your mailbox and confirm your subscription.

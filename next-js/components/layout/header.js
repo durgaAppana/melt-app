@@ -21,7 +21,6 @@ export default function Header() {
 		document.querySelector("body").classList.toggle(stylesHeader["activateSearch"]);
 		setShwSearch(!showSearch);
 	};
-
 	const getHeaderMenuList = async () => {
 		setIsLoading(true);
 		const response = await apiGetCall(apiList.GET_HEADER_MENU_LIST);
@@ -70,10 +69,9 @@ export default function Header() {
 					<span className={stylesHeader.logo} />
 				</Link>
 				<div className={stylesHeader.menu}>
-					<ul className={stylesHeader.main}>
-						{menuList?.length > 0 &&
-							menuList?.length > 0 &&
-							menuList?.map((menu, index) => (
+					{!isLoading ? (
+						<ul className={stylesHeader.main}>
+							{menuList?.map((menu, index) => (
 								<li
 									key={index}
 									onClick={() => {
@@ -94,7 +92,23 @@ export default function Header() {
 									</Link>
 								</li>
 							))}
-					</ul>
+						</ul>
+					) : (
+						<ul className={stylesHeader.main}>
+							<li >
+								<a className={stylesHeader.loading}>Marketing</a>
+							</li>
+							<li>
+								<a className={stylesHeader.loading}>Media</a>
+							</li>
+							<li>
+								<a className={stylesHeader.loading}>Advertising</a>
+							</li>
+							<li>
+								<a className={stylesHeader.loading}>Research</a>
+							</li>
+						</ul>
+					)}
 					<span
 						className={stylesHeader.search}
 						onClick={toggleShowSearch}

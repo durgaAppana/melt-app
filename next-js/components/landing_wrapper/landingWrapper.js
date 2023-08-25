@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 import * as Scroll from "react-scroll";
 import DefaultLanding from "../default/defaultLanding";
 
-export default function LandingWrapper() {
+export default function LandingWrapper({langingData}) {
 	const { Element: ScrollElement } = Scroll;
 	const router = useRouter();
 
@@ -52,19 +52,19 @@ export default function LandingWrapper() {
 		};
 
 		setIsLoading(true);
-		const response = await apiGetCall(apiList.GET_ARTICLES_LIST);
+		// const response = await apiGetCall(apiList.GET_ARTICLES_LIST);
 		
-		if (response?.data?.length > 0) {
+		if (langingData?.length > 0) {
 		setIsLoading(false);
-			response?.data?.map((article) => {
+		langingData?.map((article) => {
 				const articleType = article?.attributes?.category?.data?.attributes?.type.toLowerCase();
 				if (Object.keys(articleObj).map((item) => item.toLowerCase() == articleType)) {
 					articleObj[articleType]?.push(article);
 				}
 			});
 
-			topSectionData.topArticle = response.data.filter((item) => item.attributes.top_section == true)[0];
-			topSectionData.topArticlesList = response.data.filter((item) => item.attributes.top_article == true);
+			topSectionData.topArticle = langingData.filter((item) => item.attributes.top_section == true)[0];
+			topSectionData.topArticlesList = langingData.filter((item) => item.attributes.top_article == true);
 		}
 		setTopSectionData(topSectionData);
 		setArticleList(articleObj);

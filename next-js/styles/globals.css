@@ -1,102 +1,109 @@
 @import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap");
 img {
-	width: 100%;
+  width: 100%;
 }
 html,
 body {
-	scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 body {
-	width: auto;
-	/* margin-top: 7rem !important; */
-	position: relative;
-	font-size: 14px !important;
-	font-family: "Merriweather", serif !important;
-	line-height:1.6 !important;
-	letter-spacing:.6px !important;
+  width: auto;
+  /* margin-top: 7rem !important; */
+  position: relative;
+  font-size: 14px !important;
+  font-family: "Merriweather", serif !important;
+  line-height: 1.6 !important;
+  letter-spacing: 0.6px !important;
 }
 
 .main-body {
-	padding: 20px;
+  padding: 20px;
 }
 
 a {
-	text-decoration: none !important;
+  text-decoration: none !important;
 }
 
 * {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .ml-10 {
-	margin-left: 100px !important;
+  margin-left: 100px !important;
 }
 
 .social-media {
-	position: relative;
+  position: relative;
 }
 
 .social-sharing {
-	position: fixed;
-	bottom: 10px;
-	margin-left: -6%;
-	z-index: 1;
+  position: fixed;
+  bottom: 10px;
+  margin-left: -6%;
+  z-index: 1;
 }
 
 .social-sharing ul {
-	list-style: none;
-	margin: 0;
-	padding: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .social-sharing ul li {
-	text-align: center;
-	color: #fff;
-	border-bottom: solid 1px #979797;
-	padding-bottom: 20px;
-	padding-top: 20px;
-	width: 50px;
+  text-align: center;
+  color: #fff;
+  border-bottom: solid 1px #979797;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  width: 50px;
 }
 
 .page-not-found {
-	width: 80vw;
-	min-height: 300px;
-	margin: 40px auto;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+  width: 80vw;
+  min-height: 300px;
+  margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .owl-carousel .owl-item img {
-	width: 100% !important;
-	height: 100% !important;
+  width: 100% !important;
+  height: 100% !important;
 }
 
 .modal-content {
-	background-color: #5fb969 !important;
+  background-color: #5fb969 !important;
+}
+.textarea:focus {
+  border-color: inherit !important;
+}
+.form-control:focus {
+  border-color: inherit !important;
+  box-shadow: inherit !important;
 }
 
 @media (max-width: 768px) {
-	.social-sharing {
-		background-color: #fff;
-		position: fixed;
-		left: 0;
-		bottom: 0;
-		width: 100%;
-		margin: 0;
-		height: 10%;
-	}
+  .social-sharing {
+    background-color: #fff;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    margin: 0;
+    height: 10%;
+  }
 
-	.social-sharing ul {
-		display: flex;
-		align-items: center;
-		justify-content: space-evenly;
-		list-style: none;
-		margin: 0;
-		padding: 0;
-	}
-	.social-sharing ul li {
-		border-bottom: none;
-	}
+  .social-sharing ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .social-sharing ul li {
+    border-bottom: none;
+  }
 }
