@@ -16,7 +16,8 @@ export default function Search() {
 	const tagName = async () => {
 		let arr = [];
 		let response = await apiGetCall(apiList.GET_TAG_LIST);
-		response.data.map((ele) => {
+
+		response?.data?.map((ele) => {
 			const trending = ele.attributes.is_trending;
 			if (trending) {
 				arr.push(ele);
@@ -29,7 +30,7 @@ export default function Search() {
 		if (searchData !== "") {
 			router.push(`/search/?q=${searchData.toLowerCase()}`);
 			document.querySelector("body").classList = [];
-			setSearchData("")
+			setSearchData("");
 		}
 	};
 	const handleKeyPress = (event) => {
